@@ -85,53 +85,55 @@ export default function Map() {
 
   return (
     <>
-      <section className="map-container-map-component">
-        <div style={ { height: '50vh', width: '50vw' } }>
-          
+      <section className="min-w-screen mx-auto" style={ { height: '100vh', width: '100vw' } } >
+        <div className="mx-auto" style={ { height: '75%', width: '75%' } }>
           <GoogleMap
-            mapContainerStyle={ { height: '100%', width: '100%' } }
+            mapContainerStyle={ { height: '100%', width: '100%', border: '5px solid var(--atomic-tangerine)' } }
             zoom={ 10 }
             center={ center }
             onLoad={ handleMapLoad }
+            className="w-full mx-auto"
           >
             <Marker position={ center } />
             { directions && <DirectionsRenderer directions={ directions } /> }
           </GoogleMap>
-         
-          <Autocomplete>
-            <input
-              type="text"
-              value={ origin }
-              onChange={ (e) => setOrigin(e.target.value) }
-              placeholder="Origin"
-            />
-          </Autocomplete>
-
-          <Autocomplete>
-            <input
-              type="text"
-              value={ destination }
-              onChange={ (e) => setDestination(e.target.value) }
-              placeholder="Destination"
-            />
-          </Autocomplete>
-
-          <button onClick={ clearInputs }>Clear</button>
-          <button onClick={ recenterMap }>Recenter</button>
-          <button onClick={ handleRoute }>Route</button>
-
-          <DirectionsService
-            options={ {
-              origin,
-              destination,
-              travelMode: 'DRIVING',
-            } }
-            callback={ () => handleDirectionsService }
-            onError={ () => handleDirectionsError }
-          />
-          <p>{ distance && `Distance: ${distance}` }</p>
-          <p>{ duration && `Duration: ${duration}` }</p>
         </div>
+        <Autocomplete>
+          <input
+            type="text"
+            value={ origin }
+            onChange={ (e) => setOrigin(e.target.value) }
+            placeholder="Origin"
+            className="p-2 m-4"
+          />
+        </Autocomplete>
+
+        <Autocomplete>
+          <input
+            type="text"
+            value={ destination }
+            onChange={ (e) => setDestination(e.target.value) }
+            placeholder="Destination"
+            className="p-2 m-4"
+          />
+        </Autocomplete>
+
+             
+        <button onClick={ clearInputs } className="p-2 m-4" >Clear</button>
+        <button onClick={ recenterMap } className="p-2 m-4">Recenter</button>
+        <button onClick={ handleRoute } className="p-2 m-4">Route</button>
+
+        <DirectionsService
+          options={ {
+            origin,
+            destination,
+            travelMode: 'DRIVING',
+          } }
+          callback={ () => handleDirectionsService }
+          onError={ () => handleDirectionsError }
+        />
+        <p>{ distance && `Distance: ${distance}` }</p>
+        <p>{ duration && `Duration: ${duration}` }</p>
       </section>
     </>
   );

@@ -1,45 +1,58 @@
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { 
+    
+  --papaya-whip: hsla(42, 100%, 91%, 1);
+  --platinum: hsla(240, 1%, 86%, 1);
+  --french-gray: hsla(280, 3%, 77%, 1);
+  --outer-space: rgb(51, 70, 90);
+  --paynes-gray: hsla(206, 16%, 35%, 1);
+  --atomic-tangerine: hsla(22, 91%, 65%, 1);
+  --sunset: hsla(32, 92%, 81%, 1);
+  --tiffany-blue: hsla(162, 46%, 65%, 1);
+  --moonstone: hsla(187, 100%, 40%, 1);
+  --blue-munsell: hsla(192, 73%, 36%, 1);
+  --yinmn-blue: hsla(213, 65%, 33%, 1);
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #33394a;
+  color: var(--papaya-whip);
+  background-color: var(--outer-space);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
+  line-height: 1.5;
   display: flex;
-  min-width: 320px;
   min-height: 100vh;
-  margin: 0;
 }
 
 a {
   font-weight: 500;
-  color: #33394a;
+  color: var(--sunset);
+
   text-decoration: none;
   cursor: pointer;
 
 }
 a:hover {
-  color: #5b8796;
+  color: var(--atomic-tangerine);
   text-decoration: underline;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: #888;
 }
 
 
@@ -50,7 +63,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--paynes-gray);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -73,23 +86,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-
-.container {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-.box {
-  height:100%;
-  width:100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  
 }
