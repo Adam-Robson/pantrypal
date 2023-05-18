@@ -1,13 +1,89 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { 
+    
+  --papaya-whip: hsla(42, 100%, 91%, 1);
+  --platinum: hsla(240, 1%, 86%, 1);
+  --french-gray: hsla(280, 3%, 77%, 1);
+  --outer-space: rgb(51, 70, 90);
+  --paynes-gray: hsla(206, 16%, 35%, 1);
+  --atomic-tangerine: hsla(22, 91%, 65%, 1);
+  --sunset: hsla(32, 92%, 81%, 1);
+  --tiffany-blue: hsla(162, 46%, 65%, 1);
+  --moonstone: hsla(187, 100%, 40%, 1);
+  --blue-munsell: hsla(192, 73%, 36%, 1);
+  --yinmn-blue: hsla(213, 65%, 33%, 1);
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color-scheme: light dark;
+  color: var(--papaya-whip);
+  background-color: var(--outer-space);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  line-height: 1.5;
+  display: flex;
+  min-height: 100vh;
+}
+
+a {
+  font-weight: 500;
+  color: var(--sunset);
+
+  text-decoration: none;
+  cursor: pointer;
+
+}
+a:hover {
+  color: var(--atomic-tangerine);
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--paynes-gray);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #698ba1;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #88d9e1;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 }
