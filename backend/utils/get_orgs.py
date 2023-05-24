@@ -1,12 +1,8 @@
-from pymongo import MongoClient
 from bs4 import BeautifulSoup
+from app import db
 import requests
 import json
 import re
-
-uri    = 'mongodb://localhost:27017/teamsix'
-client = MongoClient(uri)
-db     = client.get_default_database()
 
 BASE_URL = 'https://www.foodpantries.org/'
 
@@ -88,11 +84,7 @@ def create_organizations(org_url):
 
     # Handle BeautifulSoup error or db connection error
     except Exception as e:
-        try:
-            print('[*] Broke on org:', org.a['href'])
-            print('[*] Error:', e)
-        except:
-            print('[*] ...')
+        print('An error on an org occured...')
 
 def get_orgs_from_city(url):
     """
@@ -130,4 +122,5 @@ def get_organizations():
         print('[*] Finished state:', state.text)
 
 
-get_organizations()
+if __name__ == '__main__':
+    get_organizations()
