@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '1280px',
   height: '720px'
 };
 const center = {
-  lat: 20.5937,
-  lng: -78.9629
+  lat: 44,
+  lng: -80
 };
 
 export default function Map() {
@@ -25,14 +26,14 @@ export default function Map() {
     setMap(map);
   }, []);
   
-  const onUnmount = useCallback((map) => {
+  const onUnmount = useCallback(() => {
     setMap(null);
   }, []);
 
   return (
     <>
       <div style={ { position: 'relative' } }>
-        <div style={ { position: 'absolute', top: 10, left: 10, backgroundColor: 'orange', padding: 25 } }>
+        <div style={ { position: 'absolute', bottom: 10, left: 10, backgroundColor: 'orange' } }>
           <h1>Hellow World</h1>
         </div>{
 
@@ -43,7 +44,7 @@ export default function Map() {
             onLoad={ onLoad }
             onUnmount={ onUnmount }
           >
-        
+            <Marker position={{ lat: 44, lng: -80 }}/>
           </GoogleMap> : <></>
         }</div>
     </>
