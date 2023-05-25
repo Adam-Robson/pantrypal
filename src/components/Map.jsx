@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-
+import { trees } from './data.js';
 import Query from './Query';
 
 const containerStyle = {
@@ -25,6 +26,7 @@ export default function Map() {
 
   const [map, setMap] = useState(null);
   const [position, setPosition] = useState(null);
+  const [marker, setMarker] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [latitude, setLatitude] = useState(null);
@@ -48,7 +50,7 @@ export default function Map() {
           (position) => {
             location = {
               lat: position.coords.latitude,
-              lng: position.coords.lng
+              lng: position.coords.longitude
             };
 
 
@@ -67,7 +69,12 @@ export default function Map() {
       }
     }
     getLocation();
-  }, []);
+  }, [map, marker]);
+
+
+
+
+
 
   function centerMarker() {
     let marker = new window.google.maps.Marker({
@@ -106,6 +113,7 @@ export default function Map() {
       console.error('Error searching for places:', error);
     }
   }
+
   console.log('location', location);
   console.log('map', map);
   console.log('position', position);
@@ -128,7 +136,7 @@ export default function Map() {
         >
           { position && <Marker position={ position } /> }
 
-          <Marker position={{ lat: 44, lng: -80 }} />
+          {/* <Marker position={{ lat: 44, lng: -80 }} /> */}
 
           { markers.map((marker, index) => (
             <Marker key={ index } position={ marker } />
