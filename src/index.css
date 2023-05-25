@@ -3,24 +3,14 @@
 @tailwind utilities;
 
 :root { 
-    
-  --papaya-whip: hsla(42, 100%, 91%, 1);
   --platinum: hsla(240, 1%, 86%, 1);
-  --french-gray: hsla(280, 3%, 77%, 1);
   --outer-space: rgb(51, 70, 90);
-  --paynes-gray: hsla(206, 16%, 35%, 1);
-  --atomic-tangerine: hsla(22, 91%, 65%, 1);
-  --sunset: hsla(32, 92%, 81%, 1);
-  --tiffany-blue: hsla(162, 46%, 65%, 1);
-  --moonstone: hsla(187, 100%, 40%, 1);
-  --blue-munsell: hsla(192, 73%, 36%, 1);
-  --yinmn-blue: hsla(213, 65%, 33%, 1);
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: 'Recursive Variable', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 300;
   text-align: center;
   color-scheme: light dark;
-  color: var(--papaya-whip);
+  color: var(--platinum);
   background-color: var(--outer-space);
 
   font-synthesis: none;
@@ -39,14 +29,13 @@ body {
 
 a {
   font-weight: 500;
-  color: var(--sunset);
-
+  color: var(--outer-space);
   text-decoration: none;
   cursor: pointer;
 
 }
 a:hover {
-  color: var(--atomic-tangerine);
+  color: var(--outer-space);
   text-decoration: underline;
 }
 
@@ -63,7 +52,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--paynes-gray);
+  background-color: var(--outer-space);
   cursor: pointer;
   transition: border-color 0.25s;
 }

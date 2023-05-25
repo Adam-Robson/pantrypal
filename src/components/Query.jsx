@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-
 export default function Query() {
   const [query, setQuery] = useState('');
 
-  const sendQuery = () => {
+  function sendQuery() {
     fetch(`https://api.example.com/search?q=${query}`)
       .then(response => response.json())
       .then(data => {
@@ -14,7 +13,7 @@ export default function Query() {
       .catch(error => {
         console.error('Error:', error);
       });
-  };
+  }
 
   return (
     <div>
