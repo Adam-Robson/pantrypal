@@ -49,8 +49,8 @@ export default function Map() {
               lng: position.coords.longitude,
             });
 
-            // Fetch our zipcode
-            fetchLocalOrgs(94801);
+            // TODO: Get our current location zipcode
+            fetchLocalOrgs(94115);
             setError(null);
           },
           (error) => {
@@ -68,14 +68,13 @@ export default function Map() {
 
   async function geoCodeLocation(orgAddress) {
     let geocoder;
-
     geocoder = new window.google.maps.Geocoder();
 
     return await geocoder.geocode({ 'address': orgAddress }, function(results, status) {
       if (status === window.google.maps.GeocoderStatus.OK) {
         return results;
       } else {
-        alert('broke on organization with the address:', orgAddress);
+        // alert('broke on organization with the address:', orgAddress);
       }
     });
   }
@@ -89,16 +88,18 @@ export default function Map() {
   }
 
   async function fetchLocalOrgs(zipcode) {
-    // Fetch organizations from API
-    const city = '850 Columbus Ave, San Francisco, CA 94133';
-    const organization = {};
-    await geoCodeLocation(city).then((response) => {
-      organization['lat'] = response.results[0].geometry.location.lat();
-      organization['lng'] = response.results[0].geometry.location.lng();
-      organization['address'] = response.results[0].formatted_address;
-    });
+    const proxyResponse = await fetch('api/organizations/' + zipcode);
 
-    setMarker(organization);
+    const organizations = await proxyResponse.json();
+    console.log(`organizations in zipcode(${zipcode}):`, organizations);
+
+    organizations.forEach((org, i) => {
+      geoCodeLocation(org.address).then((response) => {
+        org['lat'] = response.results[0].geometry.location.lat();
+        org['lng'] = response.results[0].geometry.location.lng();
+        setMarker(org);
+      });
+    });
   }
 
   function onMapLoad(map) {

@@ -21,4 +21,4 @@ def fetch_organizations(zipcode):
     return dumps(list(organizations))
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5001)
+    app.run(debug=False, port=5000)
