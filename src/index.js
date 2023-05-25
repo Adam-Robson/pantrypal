@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 // Supports weights 300-900
 import '@fontsource-variable/recursive';
 
-
+import { GoogleProvider } from './context/GoogleContext';
 
 ReactDOM
   .createRoot(
@@ -15,7 +15,9 @@ ReactDOM
   .render(
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <GoogleProvider>
+          <App />
+        </GoogleProvider>
       </BrowserRouter>
     </React.StrictMode>
   );

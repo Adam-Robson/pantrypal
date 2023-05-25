@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import React, { useState, useCallback, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, Autocomplete } from '@react-google-maps/api';
 import { trees } from './data.js';
-import Query from './Query';
+import { useGoogleContext } from '../context/GoogleContext';
 
 const containerStyle = {
   width: '1280px',
@@ -19,29 +19,50 @@ let location;
 
 export default function Map() {
 
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-  });
-
-  const [map, setMap] = useState(null);
-  const [position, setPosition] = useState(null);
-  const [marker, setMarker] = useState(null);
-  const [markers, setMarkers] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [error, setError] = useState(null);
+  const {
+    map,
+    setMap,
+    places,
+    setPlaces,
+    directions,
+    setDirections,
+    origin,
+    setOrigin,
+    destination,
+    setDestination,
+    duration,
+    setDuration,
+    distance,
+    setDistance,
+    activeMarker,
+    setActiveMarker,
+    marker,
+    setMarker,
+    markers,
+    setMarkers,
+    position,
+    setPosition,
+    latitude,
+    setLatitude,
+    longitude,
+    setLongitude,
+    searchResult,
+    setSearchResult,
+    error,
+    setError,
+    isLoaded,
+    loadError
+  } = useGoogleContext();
   
   const onLoad = useCallback((map) => {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
     setMap(map);
-  }, []);
+  }, [setMap]);
   
   const onUnmount = useCallback(() => {
     setMap(null);
-  }, []);
+  }, [setMap]);
 
   useEffect(() => {
     function getLocation() {
@@ -69,26 +90,19 @@ export default function Map() {
       }
     }
     getLocation();
-  }, [map, marker]);
-
-
-
-
-
+  }, [setError, setLatitude, setLongitude]);
 
   function centerMarker() {
     let marker = new window.google.maps.Marker({
       position: location.latLng(),
-      icon: './map_marker.png',
-      animation: window.google.maps.Animation.DROP,
       map: map
     });
     map.setCenter(location.latitude, location.longitude);
   }
 
-  function onMapLoad(map) {
-    setMap(map);
-  }
+  // function onMapLoad(map) {
+  //   setMap(map);
+  // }
 
   function onMapClick(e) {
     const newMarker = {
@@ -102,7 +116,7 @@ export default function Map() {
     try {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=` + process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
-      setSearchResults(response.data.results);
+      setSearchResult(response.data.results);
       setMarkers(
         response.data.results.map(result => ({
           lat: result.geometry.location.lat,
@@ -114,13 +128,55 @@ export default function Map() {
     }
   }
 
+  function clearInputs() {
+    setOrigin('');
+    setDestination('');
+    setDistance('');
+    setDuration('');
+    setDirections('');
+  }
+
+  function recenterMap() {
+    if (map) {
+      // eslint-disable-next-line no-undef
+      const bounds = new google.maps.LatLngBounds();
+      // eslint-disable-next-line no-undef
+      bounds.extend(new google.maps.LatLng({ lat: latitude, lng: longitude }));
+      map.fitBounds(bounds);
+    }
+  }
+
+  /* handleRoute() services any route request */
+  function handleRoute() {
+    if (origin && destination && map) {
+      // eslint-disable-next-line no-undef
+      const directionsService = new google.maps.DirectionsService();
+      directionsService.route({
+        origin,
+        destination,
+        travelMode: 'DRIVING',
+      },
+      (response, status) => {
+        if (status === 'OK') {
+          setDirections(response);
+          setDistance(response.routes[0].legs[0].distance.text);
+          setDuration(response.routes[0].legs[0].duration.text);
+        } else {
+          console.error('Error fetching directions:', status);
+        }
+      });
+    }
+  }
+  
   console.log('location', location);
   console.log('map', map);
   console.log('position', position);
   console.log('markers', markers);
   console.log('latitude', latitude);
   console.log('longitude', longitude);
-  console.log('searchResults', searchResults);
+  console.log('searchResults', searchResult);
+
+  
 
   return (
     <div>
@@ -128,23 +184,69 @@ export default function Map() {
       {
         isLoaded ? <GoogleMap
           mapContainerStyle={ containerStyle }
+          zoom={ 12 }
           center={ { lat: latitude, lng: longitude } }
-          zoom={ 7 }
-          onLoad={ onMapLoad }
-          onClick={ onMapClick}
+          onLoad={ onLoad }
+          onClick={ onMapClick }
           onUnmount={ onUnmount }
         >
-          { position && <Marker position={ position } /> }
+          { position && <Marker position={ location } /> }
 
           {/* <Marker position={{ lat: 44, lng: -80 }} /> */}
-
+          {
+            markers.map((marker) => (
+              <Marker
+                key={ `${marker.lat}-${marker.lng}` }
+                position={ { lat: latitude, lng: longitude } }
+                onClick={ () => {
+                  setActiveMarker(marker);
+                } } />
+            ))
+          }
+          { directions && <DirectionsRenderer directions={ directions } /> }
           { markers.map((marker, index) => (
             <Marker key={ index } position={ marker } />
           )) }
 
         </GoogleMap> : <>There was an error loading the map!</>
       }
-      <Query />
+      <input
+        type="text"
+        value={ origin }
+        onChange={ (e) => setOrigin(e.target.value) }
+        placeholder="Origin"
+        className="p-2 m-4"
+      />
+
+      <input
+        type="text"
+        value={ destination }
+        onChange={ (e) => setDestination(e.target.value) }
+        placeholder="Destination"
+        className="p-2 m-4"
+      />
+
+
+      <button onClick={ clearInputs } className="p-2 m-4" >Clear</button>
+      <button onClick={ recenterMap } className="p-2 m-4">Recenter</button>
+      <button onClick={ handleRoute } className="p-2 m-4">Route</button>
+      { origin && destination && (
+        <DirectionsService
+          options={ {
+            destination,
+            origin,
+            travelMode: 'DRIVING',
+          } }
+          // callback={ (res) => {
+          //   if (res !== null) {
+          //     handleRoute();
+          //   }
+          // } }
+        />
+      ) }
+
+      <p>{ distance && `Distance: ${distance}` }</p>
+      <p>{ duration && `Duration: ${duration}` }</p>
     </div>
   );
 }
