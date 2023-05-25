@@ -54,11 +54,12 @@ export default function Map() {
     loadError
   } = useGoogleContext();
   
-  const onLoad = useCallback((map) => {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map);
-  }, [setMap]);
+  const onLoad = useCallback(
+    function onLoad(map) {
+      const bounds = new window.google.maps.LatLngBounds();
+      bounds.extend(center);
+      setMap(map);
+    }, [setMap]);
   
   const onUnmount = useCallback(() => {
     setMap(null);
@@ -136,14 +137,11 @@ export default function Map() {
     setDirections('');
   }
 
-  function recenterMap() {
-    if (map) {
-      // eslint-disable-next-line no-undef
-      const bounds = new google.maps.LatLngBounds();
-      // eslint-disable-next-line no-undef
-      bounds.extend(new google.maps.LatLng({ lat: latitude, lng: longitude }));
-      map.fitBounds(bounds);
-    }
+  function recenterMap(map) {
+    console.log('recenter clicked!');
+    const bounds = new window.google.maps.LatLngBounds();
+    bounds.extend(center);
+    setMap(map);
   }
 
   /* handleRoute() services any route request */
@@ -184,7 +182,7 @@ export default function Map() {
       {
         isLoaded ? <GoogleMap
           mapContainerStyle={ containerStyle }
-          zoom={ 12 }
+          zoom={ 7 }
           center={ { lat: latitude, lng: longitude } }
           onLoad={ onLoad }
           onClick={ onMapClick }
