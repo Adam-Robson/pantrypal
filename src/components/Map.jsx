@@ -9,10 +9,12 @@ const containerStyle = {
   height: '720px'
 };
 
-const center = {
+let center = {
   lat: 44,
   lng: -80
 };
+
+let location;
 
 export default function Map() {
 
@@ -40,10 +42,16 @@ export default function Map() {
   }, []);
 
   useEffect(() => {
-    const getLocation = () => {
+    function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
+            location = {
+              lat: position.coords.latitude,
+              lng: position.coords.lng
+            };
+
+
             setLatitude(position.coords.latitude);
             setLongitude(position.coords.longitude);
             setError(null);
@@ -57,9 +65,19 @@ export default function Map() {
         setError('Geolocation is not supported by this browser.');
         console.error('Geolocation is not supported by this browser.');
       }
-    };
+    }
     getLocation();
   }, []);
+
+  function centerMarker() {
+    let marker = new window.google.maps.Marker({
+      position: location.latLng(),
+      icon: './map_marker.png',
+      animation: window.google.maps.Animation.DROP,
+      map: map
+    });
+    map.setCenter(location.latitude, location.longitude);
+  }
 
   function onMapLoad(map) {
     setMap(map);
@@ -88,23 +106,21 @@ export default function Map() {
       console.error('Error searching for places:', error);
     }
   }
-
-  // console.log('map', map);
-  // console.log('position', position);
-  // console.log('markers', markers);
-  // console.log('latitude', latitude);
-  // console.log('longitude', longitude);
-  // console.log('searchResults', searchResults);
+  console.log('location', location);
+  console.log('map', map);
+  console.log('position', position);
+  console.log('markers', markers);
+  console.log('latitude', latitude);
+  console.log('longitude', longitude);
+  console.log('searchResults', searchResults);
 
   return (
     <div>
-      <div style={ { position: 'absolute', bottom: 10, left: 10, backgroundColor: 'orange' } }>
-        <h1>Hellow World</h1>
-      </div>
+      
       {
         isLoaded ? <GoogleMap
           mapContainerStyle={ containerStyle }
-          center={ center }
+          center={ { lat: latitude, lng: longitude } }
           zoom={ 7 }
           onLoad={ onMapLoad }
           onClick={ onMapClick}
@@ -118,7 +134,7 @@ export default function Map() {
             <Marker key={ index } position={ marker } />
           )) }
 
-        </GoogleMap> : <></>
+        </GoogleMap> : <>There was an error loading the map!</>
       }
       <Query />
     </div>
