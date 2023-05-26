@@ -4,7 +4,7 @@ export default function User() {
   const [username, setUsername] = useState('default');
 
   useEffect(() => {
-    setUsername('new')
+    setUsername('new');
   }, []);
 
   return (
