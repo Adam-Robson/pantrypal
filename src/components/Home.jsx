@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
@@ -60,7 +61,7 @@ export default function Home() {
             });
 
             // TODO: Get our user's current city
-            fetchLocalOrgs('Richmond');
+            fetchLocalOrgs('San Francisco');
             setError(null);
           },
           (error) => {
@@ -72,6 +73,7 @@ export default function Home() {
       }
     }
     getLocation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

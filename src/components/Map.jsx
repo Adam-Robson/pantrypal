@@ -57,7 +57,6 @@ export default function Map() {
   }
 
   function recenterMap(map) {
-    console.log('recenter clicked!');
     const bounds = new window.google.maps.LatLngBounds();
     bounds.extend(center);
     setMap(map);
@@ -81,15 +80,15 @@ export default function Map() {
         destination,
         travelMode: 'DRIVING',
       },
-        (response, status) => {
-          if (status === 'OK') {
-            setDirections(response);
-            setDistance(response.routes[0].legs[0].distance.text);
-            setDuration(response.routes[0].legs[0].duration.text);
-          } else {
-            console.error('Error fetching directions:', status);
-          }
-        });
+      (response, status) => {
+        if (status === 'OK') {
+          setDirections(response);
+          setDistance(response.routes[0].legs[0].distance.text);
+          setDuration(response.routes[0].legs[0].duration.text);
+        } else {
+          console.error('Error fetching directions:', status);
+        }
+      });
     }
   }
 
@@ -103,10 +102,12 @@ export default function Map() {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          {organizations.map((org) => (
-            <Marker key={org.name} position={org.position} />
-          ))}
-
+          
+          {
+            organizations.map((org) => (
+              <Marker key={ org.name } position={ org.position } label={ org.name } />
+            ))
+          }
           {directions && <DirectionsRenderer directions={directions} />}
         </GoogleMap> : <>There was an error loading the map!</>
       }
