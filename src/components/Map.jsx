@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useCallback, useEffect } from 'react';
-import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, Autocomplete } from '@react-google-maps/api';
+import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, Autocomplete, OverlayView } from '@react-google-maps/api';
 import { useGoogleContext } from '../context/GoogleContext';
-
+import OrganizationCard from './OrganizationCard';
 const containerStyle = {
   width: '1280px',
   height: '720px'
@@ -31,6 +31,12 @@ export default function Map() {
     setDistance,
     myPosition,
     setMyPosition,
+    activeMarker,
+    // setActiveMarker,
+    activeIndex,
+    setActiveIndex,
+    showOverlay,
+    setShowOverlay,
     error,
     setError,
     isLoaded,
@@ -91,6 +97,22 @@ export default function Map() {
       });
     }
   }
+  function handleMarkerClick(index) {
+    setActiveIndex(index);
+    setShowOverlay(true);
+  }
+
+  function handleSwipe(direction) {
+    const newIndex = direction === 'next' ? activeIndex + 1 : activeIndex - 1;
+    if (newIndex >= 0 && newIndex < organizations.length) {
+      setActiveIndex(newIndex);
+      // setActiveMarker(map.markers[newIndex]);
+    }
+  }
+
+  function handleCloseOverlay() {
+    setShowOverlay(false);
+  }
 
   return (
     <div>
@@ -102,10 +124,11 @@ export default function Map() {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          
           {
-            organizations.map((org) => (
-              <Marker key={ org.name } position={ org.position } label={ org.name } />
+            organizations.map((org, index) => (
+              <>
+                <Marker onClick={ (e) => handleMarkerClick(index) } key={ org.name } position={ org.position } label={ org.name } />
+              </>
             ))
           }
           {directions && <DirectionsRenderer directions={directions} />}
@@ -127,9 +150,9 @@ export default function Map() {
         className="p-2 m-4"
       />
 
-      <button onClick={clearInputs} className="p-2 m-4" >Clear</button>
-      <button onClick={recenterMap} className="p-2 m-4">Recenter</button>
-      <button onClick={handleRoute} className="p-2 m-4">Route</button>
+      <button onClick={ clearInputs } className="p-2 m-4" >Clear</button>
+      <button onClick={ recenterMap } className="p-2 m-4">Recenter</button>
+      <button onClick={ handleRoute } className="p-2 m-4">Route</button>
       {origin && destination && (
         <DirectionsService
           options={{
@@ -140,8 +163,9 @@ export default function Map() {
         />
       )}
 
-      <p>{distance && `Distance: ${distance}`}</p>
-      <p>{duration && `Duration: ${duration}`}</p>
+      <p>{distance && `Distance: ${ distance }`}</p>
+      <p>{duration && `Duration: ${ duration }`}</p>
+     
     </div>
   );
 }
