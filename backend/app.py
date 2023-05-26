@@ -12,13 +12,29 @@ db = client.get_default_database()
 
 app = Flask(__name__)
 
-@app.route('/api/organizations/<zipcode>')
-def fetch_organizations(zipcode):
+@app.route('/api/organizations/zipcode/<zipcode>')
+def fetch_orgs_by_zipcode(zipcode):
     organizations = db.organizations.find(
         {'zip_code': zipcode}, {'_id': False}
-    ).limit(10)
+    ).limit(5)
+
+    return dumps(list(organizations))
+
+@app.route('/api/organizations/city/<city_name>')
+def fetch_orgs_by_city(city_name):
+    organizations = db.organizations.find(
+        {'city': city_name}, {'_id': False}
+    ).limit(5)
+
+    return dumps(list(organizations))
+
+@app.route('/api/organizations/state/<state>')
+def fetch_orgs_by_state(state):
+    organizations = db.organizations.find(
+        {'state': state}, {'_id': False}
+    ).limit(5)
 
     return dumps(list(organizations))
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    app.run(debug=True, port=5000)
