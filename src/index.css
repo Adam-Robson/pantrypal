@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { 
+:root {
   --platinum: hsla(240, 1%, 86%, 1);
   --outer-space: rgb(51, 70, 90);
 

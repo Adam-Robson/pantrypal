@@ -9,9 +9,9 @@ export default function App() {
     <>
       <div className="main-div">
         <Routes>
-          <Route path='/about' element={ <About /> } />
-          <Route path='/contact' element={ <Contact /> } />
-          <Route path='/' exact element={ <Home /> } />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/' exact element={<Home />} />
         </Routes>
       </div>
     </>
