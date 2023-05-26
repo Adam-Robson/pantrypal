@@ -8,21 +8,14 @@ const libraries = ['places'];
 export function GoogleProvider({ children }) {
 
   const [map, setMap] = useState(null);
-  const [places, setPlaces] = useState([]);
   const [directions, setDirections] = useState(null);
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [duration, setDuration] = useState(null);
   const [distance, setDistance] = useState(null);
-  const [marker, setMarker] = useState(null);
-  const [markers, setMarkers] = useState([]);
-  const [activeMarker, setActiveMarker] = useState(null);
-  const [position, setPosition] = useState(null);
-  const [searchResult, setSearchResult] = useState(null);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [myPosition, setMyPosition] = useState(null);
+  const [organizations, setOrganizations] = useState(null);
   const [error, setError] = useState(null);
-
 
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
@@ -32,11 +25,11 @@ export function GoogleProvider({ children }) {
 
   return (
     <GoogleContext.Provider
-      value={ {
+      value={{
         map,
         setMap,
-        places,
-        setPlaces,
+        organizations,
+        setOrganizations,
         directions,
         setDirections,
         origin,
@@ -47,26 +40,14 @@ export function GoogleProvider({ children }) {
         setDuration,
         distance,
         setDistance,
-        activeMarker,
-        setActiveMarker,
-        marker,
-        setMarker,
-        markers,
-        setMarkers,
-        position,
-        setPosition,
-        latitude,
-        setLatitude,
-        longitude,
-        setLongitude,
-        searchResult,
-        setSearchResult,
+        myPosition,
+        setMyPosition,
         error,
         setError,
         isLoaded,
         loadError
-      } }>
-      { children }
+      }}>
+      {children}
     </GoogleContext.Provider>
   );
 }

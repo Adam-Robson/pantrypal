@@ -14,15 +14,11 @@ const center = {
 };
 
 export default function Map() {
-  const [map, setMap] = useState(null);
-
   const {
     map,
     setMap,
     organizations,
     setOrganizations,
-    places,
-    setPlaces,
     directions,
     setDirections,
     origin,
@@ -33,33 +29,21 @@ export default function Map() {
     setDuration,
     distance,
     setDistance,
-    activeMarker,
-    setActiveMarker,
-    marker,
-    setMarker,
-    markers,
-    setMarkers,
     myPosition,
     setMyPosition,
-    latitude,
-    setLatitude,
-    longitude,
-    setLongitude,
-    searchResult,
-    setSearchResult,
     error,
     setError,
     isLoaded,
     loadError
   } = useGoogleContext();
-  
+
   const onLoad = useCallback(
     function onLoad(map) {
       const bounds = new window.google.maps.LatLngBounds();
       bounds.extend(center);
       setMap(map);
     }, [setMap]);
-  
+
   const onUnmount = useCallback(() => {
     setMap(null);
   }, [setMap]);
@@ -71,7 +55,7 @@ export default function Map() {
     });
     map.setCenter(location.latitude, location.longitude);
   }
-  
+
   function recenterMap(map) {
     console.log('recenter clicked!');
     const bounds = new window.google.maps.LatLngBounds();
@@ -97,66 +81,66 @@ export default function Map() {
         destination,
         travelMode: 'DRIVING',
       },
-      (response, status) => {
-        if (status === 'OK') {
-          setDirections(response);
-          setDistance(response.routes[0].legs[0].distance.text);
-          setDuration(response.routes[0].legs[0].duration.text);
-        } else {
-          console.error('Error fetching directions:', status);
-        }
-      });
+        (response, status) => {
+          if (status === 'OK') {
+            setDirections(response);
+            setDistance(response.routes[0].legs[0].distance.text);
+            setDuration(response.routes[0].legs[0].duration.text);
+          } else {
+            console.error('Error fetching directions:', status);
+          }
+        });
     }
   }
-  
+
   return (
     <div>
       {
         isLoaded ? <GoogleMap
-          mapContainerStyle={ containerStyle }
-          zoom={ 7 }
-          center={ myPosition }
-          onLoad={ onLoad }
-          onUnmount={ onUnmount }
+          mapContainerStyle={containerStyle}
+          zoom={7}
+          center={myPosition}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
         >
           {organizations.map((org) => (
             <Marker key={org.name} position={org.position} />
           ))}
 
-          { directions && <DirectionsRenderer directions={ directions } /> }
+          {directions && <DirectionsRenderer directions={directions} />}
         </GoogleMap> : <>There was an error loading the map!</>
       }
       <input
         type="text"
-        value={ origin }
-        onChange={ (e) => setOrigin(e.target.value) }
+        value={origin}
+        onChange={(e) => setOrigin(e.target.value)}
         placeholder="Origin"
         className="p-2 m-4"
       />
 
       <input
         type="text"
-        value={ destination }
-        onChange={ (e) => setDestination(e.target.value) }
+        value={destination}
+        onChange={(e) => setDestination(e.target.value)}
         placeholder="Destination"
         className="p-2 m-4"
       />
 
-      <button onClick={ clearInputs } className="p-2 m-4" >Clear</button>
-      <button onClick={ recenterMap } className="p-2 m-4">Recenter</button>
-      <button onClick={ handleRoute } className="p-2 m-4">Route</button>
-      { origin && destination && (
+      <button onClick={clearInputs} className="p-2 m-4" >Clear</button>
+      <button onClick={recenterMap} className="p-2 m-4">Recenter</button>
+      <button onClick={handleRoute} className="p-2 m-4">Route</button>
+      {origin && destination && (
         <DirectionsService
-          options={ {
+          options={{
             destination,
             origin,
             travelMode: 'DRIVING',
-          } }
+          }}
         />
-      ) }
+      )}
 
-      <p>{ distance && `Distance: ${distance}` }</p>
-      <p>{ duration && `Duration: ${duration}` }</p>
+      <p>{distance && `Distance: ${distance}`}</p>
+      <p>{duration && `Duration: ${duration}`}</p>
     </div>
   );
 }
