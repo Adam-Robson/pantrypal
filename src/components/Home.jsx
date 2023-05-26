@@ -50,17 +50,16 @@ export default function Home() {
               lng: position.coords.longitude,
             });
 
-            fetchLocalOrgs('Richmond');  // TODO: Get our user's current city
+            // TODO: Get our user's current city
+            fetchLocalOrgs('Richmond');
             setError(null);
           },
           (error) => {
             setError(error.message);
-            // console.error('Error getting geolocation:', error);
           }
         );
       } else {
         setError('Geolocation is not supported by this browser.');
-        // console.error('Geolocation is not supported by this browser.');
       }
     }
     getLocation();
