@@ -18,7 +18,8 @@ export function GoogleProvider({ children }) {
   const [error, setError] = useState(null);
   const [activeMarker, setActiveMarker] = useState({});
   const [activeIndex, setActiveIndex] = useState(0);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [infoWindow, setInfoWindow] = useState({});
+  const [showInfoWindow, setShowInfoWindow] = useState(false);
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -48,8 +49,10 @@ export function GoogleProvider({ children }) {
         setActiveIndex,
         activeMarker,
         setActiveMarker,
-        showOverlay,
-        setShowOverlay,
+        infoWindow,
+        setInfoWindow,
+        showInfoWindow,
+        setShowInfoWindow,
         error,
         setError,
         isLoaded,

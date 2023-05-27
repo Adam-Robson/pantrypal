@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useCallback, useEffect } from 'react';
-import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, Autocomplete, OverlayView } from '@react-google-maps/api';
+import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, InfoWindow } from '@react-google-maps/api';
 import { useGoogleContext } from '../context/GoogleContext';
 const containerStyle = {
   width: '1280px',
@@ -31,11 +31,11 @@ export default function Map() {
     myPosition,
     setMyPosition,
     activeMarker,
-    // setActiveMarker,
+    setActiveMarker,
     activeIndex,
     setActiveIndex,
-    showOverlay,
-    setShowOverlay,
+    infoWindow,
+    setInfoWindow,
     error,
     setError,
     isLoaded,
@@ -96,43 +96,66 @@ export default function Map() {
       });
     }
   }
-  function handleMarkerClick(index) {
-    setActiveIndex(index);
-    setShowOverlay(true);
+
+  function handleMarkerClick(marker) {
+    setActiveMarker(marker);
   }
 
-  function handleSwipe(direction) {
-    const newIndex = direction === 'next' ? activeIndex + 1 : activeIndex - 1;
-    if (newIndex >= 0 && newIndex < organizations.length) {
-      setActiveIndex(newIndex);
-      // setActiveMarker(map.markers[newIndex]);
-    }
-  }
-
-  function handleCloseOverlay() {
-    setShowOverlay(false);
+  function handleCloseInfoWindow() {
+    setActiveMarker(null);
   }
 
   return (
     <div>
+
       {
         isLoaded ? <GoogleMap
           mapContainerStyle={containerStyle}
-          zoom={7}
+          zoom={10}
           center={myPosition}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
           {
-            organizations.map((org, index) => (
-              <>
-                <Marker onClick={ (e) => handleMarkerClick(index) } key={ org.name } position={ org.position } label={ org.name } />
-              </>
-            ))
+            organizations.map((org) => (
+              <Marker 
+                key={ org.name } 
+                position={ org.position }
+                onClick={ (e) => handleMarkerClick(org) }  
+                label={ org.name } 
+              >
+            
+          
+          
+                {
+                  activeMarker === org && (
+                    <InfoWindow
+                      anchor={ activeMarker }
+                      onCloseClick={ handleCloseInfoWindow }
+                    >
+                      <div>
+                        <h3>{ activeMarker.name }</h3>
+                        <p>{ activeMarker.address }</p>
+                        <p>{ activeMarker.city }</p>
+                        <p>{ activeMarker.state }</p>
+                        <p>{ activeMarker.zip_code }</p>
+                        <p>{ activeMarker.phone_num }</p>
+                        <p>{ activeMarker.desc }</p>
+                      </div>
+                    </InfoWindow>
+                  )}
+          
+              </Marker>
+            ))}
+
+          {
+            directions && <DirectionsRenderer directions={directions} />
           }
-          {directions && <DirectionsRenderer directions={directions} />}
+
         </GoogleMap> : <>There was an error loading the map!</>
+
       }
+
       <input
         type="text"
         value={origin}
@@ -152,15 +175,17 @@ export default function Map() {
       <button onClick={ clearInputs } className="p-2 m-4" >Clear</button>
       <button onClick={ recenterMap } className="p-2 m-4">Recenter</button>
       <button onClick={ handleRoute } className="p-2 m-4">Route</button>
-      {origin && destination && (
-        <DirectionsService
-          options={{
-            destination,
-            origin,
-            travelMode: 'DRIVING',
-          }}
-        />
-      )}
+      {
+        origin && destination && (
+          <DirectionsService
+            options={{
+              destination,
+              origin,
+              travelMode: 'DRIVING',
+            }}
+          />
+        )
+      }
 
       <p>{distance && `Distance: ${ distance }`}</p>
       <p>{duration && `Duration: ${ duration }`}</p>
