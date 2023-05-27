@@ -2,7 +2,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, Autocomplete, OverlayView } from '@react-google-maps/api';
 import { useGoogleContext } from '../context/GoogleContext';
-import OrganizationCard from './OrganizationCard';
 const containerStyle = {
   width: '1280px',
   height: '720px'
