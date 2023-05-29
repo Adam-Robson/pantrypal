@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
 
     steps:
       - name: Checkout Repository
@@ -26,7 +26,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: [16.x]
+          node-version: '16.x'
 
       - name: Install Dependencies
         run: npm install --dev
@@ -39,16 +39,13 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      - name: Run Python
+      - name: Python Build
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-
-      - name: Python Build Cache
-        cache: 'pip'
-
+      
+      - name: Python Requirements
         run: pip install -r requirements.txt
-        with:
-          path: 'requirements.txt'
 
-        run: python main.py
+      - name: Run Python  
+        run: python3 app.py
