@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
+import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
 
 export default function Home() {
-  const [error, setError] = useState(null);
-  const [myPosition, setMyPosition] = useState({});
-  const [organizations, setOrganizations] = useState([]); // { name: 'san fran' }
+  const {
+    organizations,
+    setOrganizations,
+    myPosition,
+    setMyPosition,
+    setError,
+  } = useGoogleContext();
+
+  // const [error, setError] = useState(null);
+  // const [myPosition, setMyPosition] = useState({});
+  // const [organizations, setOrganizations] = useState([]); // { name: 'san fran' }
 
   async function geoCodeLocation(orgAddress) {
     let geocoder;
@@ -51,7 +61,7 @@ export default function Home() {
             });
 
             // TODO: Get our user's current city
-            fetchLocalOrgs('Richmond');
+            fetchLocalOrgs('San Francisco');
             setError(null);
           },
           (error) => {
@@ -63,6 +73,7 @@ export default function Home() {
       }
     }
     getLocation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
