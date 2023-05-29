@@ -13,10 +13,6 @@ export default function Home() {
     setError,
   } = useGoogleContext();
 
-  // const [error, setError] = useState(null);
-  // const [myPosition, setMyPosition] = useState({});
-  // const [organizations, setOrganizations] = useState([]); // { name: 'san fran' }
-
   async function geoCodeLocation(orgAddress) {
     let geocoder;
     geocoder = new window.google.maps.Geocoder();
@@ -60,7 +56,7 @@ export default function Home() {
               lng: position.coords.longitude,
             });
 
-            // TODO: Get our user's current city
+            // TODO: Get our user's current city (thought: we started with it above when we loop through the organizations list);
             fetchLocalOrgs('San Francisco');
             setError(null);
           },
@@ -78,15 +74,17 @@ export default function Home() {
 
   return (
     <>
-      <div>
-        <h1>P A N T R Y  P A L S</h1>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <NavLink to='/about'>About</NavLink>
-        <NavLink to='/contact'>Contact</NavLink>
-      </div>
+      <section className="min-h-fit w-full mx-auto">
+        <div>
+          <h1 className="subpixel-antialiased">P A N T R Y  P A L S</h1>
+        </div>
+        <div className="flex flex-row mb-2 justify-evenly subpixel-antialiased">
+          <NavLink to='/about'>About</NavLink>
+          <NavLink to='/contact'>Contact</NavLink>
+        </div>
 
-      <Map organizations={organizations} myPosition={myPosition} />
+        <Map organizations={organizations} myPosition={myPosition} />
+      </section>
     </>
   );
 }

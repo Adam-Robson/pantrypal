@@ -7,7 +7,7 @@ import Contact from './components/Contact';
 export default function App() {
   return (
     <>
-      <div className="main-div">
+      <div className="h-screen w-screen overflow-hidden">
         <Routes>
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
