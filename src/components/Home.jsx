@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
+import logo from '../assets/logo.png';
 
 export default function Home() {
   const {
@@ -90,7 +91,7 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <Map organizations={ organizations } myPosition={ myPosition } />
+      <Map organizations={ organizations } myPosition={ myLatLng } />
     </>
   );
 }
