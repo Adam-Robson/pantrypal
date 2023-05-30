@@ -1,49 +1,47 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
 import logo from '../assets/logo.png';
+
 export default function Home() {
   const {
     organizations,
     setOrganizations,
-    myPosition,
-    setMyPosition,
+    myLatLng,
+    setMyLatLng,
     setError,
   } = useGoogleContext();
 
-  async function geoCodeLocation(orgAddress) {
-    let geocoder;
-    geocoder = new window.google.maps.Geocoder();
+  async function geoCodeLocation(locationType, location) {
+    let geocoder = new window.google.maps.Geocoder();
 
-    return await geocoder.geocode({ 'address': orgAddress }, function(results, status) {
+    const query = {};
+    query[locationType] = location;
+    return await geocoder.geocode(query, function(result, status) {
       if (status === window.google.maps.GeocoderStatus.OK) {
-        return results;
-      } else {
-        // console.log('Geocoder failed on converting an address.');
-        return results;
-      }
+        return result;
+      } else { return; }
     });
   }
 
   async function fetchLocalOrgs(cityName) {
     const proxyResponse = await fetch('api/organizations/city/' + cityName);
-    const orgData = await proxyResponse.json();
+    const localOrgs = await proxyResponse.json();
 
-    let orgs = [];
-    await Promise.all(orgData.map(async (org) => {
-      await geoCodeLocation(org.address).then((response) => {
+    const updatedLocalOrgs = [];
+    await Promise.all(localOrgs.map(async (org) => {
+      await geoCodeLocation('address', org.address).then((response) => {
         org['position'] = {
           'lat': response.results[0].geometry.location.lat(),
           'lng': response.results[0].geometry.location.lng(),
         };
-        if (org['position']['lat']) {
-          orgs.push(org);
-        }
+        updatedLocalOrgs.push(org);
       }).catch(error => { return; });
     }));
-    setOrganizations(orgs);
+
+    setOrganizations(updatedLocalOrgs);
   }
 
   useEffect(() => {
@@ -51,13 +49,19 @@ export default function Home() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            setMyPosition({
+            setMyLatLng({
               lat: position.coords.latitude,
-              lng: position.coords.longitude,
+              lng: position.coords.longitude
             });
 
-            // TODO: Get our user's current city (thought: we started with it above when we loop through the organizations list);
-            fetchLocalOrgs('San Francisco');
+            geoCodeLocation('location', {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }).then((response)=> {
+              const currentCity = response.results[0].address_components[2].short_name;
+              fetchLocalOrgs(currentCity);
+            });
+
             setError(null);
           },
           (error) => {
@@ -87,7 +91,7 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <Map organizations={ organizations } myPosition={ myPosition } />
+      <Map organizations={ organizations } myPosition={ myLatLng } />
     </>
   );
 }

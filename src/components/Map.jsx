@@ -29,8 +29,8 @@ export default function Map() {
     setDuration,
     distance,
     setDistance,
-    myPosition,
-    setMyPosition,
+    myLatLng,
+    setMyLatLng,
     activeMarker,
     setActiveMarker,
     activeIndex,
@@ -56,10 +56,10 @@ export default function Map() {
 
   function centerMarker() {
     let marker = new window.google.maps.Marker({
-      position: location.latLng(),
+      position: myLatLng,
       map: map
     });
-    map.setCenter(location.latitude, location.longitude);
+    map.setCenter(myLatLng.lat, myLatLng.lng);
   }
 
   function recenterMap(map) {
@@ -114,18 +114,18 @@ export default function Map() {
             mapContainerClassName="map"
             mapContainerStyle={ mapContainerStyle }
             zoom={ 10 }
-            center={ myPosition }
+            center={ myLatLng }
             onLoad={ onLoad }
             onUnmount={ onUnmount }
           >
             {
               organizations.map((org) => (
-                <Marker 
-                  key={ org.name } 
+                <Marker
+                  key={ org.name }
                   position={ org.position }
-                  onClick={ (e) => handleMarkerClick(org) }  
+                  onClick={ (e) => handleMarkerClick(org) }
                 >
-            
+
                   {
                     activeMarker === org && (
                       <InfoWindow
@@ -143,7 +143,7 @@ export default function Map() {
                         </div>
                       </InfoWindow>
                     )}
-          
+
                 </Marker>
               ))}
 
