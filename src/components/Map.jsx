@@ -108,15 +108,15 @@ export default function Map() {
 
   return (
     <div className="h-screen w-screen">
-      <div className="h-3/4 w-4/5 mx-auto border-2 border-blue-950">
+      <div className="h-3/5 w-2/3 mx-auto">
         {
           isLoaded ? <GoogleMap
             mapContainerClassName="themap"
             mapContainerStyle={ mapContainerStyle }
-            zoom={10}
-            center={myPosition}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
+            zoom={ 10 }
+            center={ myPosition }
+            onLoad={ onLoad }
+            onUnmount={ onUnmount }
           >
             {
               organizations.map((org) => (
@@ -124,11 +124,8 @@ export default function Map() {
                   key={ org.name } 
                   position={ org.position }
                   onClick={ (e) => handleMarkerClick(org) }  
-                  label={ org.name } 
                 >
             
-          
-          
                   {
                     activeMarker === org && (
                       <InfoWindow

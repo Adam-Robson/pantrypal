@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
-
+import logo from '../assets/logo.png';
 export default function Home() {
   const {
     organizations,
@@ -74,17 +74,20 @@ export default function Home() {
 
   return (
     <>
-      <section className="min-h-fit w-full mx-auto">
-        <div>
-          <h1 className="subpixel-antialiased">P A N T R Y  P A L S</h1>
+      <header className="min-h-fit w-full mx-auto">
+        <div className="flex justify-end m-6">
+          <NavLink to='/'>
+            <img src={ logo } alt="pantry pals logo" className="h-28 rounded-full"/>
+          </NavLink>
         </div>
-        <div className="flex flex-row mb-2 justify-evenly subpixel-antialiased">
-          <NavLink to='/about'>About</NavLink>
-          <NavLink to='/contact'>Contact</NavLink>
-        </div>
-
-        <Map organizations={organizations} myPosition={myPosition} />
-      </section>
+        <nav className="flex flex-col justify-evenly subpixel-antialiased">
+          <div className="flex justify-evenly">
+            <NavLink to='/about'>About</NavLink>
+            <NavLink to='/contact'>Contact</NavLink>
+          </div>
+        </nav>
+      </header>
+      <Map organizations={ organizations } myPosition={ myPosition } />
     </>
   );
 }

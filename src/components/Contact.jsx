@@ -1,9 +1,10 @@
 import React from 'react';
-
-function Contact() {
+import { Link } from 'react-router-dom';
+export default function Contact() {
   return (
-    <div>Contact</div>
+    <div>
+      <Link to='/'>home</Link>
+      <h1>This is the Contact page.</h1>
+    </div>
   );
 }
-
-export default Contact;
