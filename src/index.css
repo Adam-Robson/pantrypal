@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Recursive Variable', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Recursive Variable', system-ui, Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-align: center;
   color-scheme: light dark;
@@ -15,7 +15,7 @@
   --red: #c8553dff;
   
   background-color: var(--cyan);
-  color: var(--apricot);
+  color: #333333;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -77,7 +77,7 @@ button:focus-visible {
   }
 }
 
-.themap {
+.map {
     width: '1080px';
     height: '720px';
     margin: 0 auto;

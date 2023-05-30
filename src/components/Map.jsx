@@ -111,7 +111,7 @@ export default function Map() {
       <div className="h-3/5 w-2/3 mx-auto">
         {
           isLoaded ? <GoogleMap
-            mapContainerClassName="themap"
+            mapContainerClassName="map"
             mapContainerStyle={ mapContainerStyle }
             zoom={ 10 }
             center={ myPosition }
