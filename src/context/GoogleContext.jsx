@@ -66,7 +66,7 @@ export function GoogleProvider({ children }) {
 export function useGoogleContext() {
   const context = useContext(GoogleContext);
   if (context === undefined) {
-    throw new Error('useGoogleMapsContext must be used within a provider');
+    throw new Error('useGoogleContext must be used within a provider');
   }
   return context;
 }

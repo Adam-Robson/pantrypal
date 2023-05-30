@@ -111,6 +111,7 @@ export default function Map() {
       <div className="h-3/4 w-4/5 mx-auto border-2 border-blue-950">
         {
           isLoaded ? <GoogleMap
+            data-testid='map-testId'
             mapContainerClassName="themap"
             mapContainerStyle={ mapContainerStyle }
             zoom={10}
