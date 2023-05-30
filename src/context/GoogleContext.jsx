@@ -13,7 +13,7 @@ export function GoogleProvider({ children }) {
   const [destination, setDestination] = useState('');
   const [duration, setDuration] = useState(null);
   const [distance, setDistance] = useState(null);
-  const [myPosition, setMyPosition] = useState(null);
+  const [myLatLng, setMyLatLng] = useState({});
   const [organizations, setOrganizations] = useState([]);
   const [error, setError] = useState(null);
   const [activeMarker, setActiveMarker] = useState({});
@@ -43,8 +43,8 @@ export function GoogleProvider({ children }) {
         setDuration,
         distance,
         setDistance,
-        myPosition,
-        setMyPosition,
+        myLatLng,
+        setMyLatLng,
         activeIndex,
         setActiveIndex,
         activeMarker,
