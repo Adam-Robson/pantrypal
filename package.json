@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "netlify dev"
   },
@@ -48,6 +48,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "env": {
+    "test": {
+      "presets": [
+        "react-app"
+      ]
+    }
   },
   "devDependencies": {
     "env-var": "^7.3.1",
