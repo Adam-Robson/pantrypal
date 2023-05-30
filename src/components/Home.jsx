@@ -77,15 +77,20 @@ export default function Home() {
 
   return (
     <>
-      <div>
-        <h1>P A N T R Y  P A L S</h1>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <NavLink to='/about'>About</NavLink>
-        <NavLink to='/contact'>Contact</NavLink>
-      </div>
-
-      <Map organizations={organizations} myPosition={myLatLng} />
+      <header className="min-h-fit w-full mx-auto">
+        <div className="flex justify-end m-6">
+          <NavLink to='/'>
+            <img src={ logo } alt="pantry pals logo" className="h-28 rounded-full"/>
+          </NavLink>
+        </div>
+        <nav className="flex flex-col justify-evenly subpixel-antialiased">
+          <div className="flex justify-evenly">
+            <NavLink to='/about'>About</NavLink>
+            <NavLink to='/contact'>Contact</NavLink>
+          </div>
+        </nav>
+      </header>
+      <Map organizations={ organizations } myPosition={ myPosition } />
     </>
   );
 }
