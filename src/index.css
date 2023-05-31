@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  font-family: 'Recursive Variable', system-ui, Helvetica, Arial, sans-serif;
+  font-family: 'Raleway Variable', system-ui, Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-align: center;
   color-scheme: light dark;
@@ -13,9 +19,12 @@
   --apricot: #ffd5c2ff;
   --gold: #f28f3bff;
   --red: #c8553dff;
+  --jet: #333333;
+  --cream: #FDF6F4;
+
   
   background-color: var(--cyan);
-  color: #333333;
+  color: var(--jet);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -24,10 +33,11 @@
 }
 
 body {
-  display: flex;
-  min-height: 100vh;
-  width:100%;
+  /* display: flex; */
   margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  /* justify-content: flex-start; */
 }
 
 a {
@@ -79,6 +89,30 @@ button:focus-visible {
 
 .map {
     width: '1080px';
-    height: '720px';
+    height: '620px';
     margin: 0 auto;
+}
+
+.input {
+  padding: 0.15em;
+}
+
+/* 
+.portal {
+  width:100%;
+  margin: 0 auto;
+} */
+
+.modal {
+  background-color: var(--cream);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
 }
