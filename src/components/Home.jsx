@@ -59,6 +59,8 @@ export default function Home() {
               lng: position.coords.longitude
             }).then((response)=> {
               const currentCity = response.results[0].address_components[2].short_name;
+
+              // console.log('current city', currentCity);
               fetchLocalOrgs(currentCity);
             });
 
