@@ -44,8 +44,8 @@ export default function Modale({ onClose }) {
 function Page1() {
   return (
     <div className="h-1/3 flex flex-col justify-around">
-      <h2 className="text-2xl font-semibold">Welcome!</h2>
-      <p className="mx-8">Find free or affordable food options in your area so you can fully concentrate on your education.</p>
+      <h2 className="text-2xl text-black font-semibold">Welcome!</h2>
+      <p className="mx-8 text-black">Find free or affordable food options in your area so you can fully concentrate on your education.</p>
     </div>
   );
 }
@@ -53,8 +53,8 @@ function Page1() {
 function Page2() {
   return (
     <div className="h-1/3 flex flex-col justify-around">
-      <h2 className="text-2xl font-semibold">First things First</h2>;
-      <p className="mx-8">To find food pantries in your local area, please enable location sharing services.</p>
+      <h2 className="text-2xl font-semibold text-black">First things First</h2>;
+      <p className="mx-8 text-black">To find food pantries in your local area, please enable location sharing services.</p>
     </div>
   );
 }
@@ -62,8 +62,8 @@ function Page2() {
 function Page3() {
   return (
     <div className="h-1/3 flex flex-col justify-around">
-      <h2 className="text-2xl font-semibold">How it Works</h2>
-      <p className="mx-8">Find your location, view pantry details, and choose the right one for your needs.</p>
+      <h2 className="text-2xl font-semibold text-black">How it Works</h2>
+      <p className="mx-8 text-black">Find your location, view pantry details, and choose the right one for your needs.</p>
     </div>
   );
 }
