@@ -116,3 +116,36 @@ button:focus-visible {
   align-items: center;
 
 }
+
+.prenext {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+.prenext:hover {
+  background-color: var(--cream);
+  color: var(--jet);
+
+}
+
+.previous {
+  background-color: var(--cream);
+  color: var(--jet);
+}
+
+.next {
+  background-color: var(--cyan);
+  color: var(--cream);
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+  border-radius: 50%;
+}
