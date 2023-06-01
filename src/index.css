@@ -97,12 +97,8 @@ button:focus-visible {
   padding: 0.15em;
 }
 
-/* 
-.portal {
-  width:100%;
-  margin: 0 auto;
-} */
 
+/* all that follows is for the tutorial */
 .modal {
   background-color: var(--cream);
   position: absolute;
