@@ -4,6 +4,8 @@ import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
 import logo from '../assets/logo.png';
+import Portal from './Portal';
+
 
 export default function Home() {
   const {
@@ -77,15 +79,15 @@ export default function Home() {
       }
     }
     getLocation();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-      <header className="min-h-fit w-full mx-auto">
-        <div className="flex justify-end m-6">
+      <header className="w-full mx-auto">
+        <div className="flex justify-end m-4">
           <NavLink to='/'>
-            <img src={ logo } alt="pantry pals logo" className="h-28 rounded-full"/>
+            <img src={ logo } alt="pantry pals logo" className="h-20 rounded-full" />
           </NavLink>
         </div>
         <nav className="flex flex-col justify-evenly subpixel-antialiased">
@@ -96,6 +98,7 @@ export default function Home() {
         </nav>
       </header>
       <Map organizations={ organizations } myPosition={ myLatLng } />
+      <Portal />
     </>
   );
 }
