@@ -30,7 +30,6 @@
     "eject": "react-scripts eject",
     "dev": "netlify dev"
   },
-  "proxy": "http://0.0.0.0:5000",
   "eslintConfig": {
     "extends": [
       "react-app",
