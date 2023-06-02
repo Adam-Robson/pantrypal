@@ -29,7 +29,8 @@ export default function Home() {
   }
 
   async function fetchLocalOrgs(cityName) {
-    const proxyResponse = await fetch('api/organizations/city/' + cityName);
+    const proxyResponse = await fetch(process.env.REACT_APP_FLY_API_URL + '/organizations/city/' + cityName);
+    
     const localOrgs = await proxyResponse.json();
 
     const updatedLocalOrgs = [];
@@ -59,10 +60,11 @@ export default function Home() {
             geoCodeLocation('location', {
               lat: position.coords.latitude,
               lng: position.coords.longitude
-            }).then((response) => {
-              const currentCity = response.results[0].address_components[2].short_name;
+            }).then((response)=> {
+              const currentCity = response.results[0].address_components.filter((obj) => {
+                return obj.types.includes('locality');
+              })[0].long_name;
 
-              // console.log('current city', currentCity);
               fetchLocalOrgs(currentCity);
             });
 
