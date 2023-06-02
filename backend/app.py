@@ -18,7 +18,7 @@ CORS(app)
 def fetch_orgs_by_city(city_name):
     organizations = db.organizations.find(
         {'city': city_name}, {'_id': False}
-    ).limit(200)
+    ).limit(20)
 
     return dumps(list(organizations))
 
