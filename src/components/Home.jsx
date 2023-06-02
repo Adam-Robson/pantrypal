@@ -27,7 +27,8 @@ export default function Home() {
   }
 
   async function fetchLocalOrgs(cityName) {
-    const proxyResponse = await fetch('api/organizations/city/' + cityName);
+    const proxyResponse = await fetch(process.env.REACT_APP_FLY_API_URL + '/organizations/city/' + cityName);
+    
     const localOrgs = await proxyResponse.json();
 
     const updatedLocalOrgs = [];
