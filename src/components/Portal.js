@@ -15,7 +15,7 @@ export default function Portal() {
   const [modal, setModal] = useState(false);
   return (
     <div className="portal h-full w-full">
-      <button className="absolute bottom-0 left-0 m-4" onClick={() => setModal(true)}>tutorial</button>
+      <button className="absolute top-0 left-0 m-4" onClick={() => setModal(true)}>tutorial</button>
       { modal && createPortal(
         <Modal onClose={ () => setModal(false) } />,
         document.body

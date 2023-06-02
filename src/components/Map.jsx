@@ -148,7 +148,7 @@ export default function Map() {
               ))}
 
             {
-              directions && <DirectionsRenderer directions={directions} />
+              directions && <DirectionsRenderer directions={ directions } />
             }
 
           </GoogleMap> : <>There was an error loading the map!</>
@@ -160,7 +160,7 @@ export default function Map() {
           value={origin}
           onChange={(e) => setOrigin(e.target.value)}
           placeholder="Origin"
-          className="p-2 m-4"
+          className="m-2 rounded-md"
         />
 
         <input
@@ -168,12 +168,15 @@ export default function Map() {
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
           placeholder="Destination"
-          className="p-2 m-4"
+          className="m-2 rounded-md"
         />
-
-        <button onClick={ clearInputs } className="p-2 m-4" >Clear</button>
-        <button onClick={ recenterMap } className="p-2 m-4">Recenter</button>
-        <button onClick={ handleRoute } className="p-2 m-4">Route</button>
+        <p>{ distance && `Distance: ${distance}` }</p>
+        <p>{ duration && `Duration: ${duration}` }</p>
+        <div className="mx-auto">
+          <button onClick={ clearInputs } className="p-2 m-4 md:text-2xl" >Clear</button>
+          <button onClick={ recenterMap } className="p-2 m-4 md:text-2xl">Center</button>
+          <button onClick={ handleRoute } className="p-2 m-4 md:text-2xl">Route</button>
+        </div>
         {
           origin && destination && (
             <DirectionsService
@@ -185,9 +188,6 @@ export default function Map() {
             />
           )
         }
-
-        <p>{distance && `Distance: ${ distance }`}</p>
-        <p>{duration && `Duration: ${ duration }`}</p>
       </div>
     </div>
   );
