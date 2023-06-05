@@ -11,29 +11,34 @@ export default function Modale({ onClose }) {
     // Add more page components here
   ];
 
-  function nextPage() {
-    if (currentPage < pages.length - 1) {
-      setCurrentPage(currentPage + 1);
+  function pageOne() {
+    if (currentPage !== 0) {
+      setCurrentPage(0);
     }
   }
 
-  function previousPage() {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
+  function pageTwo() {
+    if (currentPage !== 1) {
+      setCurrentPage(1);
+    }
+  }
+  function pageThree() {
+    if (currentPage !== 2) {
+      setCurrentPage(2);
     }
   }
 
   return (
-   
+
     <div className="modal h-full w-full">
       <img src={ logo } alt="logo" />
       { pages[currentPage] }
       <div className="modal-actions">
-        <button className="prenext previous round" onClick={ previousPage } disabled={ currentPage === 0 }>
-            Previous
+        <button className="round" onClick={ pageOne }>
         </button>
-        <button className="prenext next round" onClick={ nextPage } disabled={ currentPage === pages.length - 1 }>
-            Next
+        <button className="round" onClick={ pageTwo }>
+        </button>
+        <button className="round" onClick={ pageThree }>
         </button>
       </div>
       <button onClick={ onClose }>Skip tour</button>

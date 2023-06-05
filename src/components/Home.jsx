@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo_flat.png';
 import Portal from './Portal';
 
 
@@ -87,13 +87,13 @@ export default function Home() {
       <header className="w-full mx-auto">
         <div className="flex justify-end m-4">
           <NavLink to='/'>
-            <img src={ logo } alt="pantry pals logo" className="h-20 rounded-full" />
+            <img src={ logo } alt="pantry pals logo" className="h-10 rounded-md" />
           </NavLink>
         </div>
         <nav className="flex flex-col justify-evenly subpixel-antialiased">
-          <div className="flex justify-evenly">
-            <NavLink to='/about'>About</NavLink>
-            <NavLink to='/contact'>Contact</NavLink>
+          <div className="flex justify-evenly subpixel-antialiased">
+            <NavLink className="text-lg subpixel-antialiased" to='/about'>About</NavLink>
+            <NavLink className="text-lg subpixel-antialiased" to='/contact'>Contact</NavLink>
           </div>
         </nav>
       </header>
