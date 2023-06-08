@@ -16,7 +16,7 @@ export function GoogleProvider({ children }) {
   const [myLatLng, setMyLatLng] = useState({});
   const [organizations, setOrganizations] = useState([]);
   const [error, setError] = useState(null);
-  const [activeMarker, setActiveMarker] = useState({});
+  const [activeMarkerId, setActiveMarkerId] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [infoWindow, setInfoWindow] = useState({});
   const [showInfoWindow, setShowInfoWindow] = useState(false);
@@ -47,8 +47,8 @@ export function GoogleProvider({ children }) {
         setMyLatLng,
         activeIndex,
         setActiveIndex,
-        activeMarker,
-        setActiveMarker,
+        activeMarkerId,
+        setActiveMarkerId,
         infoWindow,
         setInfoWindow,
         showInfoWindow,

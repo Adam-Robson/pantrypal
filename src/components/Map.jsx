@@ -2,6 +2,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, InfoWindow } from '@react-google-maps/api';
 import { useGoogleContext } from '../context/GoogleContext';
+import Float from './Float';
 
 const mapContainerStyle = {
   height: '100%',
@@ -31,8 +32,8 @@ export default function Map() {
     setDistance,
     myLatLng,
     setMyLatLng,
-    activeMarker,
-    setActiveMarker,
+    activeMarkerId,
+    setActiveMarkerId,
     activeIndex,
     setActiveIndex,
     infoWindow,
@@ -98,17 +99,13 @@ export default function Map() {
     }
   }
 
-  function handleMarkerClick(marker) {
-    setActiveMarker(marker);
-  }
-
   function handleCloseInfoWindow() {
-    setActiveMarker(null);
+    setActiveMarkerId(null);
   }
 
   return (
-    <div className="h-screen w-screen">
-      <div className="h-3/5 w-2/3 mx-auto">
+    <div className="h-full">
+      <div className="h-3/5 w-3/4 mx-auto">
         {
           isLoaded ? <GoogleMap
             mapContainerClassName="map"
@@ -119,34 +116,21 @@ export default function Map() {
             onUnmount={ onUnmount }
           >
             {
-              organizations.map((org) => (
+              organizations.map((org, id) => (
                 <Marker
                   key={ org.name }
                   position={ org.position }
-                  onClick={ (e) => handleMarkerClick(org) }
-                >
-
-                  {
-                    activeMarker === org && (
-                      <InfoWindow
-                        anchor={ activeMarker }
-                        onCloseClick={ handleCloseInfoWindow }
-                      >
-                        <div>
-                          <h3>{ activeMarker.name }</h3>
-                          <p>{ activeMarker.address }</p>
-                          <p>{ activeMarker.city }</p>
-                          <p>{ activeMarker.state }</p>
-                          <p>{ activeMarker.zip_code }</p>
-                          <p>{ activeMarker.phone_num }</p>
-                          <p>{ activeMarker.desc }</p>
-                        </div>
-                      </InfoWindow>
-                    )}
-
-                </Marker>
-              ))}
-
+                  onClick={ () => setActiveMarkerId(id) }
+                ></Marker>
+              ))
+            }
+            {
+              activeMarkerId && (
+                <Float
+                  org={ organizations[activeMarkerId] }
+                ></Float>
+              )
+            }
             {
               directions && <DirectionsRenderer directions={ directions } />
             }
@@ -173,9 +157,9 @@ export default function Map() {
         <p>{ distance && `Distance: ${distance}` }</p>
         <p>{ duration && `Duration: ${duration}` }</p>
         <div className="mx-auto">
-          <button onClick={ clearInputs } className="p-2 m-4 md:text-2xl" >Clear</button>
-          <button onClick={ recenterMap } className="p-2 m-4 md:text-2xl">Center</button>
-          <button onClick={ handleRoute } className="p-2 m-4 md:text-2xl">Route</button>
+          <button onClick={ clearInputs } className="p-2 m-4 md:text-xl" >Clear</button>
+          <button onClick={ recenterMap } className="p-2 m-4 md:text-xl">Center</button>
+          <button onClick={ handleRoute } className="p-2 m-4 md:text-xl">Route</button>
         </div>
         {
           origin && destination && (

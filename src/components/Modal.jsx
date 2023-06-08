@@ -30,7 +30,7 @@ export default function Modale({ onClose }) {
 
   return (
 
-    <div className="modal h-full w-full">
+    <div className="modal1 h-full w-full">
       <img src={ logo } alt="logo" />
       { pages[currentPage] }
       <div className="modal-actions">
