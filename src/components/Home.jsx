@@ -97,7 +97,10 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <Map organizations={ organizations } myPosition={ myLatLng } />
+      <Map 
+        organizations={ organizations } 
+        myPosition={ myLatLng } 
+      />
       <Portal />
     </>
   );

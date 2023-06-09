@@ -1,12 +1,26 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useCallback, useEffect } from 'react';
-import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, InfoWindow } from '@react-google-maps/api';
+import React, { useCallback } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
+import { GoogleMap, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
+import Float from './Float';
+
+/**
+ * The map must be generated with a height and a width.
+ * The default styling that follows will fill up the space
+ * of the containing element.
+ */
 
 const mapContainerStyle = {
   height: '100%',
   width: '100%'
 };
+
+
+/**
+ * The map is fed the props from the Home component that
+ * carry all of the location information (In organizations
+ * and the geolocated position of the user.
+ */
 
 const center = {
   lat: 44,
@@ -18,7 +32,6 @@ export default function Map() {
     map,
     setMap,
     organizations,
-    setOrganizations,
     directions,
     setDirections,
     origin,
@@ -30,17 +43,8 @@ export default function Map() {
     distance,
     setDistance,
     myLatLng,
-    setMyLatLng,
-    activeMarker,
-    setActiveMarker,
-    activeIndex,
-    setActiveIndex,
-    infoWindow,
-    setInfoWindow,
-    error,
-    setError,
+    setActiveMarkerId,
     isLoaded,
-    loadError
   } = useGoogleContext();
 
   const onLoad = useCallback(
@@ -62,6 +66,7 @@ export default function Map() {
     map.setCenter(myLatLng.lat, myLatLng.lng);
   }
 
+  /** TODO: fix the recenter map functionality */
   function recenterMap(map) {
     const bounds = new window.google.maps.LatLngBounds();
     bounds.extend(center);
@@ -85,8 +90,7 @@ export default function Map() {
         origin,
         destination,
         travelMode: 'DRIVING',
-      },
-      (response, status) => {
+      }, (response, status) => {
         if (status === 'OK') {
           setDirections(response);
           setDistance(response.routes[0].legs[0].distance.text);
@@ -98,57 +102,43 @@ export default function Map() {
     }
   }
 
-  function handleMarkerClick(marker) {
-    setActiveMarker(marker);
+  function handleCloseInfoWindow() {
+    setActiveMarkerId(null);
   }
 
-  function handleCloseInfoWindow() {
-    setActiveMarker(null);
-  }
+  /**
+   * The following functions will be passed down to the Info
+   * component, through Float, so that clicking through
+   * the list of locations is possible.
+   */
+
 
   return (
-    <div className="h-screen w-screen">
-      <div className="h-3/5 w-2/3 mx-auto">
+    <div className="h-full">
+      <div className="h-3/5 w-3/4 mx-auto">
         {
           isLoaded ? <GoogleMap
             mapContainerClassName="map"
-            mapContainerStyle={ mapContainerStyle }
-            zoom={ 10 }
-            center={ myLatLng }
-            onLoad={ onLoad }
-            onUnmount={ onUnmount }
+            mapContainerStyle={mapContainerStyle}
+            zoom={10}
+            center={myLatLng}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
           >
             {
-              organizations.map((org) => (
+              organizations.map((org, id) => (
                 <Marker
-                  key={ org.name }
-                  position={ org.position }
-                  onClick={ (e) => handleMarkerClick(org) }
-                >
-
-                  {
-                    activeMarker === org && (
-                      <InfoWindow
-                        anchor={ activeMarker }
-                        onCloseClick={ handleCloseInfoWindow }
-                      >
-                        <div>
-                          <h3>{ activeMarker.name }</h3>
-                          <p>{ activeMarker.address }</p>
-                          <p>{ activeMarker.city }</p>
-                          <p>{ activeMarker.state }</p>
-                          <p>{ activeMarker.zip_code }</p>
-                          <p>{ activeMarker.phone_num }</p>
-                          <p>{ activeMarker.desc }</p>
-                        </div>
-                      </InfoWindow>
-                    )}
-
-                </Marker>
-              ))}
-
+                  key={org.name}
+                  position={org.position}
+                  onClick={() => setActiveMarkerId(id)}
+                ></Marker>
+              ))
+            }
             {
-              directions && <DirectionsRenderer directions={ directions } />
+              organizations.length > 0 && <Float />
+            }
+            {
+              directions && <DirectionsRenderer directions={directions} />
             }
 
           </GoogleMap> : <>There was an error loading the map!</>
@@ -170,12 +160,12 @@ export default function Map() {
           placeholder="Destination"
           className="m-2 rounded-md"
         />
-        <p>{ distance && `Distance: ${distance}` }</p>
-        <p>{ duration && `Duration: ${duration}` }</p>
+        <p>{distance && `Distance: ${distance}`}</p>
+        <p>{duration && `Duration: ${duration}`}</p>
         <div className="mx-auto">
-          <button onClick={ clearInputs } className="p-2 m-4 md:text-2xl" >Clear</button>
-          <button onClick={ recenterMap } className="p-2 m-4 md:text-2xl">Center</button>
-          <button onClick={ handleRoute } className="p-2 m-4 md:text-2xl">Route</button>
+          <button onClick={clearInputs} className="p-2 m-4 md:text-xl" >Clear</button>
+          <button onClick={recenterMap} className="p-2 m-4 md:text-xl">Center</button>
+          <button onClick={handleRoute} className="p-2 m-4 md:text-xl">Route</button>
         </div>
         {
           origin && destination && (

@@ -88,9 +88,10 @@ button:focus-visible {
 }
 
 .map {
-    width: '1080px';
+    max-width: '1300px';
+    width: 100%;
+    margin: 0;
     height: '520px';
-    margin: 0 auto;
 }
 
 .input {
@@ -99,11 +100,22 @@ button:focus-visible {
 
 
 /* all that follows is for the tutorial */
-.modal {
+.modal1 {
   background-color: var(--cream);
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.modal2 {
+  background-color: var(--cream);
   width: 100%;
   margin: 0 auto;
   display: flex;
