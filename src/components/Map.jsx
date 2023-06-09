@@ -4,21 +4,33 @@ import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, InfoWindow } 
 import { useGoogleContext } from '../context/GoogleContext';
 import Float from './Float';
 
+/** 
+ * The map must be generated with a height and a width. 
+ * The default styling that follows will fill up the space
+ * of the containing element.
+ */
+
 const mapContainerStyle = {
   height: '100%',
   width: '100%'
 };
+
+
+/**
+ * The map is fed the props from the Home component that
+ * carry all of the location information (In organizations
+ * and the geolocated position of the user. 
+ */
 
 const center = {
   lat: 44,
   lng: -80
 };
 
-export default function Map() {
+export default function Map({ organizations, myPosition }) {
   const {
     map,
     setMap,
-    organizations,
     setOrganizations,
     directions,
     setDirections,
@@ -34,10 +46,8 @@ export default function Map() {
     setMyLatLng,
     activeMarkerId,
     setActiveMarkerId,
-    activeIndex,
-    setActiveIndex,
-    infoWindow,
-    setInfoWindow,
+    activeLocationIndex,
+    setActiveLocationIndex,
     error,
     setError,
     isLoaded,
@@ -62,7 +72,7 @@ export default function Map() {
     });
     map.setCenter(myLatLng.lat, myLatLng.lng);
   }
-
+  /** TODO: fix the recenter map functionality */
   function recenterMap(map) {
     const bounds = new window.google.maps.LatLngBounds();
     bounds.extend(center);
@@ -103,6 +113,13 @@ export default function Map() {
     setActiveMarkerId(null);
   }
 
+/**
+ * The following functions will be passed down to the Info 
+ * component, through Float, so that clicking through 
+ * the list of locations is possible.
+ */
+
+
   return (
     <div className="h-full">
       <div className="h-3/5 w-3/4 mx-auto">
@@ -121,13 +138,18 @@ export default function Map() {
                   key={ org.name }
                   position={ org.position }
                   onClick={ () => setActiveMarkerId(id) }
+                  /** TODO: logic should handle the animation at index 0 */
+                  animation={ activeLocationIndex === id ? window.google.maps.Animation.BOUNCE : null }
                 ></Marker>
               ))
             }
             {
-              activeMarkerId && (
+              organizations && (
                 <Float
-                  org={ organizations[activeMarkerId] }
+                  activeMarkerId={ activeMarkerId }
+                  setActiveMarkerId={ setActiveMarkerId }
+                  organizations={ organizations }
+                  organization={ organizations[activeMarkerId] }
                 ></Float>
               )
             }

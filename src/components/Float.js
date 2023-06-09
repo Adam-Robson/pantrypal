@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 import Info from './Info';
+
+
 /**
  *
  * React will put the DOM nodes for the JSX passed into createPortal, inside of the DOM node the
@@ -11,15 +13,16 @@ import Info from './Info';
  * @return {*} DOM node containing the Portal
  */
 
-export default function Float({ org }) {
-  // const [info, setInfo] = useState(false);
-  // function toggleInfo() {
-  //   setInfo(!info);
-  // }
+export default function Float({ organizations, activeMarkerId, setActiveMarkerId }) {
+  
   return (
     <div className="h-1/2 w-fit">
       { createPortal(
-        <Info org={ org } />,
+        <Info 
+          organizations ={ organizations }
+          activeMarkerId={ activeMarkerId }
+          setActiveMarkerId={ setActiveMarkerId }
+        />,
         document.body
       ) }
     </div>

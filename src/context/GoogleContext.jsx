@@ -17,9 +17,13 @@ export function GoogleProvider({ children }) {
   const [organizations, setOrganizations] = useState([]);
   const [error, setError] = useState(null);
   const [activeMarkerId, setActiveMarkerId] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [infoWindow, setInfoWindow] = useState({});
-  const [showInfoWindow, setShowInfoWindow] = useState(false);
+  const [activeLocationIndex, setActiveLocationIndex] = useState(0);
+
+  const [swipeState, setSwipeState] = useState({
+    isDragging: false,
+    direction: null,
+  });
+
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -45,14 +49,12 @@ export function GoogleProvider({ children }) {
         setDistance,
         myLatLng,
         setMyLatLng,
-        activeIndex,
-        setActiveIndex,
         activeMarkerId,
         setActiveMarkerId,
-        infoWindow,
-        setInfoWindow,
-        showInfoWindow,
-        setShowInfoWindow,
+        activeLocationIndex,
+        setActiveLocationIndex,
+        swipeState,
+        setSwipeState,
         error,
         setError,
         isLoaded,

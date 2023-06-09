@@ -1,19 +1,67 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { useGoogleContext } from '../context/GoogleContext';
+import { useSwipeable } from 'react-swipeable';
 
-export default function Info({ org }) {
+export default function Info({ 
+  organization,
+  organizations, 
+  setActiveMarkerId,
+  activeMarkerId,
+}) {
+
+  function handleNextClick() {
+    if (activeMarkerId === organizations.length - 1) {
+      setActiveMarkerId(0);
+    } else {
+      setActiveMarkerId(activeMarkerId + 1);
+    }
+  }
+
+  function handlePreviousClick() {
+    if (activeMarkerId === 0) {
+      setActiveMarkerId(organizations.length - 1);
+    } else {
+      setActiveMarkerId(activeMarkerId - 1);
+    }
+  }
+
+
+  const { setSwipeState } = useGoogleContext();
+
+  const handlers = useSwipeable({
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+    swipeDirection: 'horizontal',
+    passive: false,
+    onSwipe: (direction) => setSwipeState({ isDragging: false, direction }),
+  });
+  // console.log({ organizations });
   return (
-    <article className="modal2 h-1/2 w-1/2">
-      <img src={ logo } alt="logo" />
+    <article { ...handlers } className="modal2 h-1/2 w-1/2">
       <div className="inner-info">
-        <h1>{ org.name }</h1>
-        <h2>{ org.address }</h2>
-        <h3>{ org.city }</h3>
-        <h4>{ org.state }</h4>
-        <h5>{ org.zip_code }</h5>
-        <h6>{ org.phone_num }</h6>
+        <h1>{ organization.name }</h1>
+        <h2>{ organization.address }</h2>
+        <h3>{ organization.city }</h3>
+        <h4>{ organization.state }</h4>
+        <h5>{ organization.zip_code }</h5>
+        <h6>{ organization.phone_num }</h6>
         <Link to="#">Details</Link>
+        {
+          activeMarkerId !== 0 && (
+            <button onClick={ handlePreviousClick } className="p-2 m-4 md:text-xl">
+              Previous
+            </button>
+          )
+        }
+        {
+          activeMarkerId !== organizations.length - 1 && (
+            <button onClick={ handleNextClick } className="p-2 m-4 md:text-xl">
+              Next
+            </button>
+          )
+        }
       </div>
     </article>
   );
