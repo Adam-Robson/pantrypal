@@ -1,15 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
 import { useGoogleContext } from '../context/GoogleContext';
 import { useSwipeable } from 'react-swipeable';
 
-export default function Info({ 
-  organization,
-  organizations, 
-  setActiveMarkerId,
-  activeMarkerId,
-}) {
+export default function Info() {
+  const {
+    activeMarkerId,
+    setActiveMarkerId,
+    organizations,
+    setSwipeState,
+  } = useGoogleContext();
+
+  const organization = organizations[activeMarkerId];
+
+  const handlers = useSwipeable({
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+    swipeDirection: 'horizontal',
+    passive: false,
+    onSwipe: (direction) => setSwipeState({ isDragging: false, direction }),
+  });
 
   function handleNextClick() {
     if (activeMarkerId === organizations.length - 1) {
@@ -27,41 +37,29 @@ export default function Info({
     }
   }
 
-
-  const { setSwipeState } = useGoogleContext();
-
-  const handlers = useSwipeable({
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-    swipeDirection: 'horizontal',
-    passive: false,
-    onSwipe: (direction) => setSwipeState({ isDragging: false, direction }),
-  });
-  // console.log({ organizations });
   return (
-    <article { ...handlers } className="modal2 h-1/2 w-1/2">
+    <article {...handlers} className="modal2 h-1/2 w-1/2">
       <div className="inner-info">
-        <h1>{ organization.name }</h1>
-        <h2>{ organization.address }</h2>
-        <h3>{ organization.city }</h3>
-        <h4>{ organization.state }</h4>
-        <h5>{ organization.zip_code }</h5>
-        <h6>{ organization.phone_num }</h6>
+        <h1>{organization.name}</h1>
+        <h2>{organization.address}</h2>
+        <h3>{organization.city}</h3>
+        <h4>{organization.state}</h4>
+        <h5>{organization.zip_code}</h5>
+        <h6>{organization.phone_num}</h6>
         <Link to="#">Details</Link>
-        {
-          activeMarkerId !== 0 && (
-            <button onClick={ handlePreviousClick } className="p-2 m-4 md:text-xl">
+
+        {organizations.length > 1 && (
+          <>
+            <button onClick={handlePreviousClick} className="p-2 m-4 md:text-xl">
               Previous
             </button>
-          )
-        }
-        {
-          activeMarkerId !== organizations.length - 1 && (
-            <button onClick={ handleNextClick } className="p-2 m-4 md:text-xl">
+
+            <button onClick={handleNextClick} className="p-2 m-4 md:text-xl">
               Next
             </button>
-          )
-        }
+          </>
+        )}
+
       </div>
     </article>
   );

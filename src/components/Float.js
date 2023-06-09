@@ -13,18 +13,13 @@ import Info from './Info';
  * @return {*} DOM node containing the Portal
  */
 
-export default function Float({ organizations, activeMarkerId, setActiveMarkerId }) {
-  
+export default function Float() {
   return (
     <div className="h-1/2 w-fit">
-      { createPortal(
-        <Info 
-          organizations ={ organizations }
-          activeMarkerId={ activeMarkerId }
-          setActiveMarkerId={ setActiveMarkerId }
-        />,
+      {createPortal(
+        <Info />,
         document.body
-      ) }
+      )}
     </div>
   );
 }
