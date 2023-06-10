@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/logo.png';
+import logo from '../assets/stack_logo_pal.svg';
 import { FiX } from 'react-icons/fi';
 
 export default function Modale({ onClose }) {
@@ -17,7 +17,6 @@ export default function Modale({ onClose }) {
       setCurrentPage(0);
     }
   }
-
   function pageTwo() {
     if (currentPage !== 1) {
       setCurrentPage(1);
@@ -31,8 +30,10 @@ export default function Modale({ onClose }) {
 
   return (
     <>
-      <div className="modal1 h-full w-full">
-        <div className="absolute right-0 top-0 m-8 md:h-6 md:w-6" onClick={ onClose }><FiX size={ 22 } /></div>
+      <div className="modal absolute top-0 left-0 w-full mx-auto my-0 flex flex-col justify-around items-center">
+        <div className="absolute right-0 top-0" onClick={ onClose }>
+          <FiX size={ 22 } />
+        </div>
         <img src={ logo } alt="logo" className="w-3/5 md:w-2/5 max-w-sm h-auto" />
         { pages[currentPage] }
         <div className="modal-actions">

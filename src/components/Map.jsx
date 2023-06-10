@@ -48,10 +48,11 @@ export default function Map() {
   } = useGoogleContext();
 
   const onLoad = useCallback(
-    function onLoad(map) {
+    function onLoad() {
       const bounds = new window.google.maps.LatLngBounds();
       bounds.extend(center);
       setMap(map);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setMap]);
 
   const onUnmount = useCallback(() => {
@@ -140,32 +141,47 @@ export default function Map() {
             {
               directions && <DirectionsRenderer directions={directions} />
             }
-
           </GoogleMap> : <>There was an error loading the map!</>
-
         }
-
         <input
           type="text"
-          value={origin}
-          onChange={(e) => setOrigin(e.target.value)}
+          value={ origin }
+          onChange={ (e) => setOrigin(e.target.value) }
           placeholder="Origin"
-          className="m-2 rounded-md"
+          className="m-4 py-2 px-6 rounded-md text-lg"
         />
-
         <input
           type="text"
           value={destination}
-          onChange={(e) => setDestination(e.target.value)}
+          onChange={ (e) => setDestination(e.target.value) }
           placeholder="Destination"
-          className="m-2 rounded-md"
+          className="m-4 py-2 px-6 rounded-md text-lg"
         />
-        <p>{distance && `Distance: ${distance}`}</p>
-        <p>{duration && `Duration: ${duration}`}</p>
+        <p>{ distance && `Distance: ${distance}` }</p>
+        <p>{ duration && `Duration: ${duration}` }</p>
         <div className="mx-auto">
-          <button onClick={clearInputs} className="p-2 m-4 md:text-xl" >Clear</button>
-          <button onClick={recenterMap} className="p-2 m-4 md:text-xl">Center</button>
-          <button onClick={handleRoute} className="p-2 m-4 md:text-xl">Route</button>
+
+          <button 
+            onClick={clearInputs} 
+            className="p-2 m-4 md:text-xl"
+          >
+          Clear
+          </button>
+
+          <button 
+            onClick={recenterMap} 
+            className="p-2 m-4 md:text-xl"
+          >
+          Center
+          </button>
+
+          <button 
+            onClick={handleRoute} 
+            className="p-2 m-4 md:text-xl"
+          >
+          Route
+          </button>
+
         </div>
         {
           origin && destination && (

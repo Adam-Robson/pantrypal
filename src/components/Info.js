@@ -38,7 +38,7 @@ export default function Info() {
   }
 
   return (
-    <article {...handlers} className="modal2 h-1/2 w-1/2">
+    <article {...handlers} className="info w-full mx-auto my-0 h-1/3 flex flex-col justify-around items-center">
       <div className="inner-info">
         <h1>{organization.name}</h1>
         <h2>{organization.address}</h2>
