@@ -2,7 +2,8 @@
 import React, { useCallback } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { GoogleMap, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
-import Float from './Float';
+import mapStyles from '../assets/styles/map';
+import FloatCard from './FloatCard';
 
 /**
  * The map must be generated with a height and a width.
@@ -56,6 +57,12 @@ export default function Map() {
   const onUnmount = useCallback(() => {
     setMap(null);
   }, [setMap]);
+
+
+  function markerClick(org, id){
+    setFocus(org.position);
+    setActiveMarkerId(id);
+  }
 
   function setFocus(position) {
     map.setZoom(17);
@@ -113,27 +120,25 @@ export default function Map() {
           isLoaded ? <GoogleMap
             mapContainerClassName="map"
             mapContainerStyle={mapContainerStyle}
-            zoom={10}
-            center={center}
+            zoom={12}
+            options={{ styles: mapStyles }}
+            center={myLatLng}
             onLoad={onLoad}
             onUnmount={onUnmount}
           >
             {
-              organizations.map((org, id) => (
+              organizations.map((org, idx) => (
                 <Marker
-                  key={org.name}
-                  position={org.position}
-                  onClick={() => {
-                    setFocus(org.position);
-                    setActiveMarkerId(id);
-                  }
-                  }
-                ></Marker>
+                  key={ org.name }
+                  position={ org.position }
+                  onClick={() => markerClick(org, idx) }
+                />
               ))
             }
-            {
-              organizations.length > 0 && <Float />
-            }
+
+            {/* Show active card for selected organization */}
+            { organizations.length > 0 && <FloatCard />}
+
             {
               directions && <DirectionsRenderer directions={directions} />
             }
