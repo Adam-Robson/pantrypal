@@ -29,13 +29,13 @@ export default function Home() {
   }
 
   async function fetchLocalOrgs(userLocation) {
-    const url = 'api/organizations?' + new URLSearchParams({
+    const url = process.env.REACT_APP_FLY_API_URL + 'api/organizations?' + new URLSearchParams({
       cityName  : userLocation.city,
       stateAbrv : userLocation.state,
     }).toString();
 
-    const proxyResponse = await fetch(url);
-    const localOrgs = await proxyResponse.json();
+    const apiResponse = await fetch(url);
+    const localOrgs = await apiResponse.json();
 
     const updatedLocalOrgs = [];
     await Promise.all(localOrgs.map(async (org) => {
@@ -53,8 +53,8 @@ export default function Home() {
 
   function getCityAndState(data) {
     const addressComponent = data.results[0].address_components;
-    let city, state;
 
+    let city, state;
     for (let i = 0; i < addressComponent.length; i++) {
       const addressPortion = addressComponent[i];
       if (addressPortion.types.includes('locality')) {
