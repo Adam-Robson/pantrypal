@@ -66,11 +66,11 @@ export default function Map() {
 
   function setFocus(position) {
     map.setZoom(17);
-    map.setCenter(position);
+    recenterMap(position);
   }
 
-  function setRecenter() {
-    map.setCenter(myLatLng);
+  function recenterMap(position) {
+    map.setCenter(position);
   }
 
   function clearInputs() {
@@ -166,7 +166,7 @@ export default function Map() {
         <p>{duration && `Duration: ${duration}`}</p>
         <div className="mx-auto">
           <button onClick={clearInputs} className="p-2 m-4 md:text-xl" >Clear</button>
-          <button onClick={setRecenter} className="p-2 m-4 md:text-xl">Center</button>
+          <button onClick={() => recenterMap(myLatLng)} className="p-2 m-4 md:text-xl">Center</button>
           <button onClick={handleRoute} className="p-2 m-4 md:text-xl">Route</button>
         </div>
         {
