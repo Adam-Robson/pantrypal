@@ -115,7 +115,7 @@ export default function Map() {
 
   return (
     <div className="h-full">
-      <div className="h-3/5 w-3/4 mx-auto">
+      <div className="h-full w-full mx-auto">
         {
           isLoaded ? <GoogleMap
             mapContainerClassName="map"

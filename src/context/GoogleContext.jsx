@@ -8,6 +8,7 @@ const libraries = ['places'];
 export function GoogleProvider({ children }) {
 
   const [map, setMap] = useState(null);
+  const [zip, setZip] = useState();
   const [directions, setDirections] = useState(null);
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
@@ -35,6 +36,8 @@ export function GoogleProvider({ children }) {
       value={{
         map,
         setMap,
+        zip,
+        setZip,
         organizations,
         setOrganizations,
         directions,

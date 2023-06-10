@@ -22,7 +22,6 @@
   --jet: #333333;
   --cream: #FDF6F4;
 
-  
   background-color: var(--cyan);
   color: var(--jet);
   font-synthesis: none;
@@ -33,11 +32,9 @@
 }
 
 body {
-  /* display: flex; */
   margin: 0 auto;
   width: 100vw;
   height: 100vh;
-  /* justify-content: flex-start; */
 }
 
 a {
@@ -45,29 +42,23 @@ a {
   color: var(--cyan);
   text-decoration: none;
   cursor: pointer;
-
 }
+
 a:hover {
   color: var(--gold);
   text-decoration: underline;
 }
 
-
 button {
-  border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.2em 0.5em;
-  font-size: .75em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--outer-space);
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: var(--cyan);
-
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -83,7 +74,6 @@ button:focus-visible {
   }
   button {
     background-color: var(--apricot);
-
   }
 }
 
@@ -95,9 +85,13 @@ button:focus-visible {
 }
 
 .input {
-  padding: 0.3em;
+  transition: border-color 0.25s;
+  border: 1px solid transparent;
 }
 
+.input:hover {
+  border-color: var(--cyan);
+}
 
 /* all that follows is for the tutorial */
 .modal1 {
@@ -111,9 +105,9 @@ button:focus-visible {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
 }
 
+/* The following is for the floating window */
 .modal2 {
   background-color: var(--cream);
   width: 100%;
@@ -122,15 +116,36 @@ button:focus-visible {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
 }
 
-.round {
-  text-decoration: none;
-  display: inline-block;
-  padding: .25em .5em;
-  margin: .75em;
+/* header */
+
+.header {
+  background-color: var(--cream);
 }
 
+.svg-container {
+  margin: 0 auto;
+  position: relative;
+  bottom: 3em;
+  width: 85%;
+  height: 0;
+  padding-bottom: 58.25%;
+}
 
+.svg-container .svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
+.svg {
+  height: 100%;
+}
+
+.location-btn {
+  color: var(--cream);
+  background-color: var(--red);
+}

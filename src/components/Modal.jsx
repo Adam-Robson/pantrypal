@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
+import { FiX } from 'react-icons/fi';
 
 export default function Modale({ onClose }) {
 
@@ -29,46 +30,44 @@ export default function Modale({ onClose }) {
   }
 
   return (
-
-    <div className="modal1 h-full w-full">
-      <img src={ logo } alt="logo" />
-      { pages[currentPage] }
-      <div className="modal-actions">
-        <button className="round" onClick={ pageOne }>
-        </button>
-        <button className="round" onClick={ pageTwo }>
-        </button>
-        <button className="round" onClick={ pageThree }>
-        </button>
+    <>
+      <div className="modal1 h-full w-full">
+        <div className="absolute right-0 top-0 m-8 md:h-6 md:w-6" onClick={ onClose }><FiX size={ 22 } /></div>
+        <img src={ logo } alt="logo" className="w-3/5 md:w-2/5 max-w-sm h-auto" />
+        { pages[currentPage] }
+        <div className="modal-actions">
+          <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageOne }></button>
+          <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageTwo }></button>
+          <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageThree }></button>
+        </div>
       </div>
-      <button onClick={ onClose }>Skip tour</button>
-    </div>
+    </>
   );
 }
 
 function Page1() {
   return (
-    <div className="h-1/3 flex flex-col justify-around">
-      <h2 className="text-2xl text-black font-semibold">Welcome!</h2>
-      <p className="mx-8 text-black">Find free or affordable food options in your area so you can fully concentrate on your education.</p>
+    <div className="h-1/3">      
+      <h2 className="text-2xl text-black font-semibold mt-20 mb-20">Welcome!</h2>
+      <p className="mx-20 text-black">Find free food options in your area so you can concentrate on your education.</p>
     </div>
   );
 }
 
 function Page2() {
   return (
-    <div className="h-1/3 flex flex-col justify-around">
-      <h2 className="text-2xl font-semibold text-black">First things First</h2>;
-      <p className="mx-8 text-black">To find food pantries in your local area, please enable location sharing services.</p>
+    <div className="h-1/3">
+      <h2 className="text-2xl text-black font-semibold mt-20 mb-20">First things First</h2>
+      <p className="mx-20 text-black">To find food pantries in your local area, please enable location sharing services.</p>
     </div>
   );
 }
 
 function Page3() {
   return (
-    <div className="h-1/3 flex flex-col justify-around">
-      <h2 className="text-2xl font-semibold text-black">How it Works</h2>
-      <p className="mx-8 text-black">Find your location, view pantry details, and choose the right one for your needs.</p>
+    <div className="h-1/3">
+      <h2 className="text-2xl text-black font-semibold mt-20 mb-20">How it Works</h2>
+      <p className="mx-20 text-black">Find your location, view pantry details, and choose the right one for your needs.</p>
     </div>
   );
 }
