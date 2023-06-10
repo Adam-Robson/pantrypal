@@ -15,17 +15,16 @@ const mapContainerStyle = {
   width: '100%'
 };
 
+const center = {
+  lat: 37.773972,
+  lng: -122.431297
+};
 
 /**
  * The map is fed the props from the Home component that
  * carry all of the location information (In organizations
  * and the geolocated position of the user.
  */
-
-const center = {
-  lat: 44,
-  lng: -80
-};
 
 export default function Map() {
   const {
@@ -58,19 +57,13 @@ export default function Map() {
     setMap(null);
   }, [setMap]);
 
-  function centerMarker() {
-    let marker = new window.google.maps.Marker({
-      position: myLatLng,
-      map: map
-    });
-    map.setCenter(myLatLng.lat, myLatLng.lng);
+  function setFocus(position) {
+    map.setZoom(17);
+    map.setCenter(position);
   }
 
-  /** TODO: fix the recenter map functionality */
-  function recenterMap(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    bounds.extend(center);
-    setMap(map);
+  function setRecenter() {
+    map.setCenter(myLatLng);
   }
 
   function clearInputs() {
@@ -121,7 +114,7 @@ export default function Map() {
             mapContainerClassName="map"
             mapContainerStyle={mapContainerStyle}
             zoom={10}
-            center={myLatLng}
+            center={center}
             onLoad={onLoad}
             onUnmount={onUnmount}
           >
@@ -130,7 +123,11 @@ export default function Map() {
                 <Marker
                   key={org.name}
                   position={org.position}
-                  onClick={() => setActiveMarkerId(id)}
+                  onClick={() => {
+                    setFocus(org.position);
+                    setActiveMarkerId(id);
+                  }
+                  }
                 ></Marker>
               ))
             }
@@ -164,7 +161,7 @@ export default function Map() {
         <p>{duration && `Duration: ${duration}`}</p>
         <div className="mx-auto">
           <button onClick={clearInputs} className="p-2 m-4 md:text-xl" >Clear</button>
-          <button onClick={recenterMap} className="p-2 m-4 md:text-xl">Center</button>
+          <button onClick={setRecenter} className="p-2 m-4 md:text-xl">Center</button>
           <button onClick={handleRoute} className="p-2 m-4 md:text-xl">Route</button>
         </div>
         {
