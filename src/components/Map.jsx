@@ -13,7 +13,7 @@ import Markers from './Markers';
  */
 
 const mapContainerStyle = {
-  height: '100%',
+  height: '75%',
   width: '100%'
 };
 

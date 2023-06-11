@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <>
       <header 
-        className="header min-w-full min-h-fit h-2/5 flex flex-col justify-evenly items-center mx-auto p-4"
+        className="header min-w-full min-h-fit h-1/4 flex flex-col justify-evenly items-center mx-auto p-4"
       >
         <div className="absolute top-4 right-4 md:absolute md:top-8 md:right-8">
           <FiMenu size={ 24 } />
@@ -27,10 +27,10 @@ export default function Header() {
           <img
             src={ flat }
             alt="pantry pals logo"
-            className="aspect-auto mx-auto max-w-xs md:max-w-md"
+            className="aspect-auto mx-auto max-w-xs mt-4 md:max-w-md"
           />
           <div 
-            className="w-full flex justify-evenly relative top-6 mb-4"
+            className="w-full flex justify-evenly relative top-4"
           >
             <label 
               htmlFor="search" 

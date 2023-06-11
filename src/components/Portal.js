@@ -17,7 +17,7 @@ export default function Portal() {
   const [modal, setModal] = useState(false);
   return (
     <div className="portal h-full w-full">
-      <Link to="/modal" className="relative top-10 text-xs">tutorial</Link>
+      <Link to="/modal" className="relative top-6 text-xs">tutorial</Link>
       { 
         modal && createPortal(
           <Modal onClose={ () => setModal(false) } />,
