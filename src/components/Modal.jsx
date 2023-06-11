@@ -48,7 +48,7 @@ export default function Modal() {
         </div>
         <img src={ logo } alt="logo" className="w-3/5 md:w-2/5 max-w-sm h-auto" />
         { pages[currentPage] }
-        <div className="modal-actions">
+        <div className="">
           <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageOne }></button>
           <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageTwo }></button>
           <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageThree }></button>

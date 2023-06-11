@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useGoogleContext } from '../context/GoogleContext';
 import { useSwipeable } from 'react-swipeable';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 export default function Info() {
-
-  // const { id } = useParams();
 
   const {
     activeMarkerId,

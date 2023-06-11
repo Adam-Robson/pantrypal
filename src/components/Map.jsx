@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useCallback } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
-import { GoogleMap, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
+import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, AutoComplete, Autocomplete } from '@react-google-maps/api';
 import Float from './Float';
 
 /**
@@ -107,13 +107,6 @@ export default function Map() {
     setActiveMarkerId(null);
   }
 
-  /**
-   * The following functions will be passed down to the Info
-   * component, through Float, so that clicking through
-   * the list of locations is possible.
-   */
-
-
   return (
     <div className="h-full">
       <div className="h-full w-full mx-auto">
@@ -143,20 +136,25 @@ export default function Map() {
             }
           </GoogleMap> : <>There was an error loading the map!</>
         }
-        <input
-          type="text"
-          value={ origin }
-          onChange={ (e) => setOrigin(e.target.value) }
-          placeholder="Origin"
-          className="m-4 py-2 px-6 rounded-md text-lg"
-        />
-        <input
-          type="text"
-          value={destination}
-          onChange={ (e) => setDestination(e.target.value) }
-          placeholder="Destination"
-          className="m-4 py-2 px-6 rounded-md text-lg"
-        />
+        <Autocomplete>
+          <input
+            type="text"
+            value={ origin }
+            onChange={ (e) => setOrigin(e.target.value) }
+            placeholder="Origin"
+            className="m-4 py-2 px-6 rounded-md text-lg"
+          />
+        </Autocomplete>
+
+        <Autocomplete>
+          <input
+            type="text"
+            value={destination}
+            onChange={ (e) => setDestination(e.target.value) }
+            placeholder="Destination"
+            className="m-4 py-2 px-6 rounded-md text-lg"
+          />
+        </Autocomplete>
         <p>{ distance && `Distance: ${distance}` }</p>
         <p>{ duration && `Duration: ${duration}` }</p>
         <div className="mx-auto">
