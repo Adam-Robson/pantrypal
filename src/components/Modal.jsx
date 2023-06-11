@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/stack_logo_pal.svg';
 import { FiX } from 'react-icons/fi';
+/**
+ * The following component includes the modal 
+ * with the three page tutorial.
+ * the first elements in the return incolves 
+ * the X in the top corner to close the modal.
+ *  
+ * @export
+ * @param {*} { onClose }
+ * @return {*} 
+ */
+export default function Modal() {
 
-export default function Modale({ onClose }) {
+  let navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(0);
   const pages = [
@@ -30,8 +42,8 @@ export default function Modale({ onClose }) {
 
   return (
     <>
-      <div className="modal absolute top-0 left-0 w-full mx-auto my-0 flex flex-col justify-around items-center">
-        <div className="absolute right-0 top-0" onClick={ onClose }>
+      <section className="modal">
+        <div className="cursor-pointer absolute right-0 top-0 m-4" onClick={ () => navigate('/') }>
           <FiX size={ 22 } />
         </div>
         <img src={ logo } alt="logo" className="w-3/5 md:w-2/5 max-w-sm h-auto" />
@@ -41,7 +53,7 @@ export default function Modale({ onClose }) {
           <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageTwo }></button>
           <button className="rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageThree }></button>
         </div>
-      </div>
+      </section>
     </>
   );
 }

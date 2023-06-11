@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGoogleContext } from '../context/GoogleContext';
 import { useSwipeable } from 'react-swipeable';
-
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 export default function Info() {
+
+  // const { id } = useParams();
+
   const {
     activeMarkerId,
     setActiveMarkerId,
@@ -38,25 +41,30 @@ export default function Info() {
   }
 
   return (
-    <article {...handlers} className="info w-full mx-auto my-0 h-1/3 flex flex-col justify-around items-center">
-      <div className="inner-info">
-        <h1>{organization.name}</h1>
-        <h2>{organization.address}</h2>
-        <h3>{organization.city}</h3>
-        <h4>{organization.state}</h4>
-        <h5>{organization.zip_code}</h5>
-        <h6>{organization.phone_num}</h6>
-        <Link to="#">Details</Link>
-
+    <article {...handlers} className="info w-3/4 mx-auto h-1/4 rounded-md p-2 ">
+      <div className="w-full p-2">
+        <p className="w-2/3 text-sm text-left font-semibold">{organization.name}</p>
+        <p className="text-left text-xs mt-2">
+          {organization.address}
+        </p>
+        <p className="flex text-left text-xs">
+          { organization.city + ' ' + organization.state + ' ' + organization.zip_code }
+        </p> 
+        <div className="flex justify-between items-baseline">
+          <p className="text-left text-xs">{organization.phone_num}</p>
+          <Link className="text-xs pr-4" to={ organization.activeMarkerId }>Details</Link>
+        </div>
         {organizations.length > 1 && (
           <>
-            <button onClick={handlePreviousClick} className="p-2 m-4 md:text-xl">
-              Previous
-            </button>
-
-            <button onClick={handleNextClick} className="p-2 m-4 md:text-xl">
-              Next
-            </button>
+            <div className="w-full flex justify-between items-baseline">
+              <div onClick={handlePreviousClick} className="p-2 m-4 text-sm">
+                <FiChevronLeft />
+              </div>
+                
+              <div onClick={handleNextClick} className="p-2 m-4 text-sm">
+                <FiChevronRight />
+              </div>
+            </div>
           </>
         )}
 

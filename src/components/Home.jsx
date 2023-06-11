@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { NavLink } from 'react-router-dom';
 import Map from './Map';
-import Portal from './Portal';
 import Header from './Header';
 export default function Home() {
   const {
@@ -86,7 +85,7 @@ export default function Home() {
         organizations={ organizations } 
         myPosition={ myLatLng } 
       />
-      <Portal />
+      
     </>
   );
 }
