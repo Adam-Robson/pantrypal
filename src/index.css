@@ -11,7 +11,7 @@
   --apricot: #ffd5c2ff;
   --gold: #f28f3bff;
   --red: #c8553dff;
-  --jet: #333333;
+  --jet: #363537;
   --cream: #FDF6F4;
   color-scheme: light dark;
   background-color: var(--cyan);
@@ -118,6 +118,10 @@ button:focus-visible {
 .modal {
   background-color: var(--cream);
   color: var(--jet);
+}
+
+.tutorial-btn {
+  background-color: var(--gold);
 }
 
 /* the floating window */

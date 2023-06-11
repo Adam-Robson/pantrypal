@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useGoogleContext } from '../context/GoogleContext';
 
-import flat from '../assets/flat_logo_pal.svg';
+import flat from '../assets/logo/flat_logo.svg';
 
 import { FiMenu, FiSearch } from 'react-icons/fi';
 import { LuLocate } from 'react-icons/lu';
