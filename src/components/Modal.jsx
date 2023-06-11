@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo/stacked_logo.svg';
 import { FiX } from 'react-icons/fi';
 import page1 from '../assets/images/icons/icon1.png';
