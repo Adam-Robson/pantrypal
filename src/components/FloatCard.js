@@ -24,11 +24,11 @@ import Info from './Info';
 
 export default function FloatCard() {
   return (
-    <div className="">
+    <>
       {createPortal(
         <Info />,
         document.body
       )}
-    </div>
+    </>
   );
 }

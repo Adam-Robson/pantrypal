@@ -39,27 +39,26 @@ export default function Info() {
   }
 
   return (
-    <article {...handlers} className="info w-3/4 mx-auto h-1/4 rounded-md p-2 relative bottom-10">
+    <article {...handlers} className="info w-3/4 md:w-1/5 mx-auto h-1/4 rounded-md p-2 relative bottom-10">
       <div className="w-full p-2 min-h-full">
-        <p className="flex items-center w-3/4 text-lg text-left font-semibold h-20">{organization.name}</p>
-        <p className="text-left text-xs mt-2">
+        <p className="flex items-center w-3/4 text-sm md:text-lg text-left font-semibold h-20">{ organization.name }</p>
+        <p className="text-left text-xs md:text-sm mt-2">
           {organization.address}
         </p>
-        <p className="flex text-left text-xs min-h-full">
+        <p className="flex text-left text-xs md:text-sm min-h-full">
           { organization.city + ' ' + organization.state + ' ' + organization.zip_code }
         </p> 
         <div className="flex justify-between items-baseline min-h-full">
-          <p className="text-left text-xs">{organization.phone_num}</p>
-          <Link className="text-xs pr-4" to={ organization.activeMarkerId }>Details</Link>
+          <p className="text-left text-xs md:text-sm">{organization.phone_num}</p>
+          <Link className="text-sm md:text-lg pr-4" to={ organization.activeMarkerId }>Details</Link>
         </div>
         {organizations.length > 1 && (
           <>
-            <div className="w-full flex justify-between items-baseline">
-              <div onClick={handlePreviousClick} className="p-2 m-4 text-sm">
+            <div className="w-full flex justify-center items-baseline">
+              <div onClick={handlePreviousClick} className="p-2 m-4 text-lg md:text-xl hover:cursor-pointer">
                 <FiChevronLeft />
               </div>
-                
-              <div onClick={handleNextClick} className="p-2 m-4 text-sm">
+              <div onClick={ handleNextClick } className="p-2 m-4 text-lg md:text-xl hover:cursor-pointer">
                 <FiChevronRight />
               </div>
             </div>
