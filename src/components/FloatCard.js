@@ -2,6 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import Info from './Info';
 
+
 /**
  * React's createPortal function takes two
  * arguments. Whatever it is to display, and 
