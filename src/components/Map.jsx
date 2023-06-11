@@ -4,6 +4,7 @@ import { useGoogleContext } from '../context/GoogleContext';
 import { GoogleMap, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
 import mapStyles from '../assets/styles/map';
 import FloatCard from './FloatCard';
+import Markers from './Markers';
 
 /**
  * The map must be generated with a height and a width.
@@ -112,7 +113,6 @@ export default function Map() {
    * the list of locations is possible.
    */
 
-
   return (
     <div className="h-full">
       <div className="h-3/5 w-3/4 mx-auto">
@@ -126,15 +126,8 @@ export default function Map() {
             onLoad={onLoad}
             onUnmount={onUnmount}
           >
-            {
-              organizations.map((org, idx) => (
-                <Marker
-                  key={ org.name }
-                  position={ org.position }
-                  onClick={() => markerClick(org, idx) }
-                />
-              ))
-            }
+
+            <Markers organizations={ organizations } markerClick={ markerClick } />
 
             {/* Show active card for selected organization */}
             { organizations.length > 0 && <FloatCard />}

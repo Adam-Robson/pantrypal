@@ -29,7 +29,7 @@ export default function Home() {
   }
 
   async function fetchLocalOrgs(userLocation) {
-    const url = process.env.REACT_APP_FLY_API_URL + 'api/organizations?' + new URLSearchParams({
+    const url = process.env.REACT_APP_FLY_API_URL + '/organizations?' + new URLSearchParams({
       cityName  : userLocation.city,
       stateAbrv : userLocation.state,
     }).toString();
