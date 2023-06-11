@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import { useGoogleContext } from '../context/GoogleContext';
 import { useSwipeable } from 'react-swipeable';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+/**
+ *
+ *
+ *  
+ */
 export default function Info() {
-
   const {
     activeMarkerId,
     setActiveMarkerId,
@@ -21,7 +25,12 @@ export default function Info() {
     passive: false,
     onSwipe: (direction) => setSwipeState({ isDragging: false, direction }),
   });
-
+/**
+ * The following functions provide the logic
+ * to 
+ * 
+ *
+ */
   function handleNextClick() {
     if (activeMarkerId === organizations.length - 1) {
       setActiveMarkerId(0);

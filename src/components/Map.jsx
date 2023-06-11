@@ -2,7 +2,7 @@
 import React, { useCallback } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { GoogleMap, DirectionsService, DirectionsRenderer, Marker, AutoComplete, Autocomplete } from '@react-google-maps/api';
-import Float from './Float';
+import FloatCard from './FloatCard';
 
 /**
  * The map must be generated with a height and a width.
@@ -107,6 +107,28 @@ export default function Map() {
     setActiveMarkerId(null);
   }
 
+  function handleOriginChange(place) {
+    if (!place.geometry) {
+      <p>{'Information not available for' + place.name }</p>;
+      return;
+    }
+    const { formatted_address, geometry: { location } } = place;
+    setOrigin(formatted_address);
+  }
+
+  function handleDestinationChange(place) {
+    if (!place.geometry) {
+      <p>{ 'Information not available for' + place.name }</p>;
+      return;
+    }
+    const { formatted_address, geometry: { location } } = place;
+    setDestination(formatted_address);
+  }
+
+  function handleDirections(result) {
+    setDirections(result);
+  }
+
   return (
     <div className="h-full">
       <div className="h-full w-full mx-auto">
@@ -129,16 +151,19 @@ export default function Map() {
               ))
             }
             {
-              organizations.length > 0 && <Float />
+              organizations.length > 0 && <FloatCard />
             }
             {
               directions && <DirectionsRenderer directions={directions} />
             }
           </GoogleMap> : <>There was an error loading the map!</>
         }
-        <Autocomplete>
+
+        <Autocomplete
+          onLoad={ handleOriginChange }
+          fields={ ['formatted_address', 'geometry.location'] }
+        >
           <input
-            type="text"
             value={ origin }
             onChange={ (e) => setOrigin(e.target.value) }
             placeholder="Origin"
@@ -146,19 +171,22 @@ export default function Map() {
           />
         </Autocomplete>
 
-        <Autocomplete>
+        <Autocomplete
+          onLoad={ handleDestinationChange }
+          fields={ ['formatted_address', 'geometry.location'] }
+        >
           <input
-            type="text"
-            value={destination}
+            value={ destination }
             onChange={ (e) => setDestination(e.target.value) }
             placeholder="Destination"
             className="m-4 py-2 px-6 rounded-md text-lg"
           />
         </Autocomplete>
+
         <p>{ distance && `Distance: ${distance}` }</p>
         <p>{ duration && `Duration: ${duration}` }</p>
+        
         <div className="mx-auto">
-
           <button 
             onClick={clearInputs} 
             className="p-2 m-4 md:text-xl"
