@@ -133,19 +133,19 @@ export default function Map() {
           </GoogleMap> : <>There was an error loading the map!</>
         }
 
-          <input
-            value={ origin }
-            onChange={ (e) => setOrigin(e.target.value) }
-            placeholder="Origin"
-            className="m-4 py-2 px-6 rounded-md text-lg"
-          />
+        <input
+          value={ origin }
+          onChange={ (e) => setOrigin(e.target.value) }
+          placeholder="Origin"
+          className="m-4 py-2 px-6 rounded-md text-lg"
+        />
        
-          <input
-            value={ destination }
-            onChange={ (e) => setDestination(e.target.value) }
-            placeholder="Destination"
-            className="m-4 py-2 px-6 rounded-md text-lg"
-          />
+        <input
+          value={ destination }
+          onChange={ (e) => setDestination(e.target.value) }
+          placeholder="Destination"
+          className="m-4 py-2 px-6 rounded-md text-lg"
+        />
 
         <p>{ distance && `Distance: ${distance}` }</p>
         <p>{ duration && `Duration: ${duration}` }</p>
