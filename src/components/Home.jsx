@@ -28,10 +28,14 @@ export default function Home() {
     });
   }
 
-  async function fetchLocalOrgs(cityName) {
-    const proxyResponse = await fetch(process.env.REACT_APP_FLY_API_URL + '/organizations/city/' + cityName);
-    
-    const localOrgs = await proxyResponse.json();
+  async function fetchLocalOrgs(userLocation) {
+    const url = process.env.REACT_APP_FLY_API_URL + 'api/organizations?' + new URLSearchParams({
+      cityName  : userLocation.city,
+      stateAbrv : userLocation.state,
+    }).toString();
+
+    const apiResponse = await fetch(url);
+    const localOrgs = await apiResponse.json();
 
     const updatedLocalOrgs = [];
     await Promise.all(localOrgs.map(async (org) => {
@@ -45,6 +49,22 @@ export default function Home() {
     }));
 
     setOrganizations(updatedLocalOrgs);
+  }
+
+  function getCityAndState(data) {
+    const addressComponent = data.results[0].address_components;
+
+    let city, state;
+    for (let i = 0; i < addressComponent.length; i++) {
+      const addressPortion = addressComponent[i];
+      if (addressPortion.types.includes('locality')) {
+        city = addressPortion.short_name;
+      } else if (addressPortion.types.includes('administrative_area_level_1')) {
+        state = addressPortion.short_name;
+      }
+    }
+
+    return { city, state };
   }
 
   useEffect(() => {
@@ -61,11 +81,8 @@ export default function Home() {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             }).then((response)=> {
-              const currentCity = response.results[0].address_components.filter((obj) => {
-                return obj.types.includes('locality');
-              })[0].long_name;
-
-              fetchLocalOrgs(currentCity);
+              const usersCurrentLocation = getCityAndState(response);
+              fetchLocalOrgs(usersCurrentLocation);
             });
 
             setError(null);
@@ -97,9 +114,9 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <Map 
-        organizations={ organizations } 
-        myPosition={ myLatLng } 
+      <Map
+        organizations={ organizations }
+        myPosition={ myLatLng }
       />
       <Portal />
     </>

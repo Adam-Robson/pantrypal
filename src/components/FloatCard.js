@@ -13,7 +13,7 @@ import Info from './Info';
  * @return {*} DOM node containing the Portal
  */
 
-export default function Float() {
+export default function FloatCard() {
   return (
     <div className="h-1/2 w-fit">
       {createPortal(

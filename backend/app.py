@@ -1,5 +1,5 @@
 from flask_cors import CORS
-from flask import Flask
+from flask import Flask, request
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from json import dumps
@@ -14,11 +14,14 @@ db = client.get_default_database()
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/api/organizations/city/<city_name>')
-def fetch_orgs_by_city(city_name):
+@app.route('/api/organizations')
+def fetch_orgs_by_city():
+    city_name = request.args['cityName']
+    state_abrv = request.args['stateAbrv']
+
     organizations = db.organizations.find(
-        {'city': city_name}, {'_id': False}
-    ).limit(20)
+        {'city': city_name, 'state': state_abrv}, {'_id': False}
+    ).limit(30)
 
     return dumps(list(organizations))
 
