@@ -3,28 +3,23 @@
 @tailwind utilities;
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  font-family: 'Raleway Variable', system-ui, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  text-align: center;
-  color-scheme: light dark;
-
   --cyan: #588b8bff;
-  --white:#ffffff;
   --apricot: #ffd5c2ff;
   --gold: #f28f3bff;
   --red: #c8553dff;
-  --jet: #333333;
+  --jet: #363537;
   --cream: #FDF6F4;
-
-  
+  color-scheme: light dark;
   background-color: var(--cyan);
-  color: var(--jet);
+  color: var(--cream);
+
+  font-family: 'Raleway Variable', system-ui, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  text-align: center;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -33,104 +28,133 @@
 }
 
 body {
-  /* display: flex; */
   margin: 0 auto;
   width: 100vw;
   height: 100vh;
-  /* justify-content: flex-start; */
 }
 
 a {
   font-weight: 500;
-  color: var(--cyan);
+  color: var(--jet);
   text-decoration: none;
   cursor: pointer;
-
 }
+
 a:hover {
   color: var(--gold);
   text-decoration: underline;
 }
 
-
 button {
-  border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.2em 0.5em;
-  font-size: .75em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--outer-space);
-  cursor: pointer;
   transition: border-color 0.25s;
+  cursor: pointer;
 }
-button:hover {
-  border-color: var(--cyan);
 
+button:hover {
+  border-color: var(--apricot);
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto var(--apricot);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--cyan);
-    background-color: var(--apricot);
+    background-color: var(--cream);
+  }
+  a { 
+    color: var(--cyan);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500; 
   }
   a:hover {
     color: var(--gold);
+    text-decoration: underline;
   }
   button {
-    background-color: var(--apricot);
+    color: var(--jet);
+  }
+  button:hover {
+    border-color: var(--cyan);
+  }
 
+  button:focus,
+  button:focus-visible {
+  outline: 4px auto var(--cyan);
+  }
+  .tutorial {
+    background-color: var(--cream);
+    color: var(--jet);
+  }
+  .info {
+    background-color: var(--cream);
+    color: var(--jet);
+  }
+  .header {
+    background-color: var(--cream);
   }
 }
 
 .map {
-    max-width: '1300px';
-    width: 100%;
-    margin: 0;
-    height: '520px';
+  width: 100%;
+  margin: 0 auto;
+  height: 50%;
 }
 
 .input {
-  padding: 0.3em;
+  transition: border-color 0.25s;
+  border: 1px solid transparent;
 }
 
+.input:hover {
+  border-color: var(--cyan);
+}
 
-/* all that follows is for the tutorial */
-.modal1 {
+/* the tutorial */
+.tutorial {
   background-color: var(--cream);
+  color: var(--jet);
+}
+
+.tutorial-btn {
+  background-color: var(--gold);
+}
+
+/* the floating window */
+.info {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
-}
-
-.modal2 {
+  left:0;
+  right:0;
   background-color: var(--cream);
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
+  color: var(--jet);
+  box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
 }
 
-.round {
-  text-decoration: none;
-  display: inline-block;
-  padding: .25em .5em;
-  margin: .75em;
+/* header */
+.header {
+  background-color: var(--cream);
+  border-bottom: solid .1em rgba(0,0,0,0.43);
 }
-
+/* search */
+.search {
+  background: #FFFFFF;
+  box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
+  -webkit-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
+  -moz-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
+}
+/* location */
+.location-btn {
+  color: var(--cream);
+  background: var(--cyan);
+  box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+}
 
 

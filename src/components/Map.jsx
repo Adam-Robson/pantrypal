@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useCallback } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
-import { GoogleMap, DirectionsService, DirectionsRenderer, Marker } from '@react-google-maps/api';
-import mapStyles from '../assets/styles/map';
 import FloatCard from './FloatCard';
+import { GoogleMap, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import mapStyles from '../assets/styles/map';
 import Markers from './Markers';
 
 /**
@@ -13,7 +13,7 @@ import Markers from './Markers';
  */
 
 const mapContainerStyle = {
-  height: '100%',
+  height: '75%',
   width: '100%'
 };
 
@@ -49,10 +49,11 @@ export default function Map() {
   } = useGoogleContext();
 
   const onLoad = useCallback(
-    function onLoad(map) {
+    function onLoad() {
       const bounds = new window.google.maps.LatLngBounds();
       bounds.extend(center);
       setMap(map);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setMap]);
 
   const onUnmount = useCallback(() => {
@@ -107,15 +108,9 @@ export default function Map() {
     setActiveMarkerId(null);
   }
 
-  /**
-   * The following functions will be passed down to the Info
-   * component, through Float, so that clicking through
-   * the list of locations is possible.
-   */
-
   return (
     <div className="h-full">
-      <div className="h-3/5 w-3/4 mx-auto">
+      <div className="h-full w-full mx-auto">
         {
           isLoaded ? <GoogleMap
             mapContainerClassName="map"
@@ -135,28 +130,26 @@ export default function Map() {
             {
               directions && <DirectionsRenderer directions={directions} />
             }
-
           </GoogleMap> : <>There was an error loading the map!</>
-
         }
 
         <input
-          type="text"
-          value={origin}
-          onChange={(e) => setOrigin(e.target.value)}
+          value={ origin }
+          onChange={ (e) => setOrigin(e.target.value) }
           placeholder="Origin"
-          className="m-2 rounded-md"
+          className="m-4 py-2 px-6 rounded-md text-lg"
+        />
+       
+        <input
+          value={ destination }
+          onChange={ (e) => setDestination(e.target.value) }
+          placeholder="Destination"
+          className="m-4 py-2 px-6 rounded-md text-lg"
         />
 
-        <input
-          type="text"
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-          placeholder="Destination"
-          className="m-2 rounded-md"
-        />
-        <p>{distance && `Distance: ${distance}`}</p>
-        <p>{duration && `Duration: ${duration}`}</p>
+        <p>{ distance && `Distance: ${distance}` }</p>
+        <p>{ duration && `Duration: ${duration}` }</p>
+        
         <div className="mx-auto">
           <button onClick={clearInputs} className="p-2 m-4 md:text-xl" >Clear</button>
           <button onClick={() => recenterMap(myLatLng)} className="p-2 m-4 md:text-xl">Center</button>

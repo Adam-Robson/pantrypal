@@ -8,6 +8,7 @@ const libraries = ['places'];
 export function GoogleProvider({ children }) {
 
   const [map, setMap] = useState(null);
+  const [search, setSearch] = useState();
   const [directions, setDirections] = useState(null);
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
@@ -17,7 +18,7 @@ export function GoogleProvider({ children }) {
   const [organizations, setOrganizations] = useState([]);
   const [error, setError] = useState(null);
   const [activeMarkerId, setActiveMarkerId] = useState(0);
-  const [activeLocationIndex, setActiveLocationIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [swipeState, setSwipeState] = useState({
     isDragging: false,
@@ -35,6 +36,8 @@ export function GoogleProvider({ children }) {
       value={{
         map,
         setMap,
+        search,
+        setSearch,
         organizations,
         setOrganizations,
         directions,
@@ -51,8 +54,8 @@ export function GoogleProvider({ children }) {
         setMyLatLng,
         activeMarkerId,
         setActiveMarkerId,
-        activeLocationIndex,
-        setActiveLocationIndex,
+        isOpen,
+        setIsOpen,
         swipeState,
         setSwipeState,
         error,

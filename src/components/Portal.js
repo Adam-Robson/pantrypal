@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
-import Modal from './Modal';
-/**
- *
- * React will put the DOM nodes for the JSX passed into createPortal, inside of the DOM node the
- * createPortal is called within. Below, without the call for the portal, the second <p> would be
- * placed inside the parent <div>, but the call for the portal “teleported” the second <p> into the document.body:
- *
- * @export Portal component
- * @return {*} DOM node containing the Portal
+import { Link } from 'react-router-dom';
+import Tutorial from './Tutorial';
+/** 
+ * createPortal takes two arguments. 
+ * The first is the content to display. 
+ * The second is the location to display
+ * that content. React will remember 
+ * where the createPortal call happens 
+ * in the control flow, but will fulfill
+ * the request, rendering the content
+ * according to the location specified
+ * in the second argument.
  */
-
 export default function Portal() {
-  const [modal, setModal] = useState(false);
+  const [tutorial, setTutorial] = useState(false);
   return (
     <div className="portal h-full w-full">
-      <button className="absolute top-0 left-0 m-4" onClick={() => setModal(true)}>tutorial</button>
-      { modal && createPortal(
-        <Modal onClose={ () => setModal(false) } />,
-        document.body
-      ) }
+      <Link to="/tutorial" className="relative top-6 text-xs">Tutorial</Link>
+      { 
+        tutorial && createPortal(
+          <Tutorial onClose={ () => setTutorial(false) } />,
+          document.body
+        ) 
+      }
     </div>
   );
 }
