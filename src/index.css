@@ -86,7 +86,7 @@ button:focus-visible {
   button:focus-visible {
   outline: 4px auto var(--cyan);
   }
-  .modal {
+  .tutorial {
     background-color: var(--cream);
     color: var(--jet);
   }
@@ -115,7 +115,7 @@ button:focus-visible {
 }
 
 /* the tutorial */
-.modal {
+.tutorial {
   background-color: var(--cream);
   color: var(--jet);
 }

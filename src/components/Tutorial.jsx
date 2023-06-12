@@ -6,16 +6,6 @@ import page1 from '../assets/images/icons/icon1.png';
 import page2 from '../assets/images/icons/icon2.png';
 import page3 from '../assets/images/icons/icon3.png';
 
-/**
- * The following component includes the modal 
- * with the three page tutorial.
- * the first elements in the return incolves 
- * the X in the top corner to close the modal.
- *  
- * @export
- * @param {*} { onClose }
- * @return {*} 
- */
 export default function Tutorial() {
 
   let navigate = useNavigate();
@@ -45,7 +35,7 @@ export default function Tutorial() {
 
   return (
     <>
-      <section className="modal h-screen flex flex-col justify-evenly">
+      <section className="tutorial h-screen flex flex-col justify-evenly">
         <div className="cursor-pointer absolute right-0 top-0 m-4" onClick={ () => navigate('/') }>
           <FiX size={ 22 } />
         </div>
