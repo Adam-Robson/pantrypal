@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useGoogleContext } from '../context/GoogleContext';
 import { FiX } from 'react-icons/fi';
 import stillshot_map from '../assets/images/stillshot_map.png';
