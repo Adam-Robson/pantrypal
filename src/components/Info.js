@@ -50,7 +50,7 @@ export default function Info() {
         </p> 
         <div className="flex justify-between items-baseline min-h-full">
           <p className="text-left text-xs md:text-sm">{organization.phone_num}</p>
-          <Link className="text-sm md:text-lg pr-4" to={ organization.activeMarkerId }>Details</Link>
+          <Link className="text-sm md:text-lg pr-4" to={ `/${activeMarkerId }` }>Details</Link>
         </div>
         {organizations.length > 1 && (
           <>
