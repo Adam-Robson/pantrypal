@@ -8,15 +8,9 @@ export default function Details() {
   const {
     activeMarkerId,
     organizations,
-    distance
   } = useGoogleContext();
-  console.log('🚀 ~ file: Details.jsx:12 ~ Details ~ activeMarkerId:', activeMarkerId);
   
-  const { id } = useParams();
-
   const organization = organizations[activeMarkerId];
-  console.log('🚀 ~ file: Details.jsx:17 ~ Details ~ organizations:', organizations);
-  console.log('🚀 ~ file: Details.jsx:17 ~ Details ~ organization:', organization);
 
   return (
     <>
