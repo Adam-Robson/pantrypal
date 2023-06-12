@@ -1,7 +1,13 @@
 import { Marker } from '@react-google-maps/api';
 import pin from '../assets/images/icons/orange-pin.svg';
+import useMarkerClick from '../hooks/useMarkerClick';
+import { useGoogleContext } from '../context/GoogleContext';
+import useSetFocus from '../hooks/useSetFocus';
 
-export default function Markers({ organizations, markerClick }) {
+export default function Markers({ organizations, map }) {
+  const { setActiveMarkerId } = useGoogleContext();
+  const { setFocus } = useSetFocus(map);
+  const { markerClick } = useMarkerClick(setFocus, setActiveMarkerId);
   return (
     <>
       {
@@ -10,7 +16,7 @@ export default function Markers({ organizations, markerClick }) {
             key={ org.desc }
             position={ org.position }
             options={{ icon: pin }}
-            onClick={() => markerClick(org, idx) }
+            onClick={ () => markerClick(org, idx) }
           />
         ))
       }

@@ -5,7 +5,8 @@ import FloatCard from './FloatCard';
 import { GoogleMap, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import mapStyles from '../assets/styles/map';
 import Markers from './Markers';
-
+import useMarkerClick from '../hooks/useMarkerClick';
+import useRecenterMap from '../hooks/useRecenterMap';
 /**
  * The map must be generated with a height and a width.
  * The default styling that follows will fill up the space
@@ -29,6 +30,7 @@ const center = {
  */
 
 export default function Map() {
+  const { recenterMap } = useRecenterMap();
   const {
     map,
     setMap,
@@ -60,20 +62,21 @@ export default function Map() {
     setMap(null);
   }, [setMap]);
 
+  
 
-  function markerClick(org, id){
-    setFocus(org.position);
-    setActiveMarkerId(id);
-  }
+  // function markerClick(org, id){
+  //   setFocus(org.position);
+  //   setActiveMarkerId(id);
+  // }
 
-  function setFocus(position) {
-    map.setZoom(17);
-    recenterMap(position);
-  }
+  // function setFocus(position) {
+  //   map.setZoom(17);
+  //   recenterMap(position);
+  // }
 
-  function recenterMap(position) {
-    map.setCenter(position);
-  }
+  // function recenterMap(position) {
+  //   map.setCenter(position);
+  // }
 
   function clearInputs() {
     setOrigin('');
@@ -122,7 +125,7 @@ export default function Map() {
             onUnmount={onUnmount}
           >
 
-            <Markers organizations={ organizations } markerClick={ markerClick } />
+            <Markers organizations={ organizations } map={ map }/>
 
             {/* Show active card for selected organization */}
             { organizations.length > 0 && <FloatCard />}
@@ -152,7 +155,7 @@ export default function Map() {
         
         <div className="mx-auto">
           <button onClick={clearInputs} className="p-2 m-4 md:text-xl" >Clear</button>
-          <button onClick={() => recenterMap(myLatLng)} className="p-2 m-4 md:text-xl">Center</button>
+          <button onClick={ () => recenterMap(myLatLng) } className="p-2 m-4 md:text-xl">Center</button>
           <button onClick={handleRoute} className="p-2 m-4 md:text-xl">Route</button>
         </div>
         {
