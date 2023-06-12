@@ -41,7 +41,7 @@ export default function Info() {
   return (
     <article {...handlers} className="info w-3/4 md:w-1/5 mx-auto h-1/4 rounded-md p-2 relative bottom-10">
       <div className="w-full p-2 min-h-full">
-        <p className="flex items-center w-3/4 text-sm md:text-lg text-left font-semibold h-20">{ organization.name }</p>
+        <p className="flex items-center w-3/4 text-lg md:text-xl text-left font-semibold h-20">{ organization.name }</p>
         <p className="text-left text-xs md:text-sm mt-2">
           {organization.address}
         </p>
