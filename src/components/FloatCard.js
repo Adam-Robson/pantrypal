@@ -1,27 +1,17 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import Info from './Info';
-
-
-/**
- * React's createPortal function takes two
- * arguments. Whatever it is to display, and 
- * wherever it should display it. React will 
- * remember where in the control flow 
- * createPortal is called, and will thus 
- * maintain the control flow while it simulateously
- * honors the createPortal request, rendering 
- * the content in the location createPortal has asked.
- * 
- * Below, without the createPortal function,
- * the Info component would be rendered in the
- * FloatCard, which is called in the Map component.   
- * Instead, createPortal “teleports” the
- * FloatCard elsewhere in document.body. 
- * Inspect the dev tools to watch it appear 
- * outside of the "root" div on click.
+/** 
+ * createPortal takes two arguments. 
+ * The first is the content to display. 
+ * The second is the location to display
+ * that content. React will remember 
+ * where the createPortal call happens 
+ * in the control flow, but will fulfill
+ * the request, rendering the content
+ * according to the location specified
+ * in the second argument.
  */
-
 export default function FloatCard() {
   return (
     <>

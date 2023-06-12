@@ -18,7 +18,7 @@ export function GoogleProvider({ children }) {
   const [organizations, setOrganizations] = useState([]);
   const [error, setError] = useState(null);
   const [activeMarkerId, setActiveMarkerId] = useState(0);
-  const [activeLocationIndex, setActiveLocationIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [swipeState, setSwipeState] = useState({
     isDragging: false,
@@ -54,8 +54,8 @@ export function GoogleProvider({ children }) {
         setMyLatLng,
         activeMarkerId,
         setActiveMarkerId,
-        activeLocationIndex,
-        setActiveLocationIndex,
+        isOpen,
+        setIsOpen,
         swipeState,
         setSwipeState,
         error,
