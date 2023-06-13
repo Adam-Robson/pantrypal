@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo/stacked_logo.svg';
 import { FiX } from 'react-icons/fi';
-import page1 from '../assets/images/icons/icon1.png';
-import page2 from '../assets/images/icons/icon2.png';
-import page3 from '../assets/images/icons/icon3.png';
+import page1 from '../assets/images/icons/tut_1.png';
+import page2 from '../assets/images/icons/tut_2.png';
+import page3 from '../assets/images/icons/tut_3.png';
 
 export default function Tutorial() {
 

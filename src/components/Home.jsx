@@ -29,7 +29,7 @@ export default function Home() {
       cityName: userLocation.city,
       stateAbrv: userLocation.state,
     }).toString();
-
+    
     const apiResponse = await fetch(url);
     const localOrgs = await apiResponse.json();
 
