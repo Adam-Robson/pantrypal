@@ -36,6 +36,10 @@ export default function Details() {
             <h2 className="font-semibold">Description</h2>
             <p>{ organization.desc }</p>
           </div>
+          <div className="h-full w-full flex justify-evenly items-center">
+            <button className="float-btn px-8 py-2 m-2">Directions</button>
+            <button className="float-btn px-8 py-2 m-2">Call</button>
+          </div>
         </div>
       </section>
     </>

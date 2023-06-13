@@ -58,6 +58,8 @@ export default function Info() {
               <div onClick={ handlePreviousClick } className="mx-4 mt-2 text-xs sm:text-sm lg:text-lg hover:cursor-pointer">
                 <FiChevronLeft />
               </div>
+              <button className="float-btn px-8 py-2 m-2 ">Directions</button>
+              <button className="float-btn px-8 py-2 m-2">Call</button>
               <div onClick={ handleNextClick } className="mx-4 mt-2 text-xs sm:text-sm lg:text-lg hover:cursor-pointer">
                 <FiChevronRight />
               </div>

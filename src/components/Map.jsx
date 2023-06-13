@@ -123,6 +123,7 @@ export default function Map() {
             center={myLatLng}
             onLoad={onLoad}
             onUnmount={onUnmount}
+            className="min-w-full"
           >
 
             <Markers organizations={ organizations } map={ map }/>
