@@ -10,14 +10,13 @@
   - [Features](#features)
   - [Contact](#contact)
   - [Acknowledgements](#acknowledgements)
-  - [License](#license)
-  - [Facts](#facts)
+  - [MIT License](#mit-license)
 
 ## Description
 
 **This is an extremely important component of the README.**
   
-  <!-- TODO: Provide answers to questions such as “why did you build this project?”, or “what problem(s) does this project solve?”. include your motivations for the project. Finally, include what you *learned* from it. -->
+   This project was built as part of the Co.Lab 19 Cohort in 2023. The main goal of our group - which included George Ceja, Robert Adkins, Joel Yap and Adam Robson - when we started out, was to create an application that would make an impact in some way, on communities that were underserved. After some group brainstorming, we decided to focus on first-generation college students.  In the end, we created an application that can serve any person who is in need of food assistance.
   
 ## Overview
 
@@ -30,7 +29,7 @@
 
 ## Ingredients
 
-<!-- TODO: List any MAJOR libraries/frameworks (e.g. React, Tailwind) with links to their homepages. -->
+<!-- TODO: List any MAJOR libraries/frameworks (React, Tailwind, Google Maps (Maps JavaScript API, GeoCoding API, Geolocation API, Place Library), React-Icons, React-Router) with links to their homepages. -->
 
 ## Features
 
@@ -44,17 +43,11 @@
 
 <!-- TODO: List any blog posts, tutorials or plugins that you may have used to complete the project. Only list those that had a significant impact. Obviously, we all 'Google' stuff while working on our things, but maybe something in particular stood out as a 'major contributor' to your skill set for this project. -->
 
-## License
+## MIT License
 
-  <!-- TODO: It’s also important to list a license on your README so other developers can understand what they can and cannot do with your project. You can use this guide to help you choose a license. -->
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-## Facts
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-- Keep README’s brief but detailed.
-- README should always be up-to-date and self-explanatory.
-- If you have spent a lot of time on your project, you should also spend a good chunk of time on the README.
-- It can help your future self as well when you step away for a while and need to get reacquainted with your project.
-- Not to mention it’ll leave a positive impression on future interviewers who look at your GitHub profile.
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
- *Your README file should be as good as your project itself.*
-  
