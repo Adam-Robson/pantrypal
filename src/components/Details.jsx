@@ -11,6 +11,8 @@ export default function Details() {
   } = useGoogleContext();
   
   const organization = organizations[activeMarkerId];
+  // eslint-disable-next-line no-console
+  console.log('🚀 ~ file: Details.jsx:14 ~ Details ~ organization:', organization);
 
   return (
     <>
@@ -23,6 +25,7 @@ export default function Details() {
           </div>
         </div>
         <div className="p-2 text-left">
+          <img className="h-40" src={ organization.image_url } alt="image" /> 
           <h1 className="text-3xl font-bold">{ organization.name }</h1>
          
           <div className="">
