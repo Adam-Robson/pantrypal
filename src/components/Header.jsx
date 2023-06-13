@@ -5,13 +5,10 @@ import { FiMenu, FiSearch } from 'react-icons/fi';
 import { LuLocate } from 'react-icons/lu';
 import Portal from './Portal';
 import Menu from './Menu';
+
 export default function Header() {
 
   const { isOpen, setIsOpen, search, setSearch } = useGoogleContext();
-
-  function toggleMenu() {
-    setIsOpen(!isOpen);
-  }
 
   return (
     <>
@@ -19,10 +16,14 @@ export default function Header() {
         className="header min-w-full min-h-fit h-1/4 flex flex-col justify-evenly items-center mx-auto p-4"
       >
         <div className="absolute top-4 right-4 md:absolute md:top-8 md:right-8">
-          { isOpen ? <Menu /> : 
-            <button onClick={ toggleMenu } >
-              <FiMenu size={ 24 } />
-            </button> }
+          { 
+            isOpen ? 
+              <Menu />
+              : 
+              <button onClick={ () => setIsOpen(true) } >
+                <FiMenu size={ 24 } />
+              </button> 
+          }
         </div>
         <div className="max-w-sm mx-auto md:max-w-md">
           <img

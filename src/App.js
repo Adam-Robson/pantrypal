@@ -5,6 +5,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Tutorial from './components/Tutorial';
 import Details from './components/Details';
+import Resources from './components/Resources';
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
           <Route path='/tutorial' element={ <Tutorial /> } />
           <Route path='/' exact element={<Home />} />
           <Route path='/:id' element={ <Details /> } />
-          
+          <Route path="/resources" element={ <Resources /> } />
         </Routes>
       </div>
     </>

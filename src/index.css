@@ -153,49 +153,26 @@ button:focus-visible {
   -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
   -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
 }
-/* 
-.menu {
-  background-color: var(--cream);
-  color: var(--cyan);
-  box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
-  -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
-  -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
-} */
 
-.floating-text {
+/* hamburger menu */
+.floating-in {
   position: fixed;
   top: -50px;
   left: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: .25em;
   transform: translateX(-50%);
   animation: floatIn 2s forwards;
 }
 
 @keyframes floatIn {
   0% {
-    top: -100px; /* Start position off the screen */
-    opacity: 0; /* Optional: fade-in effect */
-  }
-  100% {
-    top: 10px; /* End position at desired distance from top */
-    opacity: 1; /* Optional: fade-in effect */
-  }
-}
-
-.float-away {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: floatOut 2s forwards;
-}
-
-@keyframes floatOut {
-  0% {
-    top: 10px; /* Start position off the screen */
-    opacity: 1;
-  }
-  100% {
-    top: -100px;
+    top: -50px;
     opacity: 0;
+  }
+  100% {
+    top: 15px; 
+    opacity: 1;
   }
 }
