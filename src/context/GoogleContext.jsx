@@ -19,6 +19,9 @@ export function GoogleProvider({ children }) {
   const [error, setError] = useState(null);
   const [activeMarkerId, setActiveMarkerId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [tutorial, setTutorial] = useState(false);
+  const [isFloating, setIsFloating] = useState(false);
+
 
   const [swipeState, setSwipeState] = useState({
     isDragging: false,
@@ -56,6 +59,10 @@ export function GoogleProvider({ children }) {
         setActiveMarkerId,
         isOpen,
         setIsOpen,
+        tutorial,
+        setTutorial,
+        isFloating,
+        setIsFloating,
         swipeState,
         setSwipeState,
         error,

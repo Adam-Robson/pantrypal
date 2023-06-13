@@ -5,7 +5,6 @@ import FloatCard from './FloatCard';
 import { GoogleMap, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import mapStyles from '../assets/styles/map';
 import Markers from './Markers';
-
 /**
  * The map must be generated with a height and a width.
  * The default styling that follows will fill up the space
@@ -29,6 +28,7 @@ const center = {
  */
 
 export default function Map() {
+ 
   const {
     map,
     setMap,
@@ -60,6 +60,7 @@ export default function Map() {
     setMap(null);
   }, [setMap]);
 
+  
 
   function markerClick(org, id){
     setFocus(org.position);
@@ -120,6 +121,7 @@ export default function Map() {
             center={myLatLng}
             onLoad={onLoad}
             onUnmount={onUnmount}
+            className="min-w-full"
           >
 
             <Markers organizations={ organizations } markerClick={ markerClick } />
@@ -152,7 +154,7 @@ export default function Map() {
         
         <div className="mx-auto">
           <button onClick={clearInputs} className="p-2 m-4 md:text-xl" >Clear</button>
-          <button onClick={() => recenterMap(myLatLng)} className="p-2 m-4 md:text-xl">Center</button>
+          <button onClick={ () => recenterMap(myLatLng) } className="p-2 m-4 md:text-xl">Center</button>
           <button onClick={handleRoute} className="p-2 m-4 md:text-xl">Route</button>
         </div>
         {

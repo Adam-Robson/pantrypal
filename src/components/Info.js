@@ -39,26 +39,28 @@ export default function Info() {
   }
 
   return (
-    <article {...handlers} className="info w-3/4 md:w-1/5 mx-auto h-1/4 rounded-md p-2 relative bottom-10">
+    <article {...handlers} className="info min-w-min w-2/3 max-w-sm mx-auto h-1/4 rounded-md p-2 absolute left-0 right-0 bottom-10">
       <div className="w-full p-2 min-h-full">
-        <p className="flex items-center w-3/4 text-sm md:text-lg text-left font-semibold h-20">{ organization.name }</p>
-        <p className="text-left text-xs md:text-sm mt-2">
+        <p className="flex items-end w-3/4 text-xs sm:text-sm lg:text-lg text-left font-semibold h-20">{ organization.name }</p>
+        <p className="text-left text-xs sm:text-sm lg:text-lg mt-2">
           {organization.address}
         </p>
         <p className="flex text-left text-xs md:text-sm min-h-full">
           { organization.city + ' ' + organization.state + ' ' + organization.zip_code }
         </p> 
         <div className="flex justify-between items-baseline min-h-full">
-          <p className="text-left text-xs md:text-sm">{organization.phone_num}</p>
-          <Link className="text-sm md:text-lg pr-4" to={ organization.activeMarkerId }>Details</Link>
+          <p className="text-left text-xs sm:text-sm lg:text-lg">{organization.phone_num}</p>
+          <Link className="text-xs sm:text-sm lg:text-lg pr-4" to={ `/${activeMarkerId }` }>Details</Link>
         </div>
         {organizations.length > 1 && (
           <>
             <div className="w-full flex justify-center items-baseline">
-              <div onClick={handlePreviousClick} className="p-2 m-4 text-lg md:text-xl hover:cursor-pointer">
+              <div onClick={ handlePreviousClick } className="mx-4 mt-2 text-xs sm:text-sm lg:text-lg hover:cursor-pointer">
                 <FiChevronLeft />
               </div>
-              <div onClick={ handleNextClick } className="p-2 m-4 text-lg md:text-xl hover:cursor-pointer">
+              <button className="float-btn px-8 py-2 m-2 ">Directions</button>
+              <button className="float-btn px-8 py-2 m-2">Call</button>
+              <div onClick={ handleNextClick } className="mx-4 mt-2 text-xs sm:text-sm lg:text-lg hover:cursor-pointer">
                 <FiChevronRight />
               </div>
             </div>

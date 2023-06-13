@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import Tutorial from './Tutorial';
+import { useGoogleContext } from '../context/GoogleContext';
 /** 
  * createPortal takes two arguments. 
  * The first is the content to display. 
@@ -14,7 +15,8 @@ import Tutorial from './Tutorial';
  * in the second argument.
  */
 export default function Portal() {
-  const [tutorial, setTutorial] = useState(false);
+  const { tutorial, setTutorial } = useGoogleContext();
+
   return (
     <div className="portal h-full w-full">
       <Link to="/tutorial" className="relative top-6 text-xs">Tutorial</Link>

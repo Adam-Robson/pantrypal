@@ -7,10 +7,10 @@ export default function Markers({ organizations, markerClick }) {
       {
         organizations.map((org, idx) => (
           <Marker
-            key={ org.name }
+            key={ org.desc }
             position={ org.position }
             options={{ icon: pin }}
-            onClick={() => markerClick(org, idx) }
+            onClick={ () => markerClick(org, idx) }
           />
         ))
       }

@@ -100,6 +100,7 @@ button:focus-visible {
 }
 
 .map {
+  min-width:auto;
   width: 100%;
   margin: 0 auto;
   height: 50%;
@@ -126,9 +127,6 @@ button:focus-visible {
 
 /* the floating window */
 .info {
-  position: absolute;
-  left:0;
-  right:0;
   background-color: var(--cream);
   color: var(--jet);
   box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
@@ -157,4 +155,30 @@ button:focus-visible {
   -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
 }
 
+/* hamburger menu */
+.floating-in {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: .25em;
+  transform: translateX(-50%);
+  animation: floatIn 2s forwards;
+}
 
+@keyframes floatIn {
+  0% {
+    top: -50px;
+    opacity: 0;
+  }
+  100% {
+    top: 10px; 
+    opacity: 1;
+  }
+}
+
+.float-btn {
+  background-color: var(--gold);
+  border-radius: 8px;
+}
