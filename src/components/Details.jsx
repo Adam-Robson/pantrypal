@@ -16,32 +16,32 @@ export default function Details() {
 
   return (
     <>
-      <section className="h-full flex flex-col justify-start items-start">
-        <div className="w-full">
-          <img src={ stillshot_map } alt="map" className="" />
+      <section className="h-full flex flex-col justify-start items-center">
+        <div className="md:w-1/3">
+          <img src={ stillshot_map } alt="map" className="w-full mx-auto" />
         
-          <div onClick={ () => navigate('/') } className="absolute top-0 right-0 m-4">
+          <div onClick={ () => navigate('/') } className="absolute top-0 m-4">
             <FiX size={ 22 } />
           </div>
         </div>
-        <div className="p-2 text-left">
-          <img className="h-40" src={ organization.image_url } alt="image" /> 
-          <h1 className="text-3xl font-bold">{ organization.name }</h1>
+        <div className="md:w-1/3 p-2 text-left">
+          { organization.image_url !== null ? <img className="h-40" src={ organization.image_url } alt="image" /> : null }
+          <h1 className="text-3xl md:text-5xl font-bold subpixel-antialiased">{ organization.name }</h1>
          
           <div className="">
-            <h2>{ organization.address }</h2>
-            <p>
+            <h2 className="text-2xl md:text-3xl subpixel-antialiased">{ organization.address }</h2>
+            <p className="text-xl md:text-2xl subpixel-antialiased">
               { organization.city + ' ' + organization.state + ' ' + organization.zip_code }
             </p> 
-            <p>{ organization.phone_num }</p>
+            <p className="text-xl md:text-2xl subpixel-antialiased">{ organization.phone_num }</p>
           </div>
           <div className="">
-            <h2 className="font-semibold">Description</h2>
-            <p>{ organization.desc }</p>
+            <h2 className="text-xl md:text-2xl subpixel-antialiased font-semibold">Description</h2>
+            <p className="text-lg md:text-xl subpixel-antialiased">{ organization.desc }</p>
           </div>
           <div className="h-full w-full flex justify-evenly items-center">
-            <button className="float-btn px-8 py-2 m-2">Directions</button>
-            <button className="float-btn px-8 py-2 m-2">Call</button>
+            <button className="float-btn px-10 py-4 m-2">Directions</button>
+            <button className="float-btn px-10 py-4 m-2">Call</button>
           </div>
         </div>
       </section>

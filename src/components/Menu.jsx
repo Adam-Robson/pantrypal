@@ -12,7 +12,7 @@ export default function Menu() {
       <div className="menu w-screen p-2">
         <div className="absolute top-0 right-0">
           <button className="cursor-pointer" onClick={ () => setIsOpen(false) }>
-            <FiX />
+            <div><FiX /></div>
           </button>
         </div>
         <ul className="floating-in flex justify-evenly w-full">
