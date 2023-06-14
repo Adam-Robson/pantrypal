@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
-import { NavLink } from 'react-router-dom';
-import Map from './Map';
 import Header from './Header';
+import Map from './Map';
+
 export default function Home() {
   const {
     organizations,
     setOrganizations,
     myLatLng,
     setMyLatLng,
+    setOrigin,
     setError,
   } = useGoogleContext();
 
@@ -28,8 +29,8 @@ export default function Home() {
 
   async function fetchLocalOrgs(userLocation) {
     const url = process.env.REACT_APP_FLY_API_URL + '/organizations?' + new URLSearchParams({
-      cityName  : userLocation.city,
-      stateAbrv : userLocation.state,
+      cityName: userLocation.city,
+      stateAbrv: userLocation.state,
     }).toString();
 
     const apiResponse = await fetch(url);
@@ -51,6 +52,7 @@ export default function Home() {
 
   function getCityAndState(data) {
     const addressComponent = data.results[0].address_components;
+    setOrigin(data.results[0].formatted_address);
 
     let city, state;
     for (let i = 0; i < addressComponent.length; i++) {
@@ -78,7 +80,7 @@ export default function Home() {
             geoCodeLocation('location', {
               lat: position.coords.latitude,
               lng: position.coords.longitude
-            }).then((response)=> {
+            }).then((response) => {
               const usersCurrentLocation = getCityAndState(response);
               fetchLocalOrgs(usersCurrentLocation);
             });
@@ -97,9 +99,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Map 
-        organizations={ organizations } 
-        myPosition={ myLatLng } 
+      <Map
+        organizations={organizations}
+        myPosition={myLatLng}
       />
     </>
   );

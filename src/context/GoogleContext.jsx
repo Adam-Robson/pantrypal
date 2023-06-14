@@ -17,7 +17,7 @@ export function GoogleProvider({ children }) {
   const [myLatLng, setMyLatLng] = useState({});
   const [organizations, setOrganizations] = useState([]);
   const [error, setError] = useState(null);
-  const [activeMarkerId, setActiveMarkerId] = useState(0);
+  const [activeMarkerId, setActiveMarkerId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [tutorial, setTutorial] = useState(false);
   const [isFloating, setIsFloating] = useState(false);
