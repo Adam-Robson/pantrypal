@@ -1,17 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
-import { NavLink } from 'react-router-dom';
-import Map from './Map';
 import Header from './Header';
+import Map from './Map';
+
 export default function Home() {
   const {
-    organizations,
     setOrganizations,
-    myLatLng,
     setMyLatLng,
-    setError,
+    setOrigin,
   } = useGoogleContext();
 
   async function geoCodeLocation(locationType, location) {
@@ -28,8 +26,8 @@ export default function Home() {
 
   async function fetchLocalOrgs(userLocation) {
     const url = process.env.REACT_APP_FLY_API_URL + '/organizations?' + new URLSearchParams({
-      cityName  : userLocation.city,
-      stateAbrv : userLocation.state,
+      cityName: userLocation.city,
+      stateAbrv: userLocation.state,
     }).toString();
 
     const apiResponse = await fetch(url);
@@ -51,6 +49,7 @@ export default function Home() {
 
   function getCityAndState(data) {
     const addressComponent = data.results[0].address_components;
+    setOrigin(data.results[0].formatted_address);
 
     let city, state;
     for (let i = 0; i < addressComponent.length; i++) {
@@ -66,41 +65,30 @@ export default function Home() {
   }
 
   useEffect(() => {
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setMyLatLng({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setMyLatLng({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
 
-            geoCodeLocation('location', {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            }).then((response)=> {
-              const usersCurrentLocation = getCityAndState(response);
-              fetchLocalOrgs(usersCurrentLocation);
-            });
-            setError(null);
-          },
-          (error) => {
-            setError(error.message);
-          }
-        );
-      } else {
-        setError('Geolocation is not supported by this browser.');
-      }
+          geoCodeLocation('location', {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }).then((response) => {
+            const userLocation = getCityAndState(response);
+            fetchLocalOrgs(userLocation);
+          });
+        }
+      );
     }
-    getLocation();
   }, []);
+
   return (
     <>
       <Header />
-      <Map 
-        organizations={ organizations } 
-        myPosition={ myLatLng } 
-      />
+      <Map />
     </>
   );
 }
