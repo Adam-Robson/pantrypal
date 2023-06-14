@@ -50,36 +50,58 @@ export default function Details() {
        
         <p>{ distance && `${distance} miles` }</p>
         <p>{ duration && `${duration} appx.` }</p>
-        <article className="">
-          <div className="text-left w-full flex flex-col items-start mx-2">
-            <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-8">Description</h2>
+        
+        <article className="max-w-xl w-full">
+          <div className="text-left w-full">
+            <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4 my-4">
+              Description
+            </h2>
             <p className="detail text-sm md:text-lg subpixel-antialiased mx-4">{ organization.desc }</p>
           </div>
-          <div className="text-left w-full flex flex-col items-start">
-            { 
-              (organization.facebook_url || organization.twitter_url || organization.instagram_url) ? 
-                <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4 my-6">Social Links</h2> : null
-            }
-          
+        </article>
 
-            <article className="w-full flex justify-evenly">
-              {
-                organization.facebook_url ? <Link target="_blank" to={ organization.facebook_url }><img src={ facebook } alt="facebook icon" /></Link> : null
-              }
-              {
-                organization.twitter_url ? <Link target="_blank" to={ organization.twitter_url }><img src={ twitter } alt="twitter icon" /></Link> : null
-              }
-              {
-                organization.instagram_url ? <Link target="_blank" to={ organization.instagram_url }><img src={ instagram } alt="instagram icon" /></Link> : null
-              }
-            </article>
+        <article className="max-w-xl w-full text-left">
+          {
+            (organization.facebook_url || organization.twitter_url || organization.instagram_url) ?
+              <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4 my-4">
+                Social Links
+              </h2> : null
+          }
+          <div className="w-full flex justify-evenly">
+            {
+              organization.facebook_url ? <Link target="_blank" to={ organization.facebook_url }><img src={ facebook } alt="facebook icon" /></Link> : null
+            }
+            {
+              organization.twitter_url ? <Link target="_blank" to={ organization.twitter_url }><img src={ twitter } alt="twitter icon" /></Link> : null
+            }
+            {
+              organization.instagram_url ? <Link target="_blank" to={ organization.instagram_url }><img src={ instagram } alt="instagram icon" /></Link> : null
+            }
           </div>
-          <div className="max-w-full w-2/3 flex justify-evenly my-4">
+        </article>
+
+        <article className="max-w-xl w-full flex justify-around items-center my-4">
+          <div className="w-2/3 flex justify-evenly my-8" > 
             <button className="float-btn px-8 py-2 m-2 rounded-lg text-lg">Directions</button>
             <button className="float-btn px-8 py-2 m-2 rounded-lg text-lg">Call</button>
           </div>
+
         </article>
+
       </section>
     </>
   );
 }
+
+
+{/* 
+
+
+    <article >
+     
+    </article>
+  </div>
+  <div className="max-w-full w-2/3 flex justify-evenly my-4">
+   
+  </div>
+</article> */}
