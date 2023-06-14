@@ -8,7 +8,7 @@ import Map from './Map';
 
 export default function Home() {
   const {
-    isDetailPage,
+    isDetailsPage,
     setOrganizations,
     setMyLatLng,
     setOrigin,
@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <>
       {
-        isDetailPage ?
+        isDetailsPage ?
           <DetailsPage /> :
           <>
             <Header />
