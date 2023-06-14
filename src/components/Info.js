@@ -6,7 +6,7 @@ import CardArrows from './CardArrows';
 export default function Info() {
   const { handleRoute } = useMapUtils();
   const {
-    setIsDetailPage,
+    setIsDetailsPage,
     activeMarkerId,
     organizations,
   } = useGoogleContext();
@@ -27,10 +27,17 @@ export default function Info() {
           {organization.city + ' ' + organization.state + ' ' + organization.zip_code}
         </p>
         <div className="flex justify-between">
+<<<<<<< HEAD
           <p className="text-left text-sm sm:text-lg lg:text-xl mb-4">{organization.phone_num}</p>
           <button
             className="details-btn text-sm sm:text-lg lg:text-xl"
             onClick={() => setIsDetailPage(true)}
+=======
+          <p className="text-left text-sm sm:text-lg lg:text-xl mb-4">{ organization.phone_num }</p>
+          <button 
+            className="details-btn text-sm sm:text-lg lg:text-xl" 
+            onClick={ () => setIsDetailsPage(true) }
+>>>>>>> 28075e0 (fix detail to details in info component)
           >Details</button>
         </div>
 
