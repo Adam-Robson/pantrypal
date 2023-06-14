@@ -7,12 +7,9 @@ import Map from './Map';
 
 export default function Home() {
   const {
-    organizations,
     setOrganizations,
-    myLatLng,
     setMyLatLng,
     setOrigin,
-    setError,
   } = useGoogleContext();
 
   async function geoCodeLocation(locationType, location) {
@@ -68,41 +65,30 @@ export default function Home() {
   }
 
   useEffect(() => {
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setMyLatLng({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setMyLatLng({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
 
-            geoCodeLocation('location', {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            }).then((response) => {
-              const usersCurrentLocation = getCityAndState(response);
-              fetchLocalOrgs(usersCurrentLocation);
-            });
-            setError(null);
-          },
-          (error) => {
-            setError(error.message);
-          }
-        );
-      } else {
-        setError('Geolocation is not supported by this browser.');
-      }
+          geoCodeLocation('location', {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }).then((response) => {
+            const userLocation = getCityAndState(response);
+            fetchLocalOrgs(userLocation);
+          });
+        }
+      );
     }
-    getLocation();
   }, []);
+
   return (
     <>
       <Header />
-      <Map
-        organizations={organizations}
-        myPosition={myLatLng}
-      />
+      <Map />
     </>
   );
 }

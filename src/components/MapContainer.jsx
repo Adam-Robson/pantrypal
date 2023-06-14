@@ -19,7 +19,10 @@ export default function Map() {
   const onLoad = useCallback(
     function onLoad(map) {
       const bounds = new window.google.maps.LatLngBounds();
-      bounds.extend({ lat: 37.773972, lng: -122.431297 });
+      bounds.extend({
+        lat: 37.773972,
+        lng: -122.431297
+      });
       setMap(map);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setMap]);
@@ -31,7 +34,7 @@ export default function Map() {
   return (
     <>
       {
-        isLoaded ? <GoogleMap
+        isLoaded && <GoogleMap
           mapContainerClassName="map"
           mapContainerStyle={{ height: '75%', width: '100%' }}
           zoom={12}
@@ -41,14 +44,13 @@ export default function Map() {
           onUnmount={onUnmount}
           className="min-w-full"
         >
-
-          <Markers organizations={organizations} />
+          <Markers organizations={organizations} myLatLng={myLatLng} />
 
           {/* Show active card for selected organization */}
           {activeMarkerId !== null && organizations.length > 0 && <FloatCard />}
 
           {directions && <DirectionsRenderer directions={directions} />}
-        </GoogleMap> : <>There was an error loading the map!</>
+        </GoogleMap>
       }
     </>
   );
