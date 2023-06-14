@@ -207,3 +207,7 @@ button:focus-visible {
 .detail-title {
   color: var(--red);
 }
+
+.details-btn {
+  border: transparent solid 1px;
+}

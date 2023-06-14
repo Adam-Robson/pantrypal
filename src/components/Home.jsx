@@ -3,10 +3,12 @@
 import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import Header from './Header';
+import DetailsPage from './DetailsPage';
 import Map from './Map';
 
 export default function Home() {
   const {
+    isDetailPage,
     setOrganizations,
     setMyLatLng,
     setOrigin,
@@ -29,7 +31,7 @@ export default function Home() {
       cityName: userLocation.city,
       stateAbrv: userLocation.state,
     }).toString();
-    
+
     const apiResponse = await fetch(url);
     const localOrgs = await apiResponse.json();
 
@@ -87,8 +89,14 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <Map />
+      {
+        isDetailPage ?
+          <DetailsPage /> :
+          <>
+            <Header />
+            <Map />
+          </>
+      }
     </>
   );
 }
