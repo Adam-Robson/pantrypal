@@ -19,8 +19,8 @@ export default function About() {
         <Link to="">
           <img className="h-40 rounded-full" src={ adam } alt="image of adam robson" />
         </Link>
-        <Link>
-      Joel Yap
+        <Link to="">
+          <img className="h-40 rounded-full" src={ joel } alt="image of joel yap" />
         </Link>
       </article>
     </section>
