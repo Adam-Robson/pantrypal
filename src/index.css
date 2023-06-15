@@ -60,6 +60,7 @@ button:focus-visible {
   outline: 4px auto var(--apricot);
 }
 
+/* styles for light mode */
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--cyan);
@@ -86,19 +87,22 @@ button:focus-visible {
   button:focus-visible {
   outline: 4px auto var(--cyan);
   }
+
   .tutorial {
     background-color: var(--cream);
     color: var(--jet);
   }
+
   .info {
     background-color: var(--cream);
     color: var(--jet);
   }
+
   .header {
     background-color: var(--cream);
   }
 }
-
+ /* styles for the main map element */
 .map {
   min-width:auto;
   width: 100%;
@@ -106,16 +110,7 @@ button:focus-visible {
   height: 50%;
 }
 
-.input {
-  transition: border-color 0.25s;
-  border: 1px solid transparent;
-}
-
-.input:hover {
-  border-color: var(--cyan);
-}
-
-/* the tutorial */
+/* the tutorial after clicking tutorial link */
 .tutorial {
   background-color: var(--cream);
   color: var(--jet);
@@ -125,7 +120,7 @@ button:focus-visible {
   background-color: var(--gold);
 }
 
-/* the floating window */
+/* the floating window on home page */
 .info {
   background-color: var(--cream);
   color: var(--jet);
@@ -134,19 +129,19 @@ button:focus-visible {
   -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
 }
 
-/* header */
+/* header on home page */
 .header {
   background-color: var(--cream);
   border-bottom: solid .1em rgba(0,0,0,0.43);
 }
-/* search */
+/* search input on home page */
 .search {
   background: #FFFFFF;
   box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
   -webkit-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
   -moz-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
 }
-/* location */
+/* location button on home page */
 .location-btn {
   color: var(--cream);
   background: var(--cyan);
@@ -167,6 +162,7 @@ button:focus-visible {
   animation: floatIn 2s forwards;
 }
 
+
 @keyframes floatIn {
   0% {
     top: -50px;
@@ -178,7 +174,40 @@ button:focus-visible {
   }
 }
 
+.floating-out {
+  animation: floatOut 2s forwards;
+}
+
+@keyframes floatOut {
+  0%{
+    top: 10px;
+    opacity: 1;
+  }
+  100% {
+    top: -50px; 
+    opacity: 0;
+  }
+}
+/*buttons on the detail page and the float card */
+
 .float-btn {
-  background-color: var(--gold);
-  border-radius: 8px;
+  background-color: var(--red);
+  color: var(--cream);
+  box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+}
+
+/* details page */
+
+.detail {
+  color: var(--jet);
+}
+
+.detail-title {
+  color: var(--red);
+}
+
+.details-btn {
+  border: transparent solid 1px;
 }

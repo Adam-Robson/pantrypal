@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo/stacked_logo.svg';
-import { FiX } from 'react-icons/fi';
-import page1 from '../assets/images/icons/icon1.png';
-import page2 from '../assets/images/icons/icon2.png';
-import page3 from '../assets/images/icons/icon3.png';
+import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import page1 from '../assets/images/icons/tut_1.png';
+import page2 from '../assets/images/icons/tut_2.png';
+import page3 from '../assets/images/icons/tut_3.png';
 
 export default function Tutorial() {
 
@@ -46,6 +46,7 @@ export default function Tutorial() {
           <button className="tutorial-btn rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageTwo }></button>
           <button className="tutorial-btn rounded-full p-2 md:p-4 mx-6 md:mx-12" onClick={ pageThree }></button>
         </div>
+        
       </section>
     </>
   );
@@ -54,10 +55,14 @@ export default function Tutorial() {
 function Page1() {
   return (
     <div className="h-1/3">
+
       <img className="max-w-xs max-h-40 mx-auto" src={ page1 } alt="icon" />
 
       <h2 className="text-2xl text-black font-semibold mt-4 mb-8">Welcome!</h2>
       <p className="mx-20 text-black">Find free food options in your area so you can concentrate on your education.</p>
+      <div className="absolute right-0 bottom-96 mx-4">
+        <FiChevronRight />
+      </div>
     </div>
   );
 }
@@ -65,9 +70,15 @@ function Page1() {
 function Page2() {
   return (
     <div className="h-1/3">
+      <div className="absolute left-0 bottom-96 mx-4">
+        <FiChevronLeft />
+      </div>
       <img className="max-w-xs max-h-40 mx-auto" src={ page2 } alt="icon" />
       <h2 className="text-2xl text-black font-semibold mt-4 mb-8">First things First</h2>
       <p className="mx-20 text-black">To find food pantries in your local area, please enable location sharing services.</p>
+      <div className="absolute right-0 bottom-96 mx-4">
+        <FiChevronRight />
+      </div>
     </div>
   );
 }
@@ -75,6 +86,9 @@ function Page2() {
 function Page3() {
   return (
     <div className="h-1/3">
+      <div className="absolute left-0 bottom-96 mx-4">
+        <FiChevronLeft />
+      </div>
       <img className="max-w-xs max-h-40 mx-auto" src={ page3 } alt="icon" />
 
       <h2 className="text-2xl text-black font-semibold mt-4 mb-8">How it Works</h2>

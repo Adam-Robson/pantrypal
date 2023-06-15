@@ -3,10 +3,12 @@
 import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import Header from './Header';
+import DetailsPage from './DetailsPage';
 import Map from './Map';
 
 export default function Home() {
   const {
+    isDetailsPage,
     setOrganizations,
     setMyLatLng,
     setOrigin,
@@ -87,8 +89,14 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <Map />
+      {
+        isDetailsPage ?
+          <DetailsPage /> :
+          <>
+            <Header />
+            <Map />
+          </>
+      }
     </>
   );
 }
