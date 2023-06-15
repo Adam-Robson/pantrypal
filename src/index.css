@@ -167,33 +167,18 @@ button:focus-visible {
   animation: floatIn 2s forwards;
 }
 
-
 @keyframes floatIn {
   0% {
     top: -50px;
     opacity: 0;
   }
   100% {
-    top: 10px; 
+    top: 0px; 
     opacity: 1;
   }
 }
 
-.floating-out {
-  animation: floatOut 2s forwards;
-}
-
-@keyframes floatOut {
-  0%{
-    top: 10px;
-    opacity: 1;
-  }
-  100% {
-    top: -50px; 
-    opacity: 0;
-  }
-}
-/*buttons on the detail page and the float card */
+/* buttons on the detail page and the float card */
 
 .float-btn {
   background-color: var(--red);
