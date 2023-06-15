@@ -213,8 +213,9 @@ button:focus-visible {
   color: var(--red);
 }
 
-.details-btn {
+.detail-btn {
   border: transparent solid 1px;
+  background-color: var(--red);
 }
 
 .detail-img {

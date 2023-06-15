@@ -30,7 +30,7 @@ export default function Details() {
           </button>
         </article>
 
-        <article className="details-wrap max-w-xl w-full flex justify-start">
+        <article className="detail-wrap max-w-xl w-full flex justify-start">
           {
             organization.image_url !== null ? <img className="detail-img rounded-2xl relative bottom-6 ml-4" src={ organization.image_url } alt="image of organization" /> : <img className="detail-img rounded-2xl relative bottom-6" src={ stacked } alt="image of pantry pal logo" />
           }
@@ -45,11 +45,10 @@ export default function Details() {
               { organization.city + ' ' + organization.state + ' ' + organization.zip_code }
             </p>
             <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ organization.phone_num }</p>
-         
-            { organization.website_url ? <Link className="" to={ organization.website_url }>Website</Link> : null }
+            { organization.website_url ? <button className="detail-btn" to={ organization.website_url }>Website</button> : null }
+            
             <div className="flex justify-around w-full mt-6">
               <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ distance && `${distance} ` }</p>
-              
               <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ duration && ` ${duration}` }</p>
             </div>
           </div>
