@@ -19,7 +19,7 @@ export default function Portal() {
 
   return (
     <div className="portal h-full w-full">
-      <Link to="/tutorial" className="relative top-6 text-xs">Tutorial</Link>
+      <Link to="/tutorial" className="tut-link relative top-6 text-xs">Tutorial</Link>
       { 
         tutorial && createPortal(
           <Tutorial onClose={ () => setTutorial(false) } />,

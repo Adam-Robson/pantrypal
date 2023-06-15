@@ -53,7 +53,9 @@ export default function Header() {
             </label>
             <button 
               className="location-btn rounded-md w-14 h-14 flex justify-center items-center">
-              <div><LuLocate size={ 22 } /></div>
+              <div>
+                <LuLocate size={ 22 } />
+              </div>
 
             </button> 
           </div>

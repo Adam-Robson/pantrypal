@@ -39,9 +39,9 @@ export default function Info() {
   }
 
   return (
-    <article className="info min-w-min w-2/3 max-w-sm mx-auto h-1/4 rounded-md p-2 absolute left-0 right-0 bottom-10">
+    <article className="info min-w-max w-5/12 max-w-sm mx-auto h-1/4 rounded-md p-2 absolute left-0 right-0 bottom-10 mb-8">
       <div className="w-full p-2 min-h-full">
-        <p className="flex items-end w-3/4 text-xs sm:text-sm lg:text-lg text-left font-semibold h-20">
+        <p className="flex items-end w-3/4 text-lg md:text-xl lg:text-2xl text-left font-semibold h-20">
           {organization.name}
         </p>
         <p className="text-left text-xs sm:text-sm lg:text-lg mt-2">
@@ -54,7 +54,7 @@ export default function Info() {
           <p className="text-left text-xs sm:text-sm lg:text-lg">
             {organization.phone_num}
           </p>
-          <Link className="text-xs sm:text-sm lg:text-lg pr-4" to={`/${activeMarkerId}`}>
+          <Link className="details-link text-xs sm:text-sm lg:text-lg pr-4" to={`/${activeMarkerId}`}>
             Details
           </Link>
         </div>
