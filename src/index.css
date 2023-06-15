@@ -218,8 +218,8 @@ button:focus-visible {
 }
 
 .detail-img {
-  max-width: 130px;
-  max-height: 130px;
+  max-width: 10em;
+  max-height: 5em;
 }
 
 .menu-link {

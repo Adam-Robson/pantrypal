@@ -16,7 +16,7 @@ export default function Info() {
   return (
     <section className="info max-w-xs md:max-w-md md:max-h-96 max-h-64 mx-auto rounded-lg absolute left-0 right-0 bottom-10">
       <article className="min-h-fit min-w-full p-4">
-        <p className="w-full text-lg lg:text-3xl text-left font-semibold h-10 mb-4 subpixel-antialiased">
+        <p className="w-full text-lg lg:text-3xl text-left font-semibold h-16 mb-4 subpixel-antialiased">
           { organization.name }
         </p>
 

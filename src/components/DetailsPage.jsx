@@ -6,6 +6,7 @@ import stillshot_map from '../assets/images/stillshot_map.png';
 import facebook from '../assets/images/icons/fb_icon.svg';
 import twitter from '../assets/images/icons/twitter_icon.svg';
 import instagram from '../assets/images/icons/ig_icon.svg';
+import stacked from '../assets/logo/stacked_logo.svg';
 
 export default function Details() {
 
@@ -31,10 +32,10 @@ export default function Details() {
 
         <article className="details-wrap max-w-xl w-full flex justify-start">
           {
-            organization.image_url !== null ? <img className="detail-img rounded-2xl relative bottom-12" src={ organization.image_url } alt="image of organization" /> : null
+            organization.image_url !== null ? <img className="detail-img rounded-2xl relative bottom-6 ml-4" src={ organization.image_url } alt="image of organization" /> : <img className="detail-img rounded-2xl relative bottom-6" src={ stacked } alt="image of pantry pal logo" />
           }
           <div className="detail w-full flex flex-col justify-start items-start mt-4 text-left mx-2">
-            <h1 className="deatil text-xl sm:text-3xl lg:text-4xl font-semibold subpixel-antialiased">
+            <h1 className="detail text-xl sm:text-3xl lg:text-4xl font-semibold subpixel-antialiased">
               { organization.name }
             </h1>
             <h2 className="detail text-sm md:text-lg font-normal subpixel-antialiased">
@@ -44,14 +45,16 @@ export default function Details() {
               { organization.city + ' ' + organization.state + ' ' + organization.zip_code }
             </p>
             <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ organization.phone_num }</p>
+         
+            { organization.website_url ? <Link className="" to={ organization.website_url }>Website</Link> : null }
+            <div className="flex justify-around w-full mt-6">
+              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ distance && `${distance} ` }</p>
+              
+              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ duration && ` ${duration}` }</p>
+            </div>
           </div>
-          { organization.website_url ? <Link className="" to={ organization.website_url }>Website</Link> : null }
         </article>
 
-       
-        <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ distance && `${distance}` }</p>
-        <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ duration && `${duration}` }</p>
-        
         <article className="max-w-xl w-full">
           <div className="text-left w-full">
             <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4 my-4">
