@@ -4,9 +4,11 @@ import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import Header from './Header';
 import Map from './Map';
+import DetailsPage from './DetailsPage';
 
 export default function Home() {
   const {
+    isDetailsPage,
     setOrganizations,
     setMyLatLng,
     setOrigin,
@@ -86,9 +88,6 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <Header />
-      <Map />
-    </>
+    isDetailsPage ? <DetailsPage /> : <><Header /><Map /></>
   );
 }
