@@ -17,13 +17,13 @@ export default function Menu() {
         </div>
         <ul className="floating-in flex justify-evenly w-full">
           <li className="text-lg subpixel-antialiased">
-            <Link to="/about">About</Link>
+            <Link className="menu-link" to="/about">About</Link>
           </li>
           <li className="text-lg subpixel-antialiased">
-            <Link to="/resources">Resources</Link>
+            <Link className="menu-link" to="/resources">Resources</Link>
           </li>
           <li className="text-lg subpixel-antialiased">
-            <Link to="/contact">Contact</Link>
+            <Link className="menu-link" to="/contact">Contact</Link>
           </li>
         </ul>
       </div>

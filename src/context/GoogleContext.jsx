@@ -22,12 +22,7 @@ export function GoogleProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [tutorial, setTutorial] = useState(false);
   const [isDetailsPage, setIsDetailsPage] = useState(false);
-
-
-  const [swipeState, setSwipeState] = useState({
-    isDragging: false,
-    direction: null,
-  });
+  const [currentPage, setCurrentPage] = useState(0);
 
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
@@ -66,8 +61,8 @@ export function GoogleProvider({ children }) {
         setTutorial,
         isDetailsPage,
         setIsDetailsPage,
-        swipeState,
-        setSwipeState,
+        currentPage,
+        setCurrentPage,
         error,
         setError,
         isLoaded,

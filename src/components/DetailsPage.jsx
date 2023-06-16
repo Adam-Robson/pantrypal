@@ -6,6 +6,7 @@ import stillshot_map from '../assets/images/stillshot_map.png';
 import facebook from '../assets/images/icons/fb_icon.svg';
 import twitter from '../assets/images/icons/twitter_icon.svg';
 import instagram from '../assets/images/icons/ig_icon.svg';
+import stacked from '../assets/logo/stacked_logo.svg';
 
 export default function Details() {
 
@@ -29,12 +30,12 @@ export default function Details() {
           </button>
         </article>
 
-        <article className="details-wrap max-w-xl w-full flex justify-start">
+        <article className="detail-wrap max-w-xl w-full flex justify-start">
           {
-            organization.image_url !== null ? <img className="aspect-auto rounded-2xl max-h-60 max-w-xs w-32 relative bottom-12 p-2 m-4" src={ organization.image_url } alt="image of organization" /> : null
+            organization.image_url !== null ? <img className="detail-img rounded-2xl relative bottom-6 ml-4" src={ organization.image_url } alt="image of organization" /> : <img className="detail-img rounded-2xl relative bottom-6" src={ stacked } alt="image of pantry pal logo" />
           }
           <div className="detail w-full flex flex-col justify-start items-start mt-4 text-left mx-2">
-            <h1 className="deatil text-xl sm:text-3xl lg:text-4xl font-semibold subpixel-antialiased">
+            <h1 className="detail text-xl sm:text-3xl lg:text-4xl font-semibold subpixel-antialiased">
               { organization.name }
             </h1>
             <h2 className="detail text-sm md:text-lg font-normal subpixel-antialiased">
@@ -44,13 +45,15 @@ export default function Details() {
               { organization.city + ' ' + organization.state + ' ' + organization.zip_code }
             </p>
             <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ organization.phone_num }</p>
+            { organization.website_url ? <button className="detail-btn" to={ organization.website_url }>Website</button> : null }
+            
+            <div className="flex justify-around w-full mt-6">
+              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ distance && `${distance} ` }</p>
+              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ duration && ` ${duration}` }</p>
+            </div>
           </div>
         </article>
 
-       
-        <p>{ distance && `${distance} miles` }</p>
-        <p>{ duration && `${duration} appx.` }</p>
-        
         <article className="max-w-xl w-full">
           <div className="text-left w-full">
             <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4 my-4">
@@ -82,26 +85,11 @@ export default function Details() {
 
         <article className="max-w-xl w-full flex justify-around items-center my-4">
           <div className="w-2/3 flex justify-evenly my-8" > 
-            <button className="float-btn px-8 py-2 m-2 rounded-lg text-lg">Directions</button>
-            <button className="float-btn px-8 py-2 m-2 rounded-lg text-lg">Call</button>
+            <button className="float-btn px-8 py-2 m-2 rounded-lg text-lg subpixel-antialiased">Directions</button>
+            <button className="float-btn px-8 py-2 m-2 rounded-lg text-lg subpixel-antialiased">Call</button>
           </div>
-
         </article>
-
       </section>
     </>
   );
 }
-
-
-{/* 
-
-
-    <article >
-     
-    </article>
-  </div>
-  <div className="max-w-full w-2/3 flex justify-evenly my-4">
-   
-  </div>
-</article> */}
