@@ -44,7 +44,9 @@ export default function Map() {
           onUnmount={onUnmount}
           className="min-w-full"
         >
-          <Markers organizations={organizations} myLatLng={myLatLng} />
+          { organizations.length > 0 &&
+            <Markers organizations={organizations} myLatLng={myLatLng} />
+          }
 
           {/* Show active card for selected organization */}
           {activeMarkerId !== null && organizations.length > 0 && <FloatCard />}

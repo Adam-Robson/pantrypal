@@ -1,5 +1,4 @@
 import { useGoogleContext } from '../context/GoogleContext';
-// import { GoogleMap, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 export default function useMapUtils() {
   const {

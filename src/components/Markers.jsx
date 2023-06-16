@@ -10,21 +10,20 @@ export default function Markers({ organizations }) {
   const { markerClick } = useMapUtils();
   return (
     <>
+      {/* User's current position marker */}
       <Marker
         position={ myLatLng }
         options={{ icon: userPin }}
       />
 
-      {
-        organizations.map((org, idx) => (
-          <Marker
-            key={org.desc}
-            position={org.position}
-            options={{ icon: pin }}
-            onClick={() => markerClick(org, idx)}
-          />
-        ))
-      }
+      { organizations.map((org, idx) => (
+        <Marker
+          key={idx}
+          position={org.position}
+          options={{ icon: pin }}
+          onClick={() => markerClick(org, idx)}
+        />
+      ))}
     </>
   );
 }
