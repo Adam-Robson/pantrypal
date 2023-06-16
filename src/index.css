@@ -239,3 +239,7 @@ button:focus-visible {
 .re-title {
   color: var(--gold);
 }
+
+#search {
+  color: var(--jet);
+}

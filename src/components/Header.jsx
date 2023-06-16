@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Autocomplete } from '@react-google-maps/api'; 
 import { useGoogleContext } from '../context/GoogleContext';
 import flat from '../assets/logo/flat_logo.svg';
-import { FiMenu, FiSearch, FiX } from 'react-icons/fi';
+import { FiMenu, FiSearch } from 'react-icons/fi';
 import { LuLocate } from 'react-icons/lu';
 import Portal from './Portal';
 import Menu from './Menu';
@@ -10,12 +11,18 @@ import useFetchUtils from '../hooks/useFetchUtils';
 export default function Header() {
   const { isOpen, setIsOpen, search, setSearch } = useGoogleContext();
   const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
+  // eslint-disable-next-line no-unused-vars
+  const [selectedPlace, setSelectedPlace] = useState(null);
 
   function handleSearch(){
     geoCodeLocation('address', search).then((response) => {
       const userLocation = getCityAndState(response);
       fetchLocalOrgs(userLocation);
     });
+  }
+
+  function handlePlaceSelect(place) {
+    setSelectedPlace(place);
   }
 
   return (
@@ -46,15 +53,25 @@ export default function Header() {
               htmlFor="search"
               className="flex justify-start"
             >
-              <input
-                id="search"
-                name="search"
-                value={search}
-                type="text"
-                className="search rounded-md w-72 h-14 pl-10 mr-2"
-                placeholder="Enter address"
-                onChange={(e) => setSearch(e.target.value)}
-              />
+              <Autocomplete
+                onLoad={ (autocomplete) => {
+                  autocomplete.setFields(['geometry', 'name']);
+                } }
+                onPlaceChanged={ (autocomplete) => {
+                  const place = autocomplete.getPlace();
+                  handlePlaceSelect(place);
+                } }
+              >
+                <input
+                  id="search"
+                  name="search"
+                  value={search}
+                  type="text"
+                  className="search rounded-md w-72 h-14 pl-10 mr-2"
+                  placeholder="Enter address"
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </Autocomplete>
               
             </label>
 
