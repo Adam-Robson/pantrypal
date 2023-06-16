@@ -52,6 +52,7 @@ export default function useFetchUtils() {
           'lng': response.results[0].geometry.location.lng(),
         };
         updatedLocalOrgs.push(org);
+        // eslint-disable-next-line no-unused-vars
       }).catch(error => { return; });
     }));
 
