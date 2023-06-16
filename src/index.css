@@ -102,6 +102,16 @@ button:focus-visible {
   .header {
     background-color: var(--cream);
   }
+
+  .hamburger {
+  color: var(--cyan);
+}
+
+
+.menu-link {
+  color: var(--cyan);
+}
+
 }
  /* styles for the main map element */
 .map {
@@ -156,6 +166,10 @@ button:focus-visible {
 }
 
 /* hamburger menu */
+/* .hamburger {
+  color: var(--cyan);
+} */
+
 .floating-in {
   position: absolute;
   top: -100px;
@@ -210,4 +224,18 @@ button:focus-visible {
 
 .menu-link {
   color: var(--cyan);
+}
+
+.resources {
+  color: var(--jet);
+}
+
+.resources:hover {
+  color: gold;
+  text-decoration: underline;
+
+}
+
+.re-title {
+  color: var(--gold);
 }

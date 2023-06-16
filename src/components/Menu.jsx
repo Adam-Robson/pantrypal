@@ -10,11 +10,7 @@ export default function Menu() {
   return (
     <>
       <div className="menu w-screen p-2">
-        <div className="absolute top-0 right-0">
-          <button className="cursor-pointer" onClick={ () => setIsOpen(false) }>
-            <div><FiX /></div>
-          </button>
-        </div>
+        <div className="absolute top-0 right-0 cursor-pointer" onClick={ () => setIsOpen(false) }><FiX /></div>
         <ul className="floating-in flex justify-evenly w-full">
           <li className="text-lg subpixel-antialiased">
             <Link className="menu-link" to="/about">About</Link>
