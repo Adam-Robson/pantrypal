@@ -1,20 +1,15 @@
 import React from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import flat from '../assets/logo/flat_logo.svg';
-import { FiMenu, FiSearch } from 'react-icons/fi';
+import { FiSearch, FiMenu } from 'react-icons/fi';
 import { LuLocate } from 'react-icons/lu';
-import Portal from './Portal';
-import Menu from './Menu';
 import useFetchUtils from '../hooks/useFetchUtils';
 import Autocomplete from 'react-google-autocomplete';
-
-
-
+import Menu from './Menu';
 
 export default function Header() {
   const { isOpen, setIsOpen, search, setSearch } = useGoogleContext();
   const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
-
 
   function handleSearch() {
     geoCodeLocation('address', search)

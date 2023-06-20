@@ -1,73 +1,48 @@
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {...}
+/* 
+Extra small devices (phones, 600px and down)
+If the screen size is 600px or less...
+*/
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {...}
+@media only screen and (max-width: 600px) {}
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {...}
+/* 
+Small devices (portrait tablets and large phones, 600px and up)
+If the screen size is 600px or more...
+*/
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {...}
+@media only screen and (min-width: 600px) {}
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {...}
+/* 
+Medium devices (landscape tablets, 768px and up)
+If the screen size is 768px or more...
+*/
 
-@media only screen and (orientation: landscape) {
-  body {
-    background-color: lightblue;
+@media only screen and (min-width: 768px) {}
+
+/* 
+Large devices (laptops/desktops, 992px and up) 
+If the screen size is 992px or more...
+*/
+
+@media only screen and (min-width: 992px) {}
+
+/* 
+Extra large devices (large laptops and desktops, 1200px and up) 
+If the screen size is 1200px or more...
+*/
+
+@media only screen and (min-width: 1200px) {}
+
+/*
+iPhone 14
+*/
+
+@media only screen and (max-width: 390px)
+  and (device-height: 844px)
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: portrait) {
+    
   }
-}
-
-@media only screen and (max-width: 600px) {
-  div.example {
-    display: none;
-  }
-}
-
-/* If the screen size is 601px or more, set the font-size of <div> to 80px */
-@media only screen and (min-width: 601px) {
-  div.example {
-    font-size: 80px;
-  }
-}
-
-/* If the screen size is 600px or less, set the font-size of <div> to 30px */
-@media only screen and (max-width: 600px) {
-  div.example {
-    font-size: 30px;
-  }
-}
-
-/* On screens that are 992px wide or less, go from four columns to two columns */
-@media screen and (max-width: 992px) {
-  .column {
-    width: 50%;
-  }
-}
-
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 900px) and (min-width: 600px), (min-width: 1100px) {
-  div.example {
-    font-size: 50px;
-    padding: 50px;
-    border: 8px solid black;
-    background: yellow;
-  }
-}
-
-/*iPhone 14*/
-@media only screen
-and (width: 390px) 
-and (device-height: 844px)
-and (-webkit-device-pixel-ratio: 3) 
-and (orientation: portrait){ }
 
 
 @media only screen
