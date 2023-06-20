@@ -10,17 +10,23 @@ import './stylesheets/header.css';
 import useMapUtils from '../hooks/useMapUtils'; 
 
 export default function Header() {
-  const { isOpen, setIsOpen, search, setSearch } = useGoogleContext();
+  const { isOpen, setIsOpen, search, setSearch, loading, setLoading } = useGoogleContext();
   const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
   const { recenterMap } = useMapUtils();
 
   function handleSearch() {
-    geoCodeLocation('address', search.formatted_address)
-      .then((response) => {
-        recenterMap({ lat: search.geometry.location.lat(), lng: search.geometry.location.lng() });
-        const userLocation = getCityAndState(response);
-        fetchLocalOrgs(userLocation);
-      });
+    try {
+      setLoading(true);
+      geoCodeLocation('address', search.formatted_address)
+        .then((response) => {
+          recenterMap({ lat: search.geometry.location.lat(), lng: search.geometry.location.lng() });
+          const userLocation = getCityAndState(response);
+          fetchLocalOrgs(userLocation);
+        });
+      setLoading(false);
+    } catch (err) {
+      console.error('This error was generated handling the search function: ' + err);
+    }
   }
 
   function onPlaceSelected(place) {
