@@ -20,8 +20,8 @@
   --jet: #363537;
   --cream: #FDF6F4;
   color-scheme: light dark;
-  background-color: var(--cyan);
-  color: var(--cream);
+  background-color: var(--cream);
+  color: var(--jet);
 
   font-family: 'Raleway Variable', system-ui, Helvetica, Arial, sans-serif;
   text-align: center;
@@ -53,12 +53,13 @@ a:hover {
 
 button {
   border: 1px solid transparent;
-  transition: border-color 0.25s;
+  transition: border-color 0.5s;
   cursor: pointer;
 }
 
 button:hover {
   border-color: var(--red);
+  cursor: pointer;
 }
 
 button:focus,
@@ -124,28 +125,6 @@ button:focus-visible {
 .info {
   background-color: var(--cream);
   color: var(--jet);
-  box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
-  -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
-  -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
-}
-
-/* header on home page */
-.header {
-  background-color: var(--cream);
-  border-bottom: solid .1em rgba(0,0,0,0.43);
-}
-
-/* search input on home page */
-.search {
-  box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
-  -webkit-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
-  -moz-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
-}
-
-/* location button on home page */
-.location-btn {
-  color: var(--cream);
-  background: var(--cyan);
   box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
   -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
   -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);

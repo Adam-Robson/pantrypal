@@ -6,14 +6,18 @@ import { LuLocate } from 'react-icons/lu';
 import useFetchUtils from '../hooks/useFetchUtils';
 import Autocomplete from 'react-google-autocomplete';
 import Menu from './Menu';
+import './stylesheets/header.css';
+import useMapUtils from '../hooks/useMapUtils'; 
 
 export default function Header() {
   const { isOpen, setIsOpen, search, setSearch } = useGoogleContext();
   const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
+  const { recenterMap } = useMapUtils();
 
   function handleSearch() {
-    geoCodeLocation('address', search)
+    geoCodeLocation('address', search.formatted_address)
       .then((response) => {
+        recenterMap({ lat: search.geometry.location.lat(), lng: search.geometry.location.lng() });
         const userLocation = getCityAndState(response);
         fetchLocalOrgs(userLocation);
       });
@@ -25,38 +29,29 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className="header min-w-full min-h-fit h-1/4 flex flex-col justify-evenly items-center mx-auto p-4"
-      >
-        <article className="menu-link absolute top-4 right-4 md:absolute md:top-8 md:right-8">
-          {
-            isOpen ?
-              <Menu isOpen={ isOpen } setIsOpen={ setIsOpen } />
-              :
-              <button
-                className="menu-link cursor-pointer"
-                onClick={ () => setIsOpen(true) }
-              >
-                <FiMenu className="menu-link absolute top-0 right-2" size={ 24 } />
-              </button>
-          }
-        </article>
-        <section className="max-w-sm mx-auto md:max-w-md">
+      <header className="header w-full h-1/4 flex flex-col justify-evenly items-center mx-auto p-4">
+        {
+          isOpen ?
+            <Menu isOpen={ isOpen } setIsOpen={ setIsOpen } />
+            :
+            <button
+              className="x-icon absolute top-4 right-4"
+              onClick={ () => setIsOpen(true) }
+            >
+              <FiMenu className="" size={ 16 } />
+            </button>
+        }
+        <section className="mx-auto">
           <img
             src={ flat }
             alt="pantry pals logo"
-            className="aspect-auto mx-auto max-w-xs mt-6 mr-6 md:max-w-md"
+            className="max-w-xs sm:max-w-sm w-full m-4 sm:m-6"
           />
-          <div
-            className="w-full flex justify-evenly relative top-4"
-          >
-
+          <div className="w-full flex justify-evenly">
             <Autocomplete
-              style={ {
-                height: '2.5em',
-              } }
+              apiKey={ process.env.REACT_APP_GOOGLE_MAPS_API_KEY }
               onPlaceSelected={ onPlaceSelected }
-              types={ ['(regions)'] }
+              types={ ['(cities)'] }
               className="search p-2 w-1/2"
               placeholder="enter address"
             />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiX, FiMenu } from 'react-icons/fi';
+import { FiMenu } from 'react-icons/fi';
 import Portal from './Portal';
 import './stylesheets/menu.css';
 
@@ -16,12 +16,13 @@ export default function Menu() {
           isOpen ?
             <>
               <button 
-                className="x-icon absolute top-0 right-0 cursor-pointer"
+                className="x-icon absolute top-4 right-4"
                 onClick={ () => setIsOpen(false) }
               >
-                <FiX size={ 20 } />
+                <FiMenu size={ 16 } className={ ({ rotated }) => rotated ? 'rotated' : ''
+                } />
               </button>
-              <ul className="flex justify-around items-start">
+              <ul className="w-full floating-in flex justify-around">
                 <li className="text-sm md:text-lg subpixel-antialiased">
                   <Link className="menu-link" to="/tutorial">tutorial</Link>
                 </li>

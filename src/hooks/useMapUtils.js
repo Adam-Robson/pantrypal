@@ -21,6 +21,7 @@ export default function useMapUtils() {
   }
 
   function recenterMap(position) {
+    console.log('🚀 ~ file: useMapUtils.js:24 ~ recenterMap ~ position:', position);
     map.setCenter(position);
   }
 
