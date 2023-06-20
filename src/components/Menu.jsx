@@ -19,18 +19,18 @@ export default function Menu() {
                 className="x-icon absolute top-4 right-4"
                 onClick={ () => setIsOpen(false) }
               >
-                <FiMenu size={ 16 } className={ ({ rotated }) => rotated ? 'rotated' : ''
+                <FiMenu size={ 24 } className={ ({ rotated }) => rotated ? 'rotated' : ''
                 } />
               </button>
               <ul className="w-full floating-in flex justify-around">
                 <li className="text-sm md:text-lg subpixel-antialiased">
-                  <Link className="menu-link" to="/tutorial">tutorial</Link>
+                  <Link className="menu-link subpixel-antialiased" to="/tutorial">tutorial</Link>
                 </li>
                 <li className="text-sm md:text-lg subpixel-antialiased">
-                  <Link className="menu-link" to="/resources">resources</Link>
+                  <Link className="menu-link subpixel-antialiased" to="/resources">resources</Link>
                 </li>
                 <li className="text-sm md:text-lg subpixel-antialiased">
-                  <Link className="menu-link" to="/about">about</Link>
+                  <Link className="menu-link subpixel-antialiased" to="/about">about</Link>
                 </li>
               </ul>
             </>

@@ -10,7 +10,7 @@ import stacked from '../assets/logo/stacked_logo.svg';
 import './stylesheets/detailspage.css';
 
 export default function Details() {
-
+  
   const {
     setIsDetailsPage,
     activeMarkerId,
@@ -20,6 +20,7 @@ export default function Details() {
   } = useGoogleContext();
 
   const organization = organizations[activeMarkerId];
+
 
   return (
     <>
@@ -49,8 +50,8 @@ export default function Details() {
             { organization.website_url ? <button className="detail-btn" to={ organization.website_url }>Website</button> : null }
             
             <div className="flex justify-around w-full mt-6">
-              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ distance && `${distance} ` }</p>
-              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ duration && ` ${duration}` }</p>
+              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ distance && `${ distance } ` }</p>
+              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{ duration && ` ${ duration }` }</p>
             </div>
           </div>
         </article>
