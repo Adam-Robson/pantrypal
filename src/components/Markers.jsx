@@ -1,4 +1,5 @@
-import { Marker, useEffect } from '@react-google-maps/api';
+import React, { useEffect } from 'react';
+import { Marker } from '@react-google-maps/api';
 import userPin from '../assets/images/icons/user-pin.svg';
 import pin from '../assets/images/icons/org-pin.svg';
 import useMapUtils from '../hooks/useMapUtils';
