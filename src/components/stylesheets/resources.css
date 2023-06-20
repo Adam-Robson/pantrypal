@@ -1,0 +1,12 @@
+.resources {
+  color: var(--jet);
+}
+
+.resources:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.re-title {
+  color: var(--gold);
+}

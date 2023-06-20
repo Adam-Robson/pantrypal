@@ -6,6 +6,7 @@ import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import page1 from '../assets/images/icons/tut_1.png';
 import page2 from '../assets/images/icons/tut_2.png';
 import page3 from '../assets/images/icons/tut_3.png';
+import './stylesheets/tutorial.css';
 
 export default function Tutorial() {
 
@@ -36,10 +37,10 @@ export default function Tutorial() {
 
   return (
     <>
-      <section className="tutorial h-screen max-w-md mx-auto flex flex-col justify-evenly">
-        <div className="cursor-pointer relative bottom-20 left-96" onClick={ () => navigate('/') }>
+      <section className="tutorial max-h-screen h-full max-w-md mx-auto flex flex-col justify-evenly">
+        <button className="cursor-pointer absolute top-4 right-10 sm:right-40 md:right-52" onClick={ () => navigate('/') }>
           <FiX size={ 22 } />
-        </div>
+        </button>
         <img src={ logo } alt="logo" className="mx-auto max-w-xs" />
         { pages[currentPage] }
         <div className="">

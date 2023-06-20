@@ -1,9 +1,48 @@
-/*iPhone 14*/
-@media only screen
-and (width: 390px) 
-and (device-height: 844px)
-and (-webkit-device-pixel-ratio: 3) 
-and (orientation: portrait){ }
+/* 
+Extra small devices (phones, 600px and down)
+If the screen size is 600px or less...
+*/
+
+@media only screen and (max-width: 600px) {}
+
+/* 
+Small devices (portrait tablets and large phones, 600px and up)
+If the screen size is 600px or more...
+*/
+
+@media only screen and (min-width: 600px) {}
+
+/* 
+Medium devices (landscape tablets, 768px and up)
+If the screen size is 768px or more...
+*/
+
+@media only screen and (min-width: 768px) {}
+
+/* 
+Large devices (laptops/desktops, 992px and up) 
+If the screen size is 992px or more...
+*/
+
+@media only screen and (min-width: 992px) {}
+
+/* 
+Extra large devices (large laptops and desktops, 1200px and up) 
+If the screen size is 1200px or more...
+*/
+
+@media only screen and (min-width: 1200px) {}
+
+/*
+iPhone 14
+*/
+
+@media only screen and (max-width: 390px)
+  and (device-height: 844px)
+  and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: portrait) {
+    
+  }
 
 
 @media only screen

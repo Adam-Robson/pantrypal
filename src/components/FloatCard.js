@@ -1,6 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import Info from './Info';
+
 /** 
  * createPortal takes two arguments. 
  * The first is the content to display. 
