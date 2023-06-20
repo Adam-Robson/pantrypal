@@ -2,7 +2,6 @@ import React from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import flat from '../assets/logo/flat_logo.svg';
 import { FiSearch, FiMenu } from 'react-icons/fi';
-import { LuLocate } from 'react-icons/lu';
 import useFetchUtils from '../hooks/useFetchUtils';
 import Autocomplete from 'react-google-autocomplete';
 import Menu from './Menu';
@@ -40,7 +39,7 @@ export default function Header() {
               className="x-icon absolute top-4 right-4"
               onClick={ () => setIsOpen(true) }
             >
-              <FiMenu className="" size={ 16 } />
+              <FiMenu size={ 24 } />
             </button>
         }
         <section className="mx-auto">
@@ -62,7 +61,7 @@ export default function Header() {
               className="location-btn rounded-md w-10 h-10 flex justify-center items-center"
               onClick={ handleSearch }
             >
-              <div><FiSearch size={ 24 } /></div>
+              <div><FiSearch size={ 20 } /></div>
             </button>
           </div>
         </section>
