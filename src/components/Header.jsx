@@ -64,11 +64,6 @@ export default function Header() {
             >
               <div><FiSearch size={ 24 } /></div>
             </button>
-
-            <button
-              className="location-btn rounded-md w-10 h-10 flex justify-center items-center">
-              <div><LuLocate size={ 24 } /></div>
-            </button>
           </div>
         </section>
       </header>
