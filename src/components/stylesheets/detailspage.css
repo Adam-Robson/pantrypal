@@ -1,0 +1,25 @@
+.detail {
+  color: var(--jet);
+}
+
+.detail-title {
+  color: var(--red);
+}
+
+.detail-btn {
+  border: transparent solid 1px;
+  background-color: var(--red);
+}
+
+.detail-img {
+  max-width: 10em;
+  max-height: 5em;
+}
+
+.float-btn {
+  background-color: var(--red);
+  color: var(--cream);
+  box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+  -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+}

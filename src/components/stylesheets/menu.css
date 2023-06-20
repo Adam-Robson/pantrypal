@@ -1,0 +1,29 @@
+.menu-link {
+  color: var(--cyan);
+}
+
+.x-icon {
+  z-index: 99;
+}
+
+.floating-in {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: .25em;
+  transform: translateX(-50%);
+  animation: floatIn 2s forwards;
+}
+
+@keyframes floatIn {
+  0% {
+    top: -50px;
+    opacity: 0;
+  }
+  100% {
+    top: -15px; 
+    opacity: 1;
+  }
+}

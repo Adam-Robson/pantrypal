@@ -1,0 +1,8 @@
+.tutorial {
+  background-color: var(--cream);
+  color: var(--jet);
+}
+
+.tutorial-btn {
+  background-color: rgba(55, 51, 51, 0.191);
+}
