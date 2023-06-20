@@ -53,7 +53,7 @@ export default function Header() {
               onPlaceSelected={ onPlaceSelected }
               types={ ['(cities)'] }
               className="search p-2 w-1/2"
-              placeholder="enter address"
+              placeholder="enter city"
             />
 
             <button
