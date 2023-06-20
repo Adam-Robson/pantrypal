@@ -52,7 +52,6 @@ export default function useFetchUtils() {
 
   async function fetchLocalOrgs(userLocation) {
     try {
-      setLoading(true);
       const url = process.env.REACT_APP_FLY_API_URL + '/organizations?' + new URLSearchParams({
         cityName: userLocation.city,
         stateAbrv: userLocation.state,
@@ -68,13 +67,11 @@ export default function useFetchUtils() {
             'lat': response.results[0].geometry.location.lat(),
             'lng': response.results[0].geometry.location.lng(),
           };
-          const freshOrgs = [{ ...updatedLocalOrgs }, { org }];
-          setLoading(false);
-          setOrganizations(freshOrgs);
-          // updatedLocalOrgs.push(org);
+          updatedLocalOrgs.push(org);
           // eslint-disable-next-line no-unused-vars
         }).catch(error => { return; });
       }));
+      setOrganizations(updatedLocalOrgs);
     } catch (err) {
       console.error('3. This error was generated from fetch utils: ' + err);
     }
