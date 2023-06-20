@@ -10,11 +10,13 @@ import './stylesheets/header.css';
 import useMapUtils from '../hooks/useMapUtils'; 
 
 export default function Header() {
-  const { isOpen, setIsOpen, search, setSearch } = useGoogleContext();
+  const { isOpen, setIsOpen, search, setSearch, setActiveMarkerId, setOrganizations } = useGoogleContext();
   const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
   const { recenterMap } = useMapUtils();
 
   function handleSearch() {
+    setActiveMarkerId(null);
+    setOrganizations([]);
     geoCodeLocation('address', search.formatted_address)
       .then((response) => {
         recenterMap({ lat: search.geometry.location.lat(), lng: search.geometry.location.lng() });
