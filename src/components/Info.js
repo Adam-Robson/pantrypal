@@ -2,6 +2,7 @@ import React from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import useMapUtils from '../hooks/useMapUtils';
 import CardArrows from './CardArrows';
+import './stylesheets/floatcard.css';
 
 export default function Info() {
   const { handleRoute } = useMapUtils();
