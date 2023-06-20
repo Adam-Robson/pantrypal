@@ -10,7 +10,7 @@ import './stylesheets/header.css';
 import useMapUtils from '../hooks/useMapUtils'; 
 
 export default function Header() {
-  const { isOpen, setIsOpen, search, setSearch, loading, setLoading } = useGoogleContext();
+  const { isOpen, setIsOpen, search, setSearch, setLoading } = useGoogleContext();
   const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
   const { recenterMap } = useMapUtils();
 
