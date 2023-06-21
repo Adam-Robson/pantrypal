@@ -1,36 +1,68 @@
-/* eslint-disable no-unused-vars */
 
-import { DirectionsService } from '@react-google-maps/api';
+import { GoogleMap, DirectionsRenderer } from '@react-google-maps/api';
 import { useGoogleContext } from '../context/GoogleContext';
-import MapContainer from './MapContainer';
+import React, { useCallback } from 'react';
+import mapStyles from '../assets/styles/map';
+import FloatCard from './FloatCard';
+import Markers from './Markers';
 
 export default function Map() {
   const {
-    origin,
-    destination,
+    setMap,
+    activeMarkerId,
+    organizations,
     directions,
-    duration,
-    distance,
+    myLatLng,
+    isDetailsPage,
+    isLoaded,
   } = useGoogleContext();
 
+  const onLoad = useCallback(
+    function onLoad(map) {
+      const bounds = new window.google.maps.LatLngBounds();
+      bounds.extend({
+        lat: 37.773972,
+        lng: -122.431297
+      });
+      setMap(map);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setMap]);
+
+  const onUnmount = useCallback(() => {
+    setMap(null);
+  }, [setMap]);
+
   return (
-    <div className="h-full">
-      <div className="h-full w-full mx-auto">
-        <MapContainer />
+    <>
+      {
+        isLoaded && <GoogleMap
+          mapContainerClassName="map"
+          mapContainerStyle={{ height: '75%', width: '100%' }}
+          zoom={12}
+          options={{
+            styles: mapStyles,
+            streetViewControl: false,
+            mapTypeControl: false,
+            fullscreenControl: false,
+            panControl: true
 
-        <p>{distance && `Distance: ${distance}`}</p>
-        <p>{duration && `Duration: ${duration}`}</p>
+          }}
+          center={myLatLng}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
+          className="min-w-full"
+        >
+          {
+            organizations.length > 0 && !isDetailsPage &&
+            <Markers organizations={organizations} myLatLng={myLatLng} />
+          }
 
-        {directions && (
-          <DirectionsService
-            options={{
-              destination,
-              origin,
-              travelMode: 'DRIVING',
-            }}
-          />
-        )}
-      </div>
-    </div>
+          {/* Show active card for selected organization */}
+          {activeMarkerId !== null && organizations.length > 0 && <FloatCard />}
+
+          {directions && <DirectionsRenderer directions={directions} />}
+        </GoogleMap>
+      }
+    </>
   );
 }
