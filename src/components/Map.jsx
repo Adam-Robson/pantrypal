@@ -44,7 +44,8 @@ export default function Map() {
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
-            panControl: true
+            panControl: true,
+            zoomControl: false
 
           }}
           center={myLatLng}

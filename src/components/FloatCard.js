@@ -1,7 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import Info from './Info';
-import './stylesheets/floatcard.css';
 
 /** 
  * createPortal takes two arguments. 

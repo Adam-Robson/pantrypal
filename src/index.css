@@ -68,6 +68,11 @@ button:focus-visible {
   background-color: rgba(41, 39, 39, 0.191);
 }
 
+.icon {
+  z-index: 99;
+}
+
+
 /* styles for light mode */
 @media (prefers-color-scheme: light) {
   :root {
@@ -101,10 +106,10 @@ button:focus-visible {
     color: var(--jet);
   }
 
-  .info {
+  /* .info {
     background-color: var(--cream);
     color: var(--jet);
-  }
+  } */
 /* 
   .header {
     background-color: var(--cream);

@@ -42,11 +42,11 @@ export default function Header() {
               <FiMenu size={24} />
             </button>
         }
-        <section className="container fixed flex flex-col items-center">
+        <section className="container fixed flex flex-col items-center p-2">
           <img
             src={flat}
             alt="pantry pals logo"
-            className="max-w-xs sm:max-w-md md:max-w-md m-4 sm:m-6"
+            className="w-full max-w-xs sm:max-w-md md:max-w-md m-4 sm:m-6"
           />
           <div className="container flex justify-center">
             <Autocomplete

@@ -34,11 +34,11 @@ export default function CardArrows() {
     <>
       {
         organizations.length > 1 && (
-          <div className="w-full flex justify-around">
-            <div className="cursor-pointer" onClick={handlePreviousClick}>
+          <div className="container w-full">
+            <div className="absolute left-2" onClick={handlePreviousClick}>
               <FiChevronLeft />
             </div>
-            <div className="cursor-pointer" onClick={handleNextClick}>
+            <div className="absolute right-2" onClick={handleNextClick}>
               <FiChevronRight />
             </div>
           </div>
