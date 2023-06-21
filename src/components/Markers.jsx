@@ -11,6 +11,7 @@ export default function Markers({ organizations }) {
 
   useEffect(() => {
     setIsMounted(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { markerClick } = useMapUtils();

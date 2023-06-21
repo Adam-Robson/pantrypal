@@ -23,6 +23,8 @@ export function GoogleProvider({ children }) {
   const [tutorial, setTutorial] = useState(false);
   const [isDetailsPage, setIsDetailsPage] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+  const [floatCard, setFloatCard] = useState(false);
 
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
@@ -63,6 +65,10 @@ export function GoogleProvider({ children }) {
         setIsDetailsPage,
         currentPage,
         setCurrentPage,
+        isMounted,
+        setIsMounted,
+        floatCard,
+        setFloatCard,
         error,
         setError,
         isLoaded,

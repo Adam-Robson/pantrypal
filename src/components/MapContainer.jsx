@@ -13,6 +13,7 @@ export default function Map() {
     organizations,
     directions,
     myLatLng,
+    isDetailsPage,
     isLoaded,
   } = useGoogleContext();
 
@@ -38,13 +39,21 @@ export default function Map() {
           mapContainerClassName="map"
           mapContainerStyle={{ height: '75%', width: '100%' }}
           zoom={12}
-          options={{ styles: mapStyles }}
+          options={{ 
+            styles: mapStyles, 
+            streetViewControl: false,
+            mapTypeControl: false,
+            fullscreenControl: false,
+            panControl: true
+
+          }}
           center={myLatLng}
           onLoad={onLoad}
           onUnmount={onUnmount}
           className="min-w-full"
         >
-          { organizations.length > 0 &&
+          { 
+            organizations.length > 0 && !isDetailsPage &&
             <Markers organizations={organizations} myLatLng={myLatLng} />
           }
 
