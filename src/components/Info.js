@@ -4,6 +4,7 @@ import useMapUtils from '../hooks/useMapUtils';
 import CardArrows from './CardArrows';
 import { FiX } from 'react-icons/fi';
 
+
 export default function Info() {
   const { handleRoute } = useMapUtils();
   const {

@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="header w-full h-1/4 flex flex-col justify-evenly items-center mx-auto p-4">
+      <header className="header w-full min-h-fit h-52 flex flex-col justify-around items-center mx-auto p-4">
         {
           isOpen ?
             <Menu isOpen={ isOpen } setIsOpen={ setIsOpen } />
@@ -42,13 +42,13 @@ export default function Header() {
               <FiMenu size={ 24 } />
             </button>
         }
-        <section className="mx-auto">
+        <section className="min-w-full mx-auto fixed flex flex-col items-center">
           <img
             src={ flat }
             alt="pantry pals logo"
             className="max-w-xs sm:max-w-sm w-full m-4 sm:m-6"
           />
-          <div className="w-full flex justify-evenly">
+          <div className="w-5/6 min-h-fit flex justify-around">
             <Autocomplete
               apiKey={ process.env.REACT_APP_GOOGLE_MAPS_API_KEY }
               onPlaceSelected={ onPlaceSelected }
