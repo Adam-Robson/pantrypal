@@ -14,13 +14,9 @@ export default function useFetchUtils() {
     return await geocoder.geocode(query, function(result, status) {
       if (status === window.google.maps.GeocoderStatus.OK) {
         return result;
-      } else { 
-        console.error('Geocoder error: ' + status);
-        return; 
-      }
+      } else { return; }
     });
   }
-
 
   function getCityAndState(data) {
     const addressComponent = data.results[0].address_components;
@@ -30,7 +26,7 @@ export default function useFetchUtils() {
     for (let i = 0; i < addressComponent.length; i++) {
       const addressPortion = addressComponent[i];
       if (addressPortion.types.includes('locality')) {
-        city = addressPortion.short_name;
+        city = addressPortion.long_name;
       } else if (addressPortion.types.includes('administrative_area_level_1')) {
         state = addressPortion.short_name;
       }
