@@ -61,7 +61,7 @@ function Page1() {
       <h2 className="text-2xl text-black font-semibold mt-4 mb-8 subpixel-antialiased">Welcome!</h2>
       <p className="mx-20 text-black subpixel-antialiased">Find free food options in your area so you can concentrate on your education.</p>
       <div className="relative left-96 bottom-40 mx-4 subpixel-antialiased">
-        <FiChevronRight />
+        <FiChevronRight size={ 24 } />
       </div>
     </section>
   );
@@ -71,13 +71,13 @@ function Page2() {
   return (
     <section className="h-1/3">
       <article className="relative top-40 mx-4 subpixel-antialiased">
-        <FiChevronLeft />
+        <FiChevronLeft size={ 24 } />
       </article>
       <img className="max-w-xs max-h-40 mx-auto" src={ page2 } alt="icon" />
       <h2 className="text-2xl text-black font-semibold mt-4 mb-8 subpixel-antialiased">First things First</h2>
       <p className="mx-20 text-black subpixel-antialiased">To find food pantries in your local area, please enable location sharing services.</p>
       <article className="relative left-96 bottom-40 mx-4 subpixel-antialiased">
-        <FiChevronRight />
+        <FiChevronRight size={ 24 } />
       </article>
     </section>
   );
@@ -87,7 +87,7 @@ function Page3() {
   return (
     <section className="h-1/3">
       <article className="relative top-40 mx-4 subpixel-antialiased">
-        <FiChevronLeft />
+        <FiChevronLeft size={ 24 } />
       </article>
       <img className="max-w-xs max-h-40 mx-auto" src={ page3 } alt="icon" />
       <h2 className="text-2xl text-black font-semibold mt-4 mb- subpixel-antialiased">How it Works</h2>
