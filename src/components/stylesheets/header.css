@@ -5,7 +5,6 @@ header {
 
 /* search input */
 .search {
-  color: var(--cream);
   box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
   -webkit-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);
   -moz-box-shadow: 1px 2px 16px -4px rgba(0,0,0,0.43);

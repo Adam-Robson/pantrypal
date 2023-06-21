@@ -19,9 +19,7 @@
   --red: #c8553dff;
   --jet: #363537;
   --cream: #FDF6F4;
-  color-scheme: light dark;
-  background-color: var(--cream);
-  color: var(--jet);
+  color-scheme: dark light;
 
   font-family: 'Raleway Variable', system-ui, Helvetica, Arial, sans-serif;
   text-align: center;
@@ -34,6 +32,7 @@
 
 html,
 body {
+  background-color: var(--cream);
   margin: 0 auto;
   min-width: 100vw;
   max-height: 100vh;
@@ -52,6 +51,7 @@ a:hover {
 }
 
 button {
+  color: var(--jet);
   border: 1px solid transparent;
   transition: border-color 0.5s;
   cursor: pointer;
@@ -105,11 +105,10 @@ button:focus-visible {
     background-color: var(--cream);
     color: var(--jet);
   }
-
+/* 
   .header {
     background-color: var(--cream);
-  }
-
+  } */
 }
 
 
