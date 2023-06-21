@@ -3,10 +3,9 @@ import { useLoadScript } from '@react-google-maps/api';
 
 const GoogleContext = createContext();
 
-const libraries = ['places'];
+const placesLibrary = ['places'];
 
 export function GoogleProvider({ children }) {
-
   const [map, setMap] = useState(null);
   const [search, setSearch] = useState('');
   const [directions, setDirections] = useState(null);
@@ -29,7 +28,7 @@ export function GoogleProvider({ children }) {
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries,
+    libraries: placesLibrary,
   });
 
   return (
