@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="container min-h-fit header h-1/4 max-w-full flex flex-col justify-center items-center">
+      <header className="container min-h-fit header h-1/3 max-w-full flex flex-col justify-center items-center">
         {
           isOpen ?
             <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -46,7 +46,7 @@ export default function Header() {
           <img
             src={flat}
             alt="pantry pals logo"
-            className="w-full max-h-max max-w-max m-4 sm:m-6"
+            className="w-40 sm:w-52 m-4 sm:m-6"
           />
           <div className="container flex justify-center">
             <Autocomplete
