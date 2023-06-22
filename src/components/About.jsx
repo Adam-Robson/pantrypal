@@ -9,32 +9,26 @@ export default function About() {
   return (
     <section className="h-full w-full">
       <Link className="menu-link text-sm md:text-lg font-semibold absolute right-10 top-4" to='/'>home</Link>
-      <p className="about text-4xl sm:text-5xl my-12 md:my-20 subpixel-antialiased">About</p>
+      <p className="about text-4xl sm:text-5xl my-10 md:my-20 subpixel-antialiased">About</p>
       <article className="flex flex-col sm:flex-row justify-start sm:justify-evenly items-center sm:items-center">
-        <div className="">
-          <Link to="">
-            <img className="h-40 rounded-full" src={ robert } alt="image of robert adkins" />
-          </Link>
-          <h2 className="subpixel-antialiased">Robert Adkins</h2>
-        </div>
-        <div>
-          <Link to="https://github.com/GeorgeCloud">
-            <img className="h-40 rounded-full" src={ george } alt="image of george ceja" />
-          </Link>
-          <h2>George Ceja</h2>
-        </div>
-        <div>
-          <Link to="https://github.com/Adam-Robson">
-            <img className="h-40 rounded-full" src={ adam } alt="image of adam robson" />
-          </Link>
-          <h2>Adam Robson</h2>
-        </div>
-        <div>
-          <Link to="">
-            <img className="h-40 rounded-full" src={ joel } alt="image of joel yap" />
-          </Link>
-          <h2>Joel Yap</h2>
-        </div>
+        <Link className="animate__fadeIn p-2" to="https://www.linkedin.com/in/robertladkins/">
+          <img className="h-40 rounded-full" src={ robert } alt="image of robert adkins" />
+        
+          <label className="label text-2xl subpixel-antialiased">Robert Adkins</label>
+        </Link>
+        <Link className="animate__fadeIn p-2" to="https://www.linkedin.com/in/george-ceja/">
+          <img className="img_ h-40 rounded-full" src={ george } alt="image of george ceja" />
+        
+          <label className="label text-2xl subpixel-antialiased">George Ceja</label>
+        </Link>
+        <Link className="animate__fadeIn p-2" to="https://www.linkedin.com/in/adamrayrobson/">
+          <img className="img_ h-40 rounded-full" src={ adam } alt="image of adam robson" />
+          <label className="label text-2xl subpixel-antialiased">Adam Robson</label>
+        </Link>
+        <Link className="animate__fadeIn p-2" to="https://www.linkedin.com/in/yapjoel/">
+          <img className="img_ h-40 rounded-full" src={ joel } alt="image of joel yap" />
+          <label className="label text-2xl subpixel-antialiased">Joel Yap</label>
+        </Link>
       </article>
     </section>
   );
