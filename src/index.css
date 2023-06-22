@@ -47,7 +47,6 @@ a {
 
 a:hover {
   color: var(--gold);
-  text-decoration: underline;
 }
 
 button {
@@ -72,7 +71,6 @@ button:focus-visible {
   z-index: 99;
 }
 
-
 /* styles for light mode */
 @media (prefers-color-scheme: light) {
   :root {
@@ -86,7 +84,6 @@ button:focus-visible {
   }
   a:hover {
     color: var(--gold);
-    text-decoration: underline;
   }
   button {
     color: var(--jet);
@@ -132,4 +129,13 @@ button:focus-visible {
   box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
   -webkit-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
   -moz-box-shadow: 1px 3px 16px -4px rgba(0,0,0,0.43);
+}
+
+label {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.animate__fadeIn:hover .label {
+  opacity: 1;
 }

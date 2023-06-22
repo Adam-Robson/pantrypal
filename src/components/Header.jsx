@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
-import flat from '../assets/logo/stacked_logo.svg';
+import flat from '../assets/logo/flat_logo.svg';
 import { FiSearch, FiMenu } from 'react-icons/fi';
 import useFetchUtils from '../hooks/useFetchUtils';
 import Autocomplete from 'react-google-autocomplete';
@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="container min-h-fit header h-1/4 max-w-full flex flex-col justify-center items-center">
+      <header className="container min-h-fit header h-1/3 max-w-full flex flex-col justify-center items-center">
         {
           isOpen ?
             <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -43,10 +43,11 @@ export default function Header() {
             </button>
         }
         <section className="container fixed flex flex-col items-center p-2">
+          
           <img
             src={flat}
             alt="pantry pals logo"
-            className="w-full max-h-max max-w-max m-4 sm:m-6"
+            className="max-w-sm w-72 sm:w-80 md:w-96  m-4 sm:m-6"
           />
           <div className="container flex justify-center">
             <Autocomplete
