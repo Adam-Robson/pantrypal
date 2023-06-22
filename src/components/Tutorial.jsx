@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGoogleContext } from '../context/GoogleContext';
 import logo from '../assets/logo/stacked_logo.svg';
-import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiX } from 'react-icons/fi';
 import page1 from '../assets/images/icons/tut_1.png';
 import page2 from '../assets/images/icons/tut_2.png';
 import page3 from '../assets/images/icons/tut_3.png';
@@ -18,7 +18,7 @@ export default function Tutorial() {
     <Page2 key={ Page2 } />,
     <Page3 key={ Page3 } />,
   ];
-
+ 
   function pageOne() {
     if (currentPage !== 0) {
       setCurrentPage(0);
@@ -60,9 +60,6 @@ function Page1() {
       <img className="max-w-xs max-h-40 mx-auto" src={ page1 } alt="icon" />
       <h2 className="text-2xl text-black font-semibold mt-4 mb-8 subpixel-antialiased">Welcome!</h2>
       <p className="mx-20 text-black subpixel-antialiased">Find free food options in your area so you can concentrate on your education.</p>
-      <div className="relative left-96 bottom-40 mx-4 subpixel-antialiased">
-        <FiChevronRight size={ 24 } />
-      </div>
     </section>
   );
 }
@@ -70,15 +67,9 @@ function Page1() {
 function Page2() {
   return (
     <section className="h-1/3">
-      <article className="relative top-40 mx-4 subpixel-antialiased">
-        <FiChevronLeft size={ 24 } />
-      </article>
       <img className="max-w-xs max-h-40 mx-auto" src={ page2 } alt="icon" />
       <h2 className="text-2xl text-black font-semibold mt-4 mb-8 subpixel-antialiased">First things First</h2>
       <p className="mx-20 text-black subpixel-antialiased">To find food pantries in your local area, please enable location sharing services.</p>
-      <article className="relative left-96 bottom-40 mx-4 subpixel-antialiased">
-        <FiChevronRight size={ 24 } />
-      </article>
     </section>
   );
 }
@@ -86,9 +77,6 @@ function Page2() {
 function Page3() {
   return (
     <section className="h-1/3">
-      <article className="relative top-40 mx-4 subpixel-antialiased">
-        <FiChevronLeft size={ 24 } />
-      </article>
       <img className="max-w-xs max-h-40 mx-auto" src={ page3 } alt="icon" />
       <h2 className="text-2xl text-black font-semibold mt-4 mb- subpixel-antialiased">How it Works</h2>
       <p className="mx-20 text-black subpixel-antialiased">Find your location, view pantry details, and choose the right one for your needs.</p>

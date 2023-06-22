@@ -8,7 +8,6 @@ import './stylesheets/floatcard.css';
 export default function Info() {
   const { handleRoute } = useMapUtils();
   const {
-    setFloatCard,
     setIsDetailsPage,
     activeMarkerId,
     organizations,
@@ -18,7 +17,7 @@ export default function Info() {
 
   return (
     <section className="container info w-full mx-auto max-w-xs md:max-w-md rounded-xl absolute left-0 right-0 bottom-10">
-      <button className="icon absolute top-2 right-4" onClick={ () => setFloatCard(false) }>
+      <button className="icon absolute top-2 right-4">
         <FiX size={ 16 } />
       </button>
       <article className="container p-6">
