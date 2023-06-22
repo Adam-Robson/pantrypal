@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
-import flat from '../assets/logo/flat_logo.svg';
+import flat from '../assets/logo/stacked_logo.svg';
 import { FiSearch, FiMenu } from 'react-icons/fi';
 import useFetchUtils from '../hooks/useFetchUtils';
 import Autocomplete from 'react-google-autocomplete';
@@ -46,7 +46,7 @@ export default function Header() {
           <img
             src={flat}
             alt="pantry pals logo"
-            className="w-full max-w-xs sm:max-w-md md:max-w-md m-4 sm:m-6"
+            className="w-full max-h-max max-w-max m-4 sm:m-6"
           />
           <div className="container flex justify-center">
             <Autocomplete
