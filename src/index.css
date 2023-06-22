@@ -40,7 +40,7 @@ body {
 }
 
 a {
-  color: var(--jet);
+  color: var(--cyan);
   text-decoration: none;
   cursor: pointer;
 }
