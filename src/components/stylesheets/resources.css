@@ -1,5 +1,5 @@
 .resources {
-  color: var(--jet);
+  color: var(--cyan);
 }
 
 .resources:hover {
@@ -9,4 +9,13 @@
 
 .re-title {
   color: var(--gold);
+}
+
+.america {
+  color: var(--cyan);
+}
+
+.america:hover {
+  color: var(--gold);
+  text-decoration: underline;
 }

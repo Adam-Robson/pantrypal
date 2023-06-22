@@ -13,6 +13,7 @@ export default function OrgDetailsPage({ organization }) {
     onUnmount,
   } = useGoogleContext();
 
+
   useEffect(() => {
     setIsMounted(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,19 +24,18 @@ export default function OrgDetailsPage({ organization }) {
       {isLoaded && (
         <GoogleMap
           mapContainerClassName="map"
-          mapContainerStyle={{ height: '500px', width: '1000px' }}
+          mapContainerStyle={ { height: '325px', width: '100%' }}
           zoom={15}
           options={{
             styles: mapStyles,
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
-
+            zoomControl: false
           }}
           center={organization.position}
           onLoad={onLoad}
           onUnmount={onUnmount}
-          className="min-w-full"
         >
           {isMounted && <Marker position={organization.position} options={{ icon: pin }} />}
         </GoogleMap>

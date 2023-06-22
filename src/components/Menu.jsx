@@ -16,7 +16,7 @@ export default function Menu() {
           isOpen ?
             <>
               <button 
-                className="x-icon absolute top-4 right-4"
+                className="icon absolute top-4 right-4"
                 onClick={ () => setIsOpen(false) }
               >
                 <FiMenu size={ 24 } className={ ({ rotated }) => rotated ? 'rotated' : ''
