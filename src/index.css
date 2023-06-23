@@ -67,7 +67,8 @@ button:focus-visible {
   background-color: rgba(41, 39, 39, 0.191);
 }
 
-.icon {
+.icon,
+.detail {
   z-index: 99;
 }
 

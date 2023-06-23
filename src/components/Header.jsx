@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="container min-h-fit header h-1/3 max-w-full flex flex-col justify-center items-center">
+      <header className="container min-h-fit header h-1/4 max-w-full flex flex-col justify-center items-center">
         {
           isOpen ?
             <Menu isOpen={isOpen} setIsOpen={setIsOpen} />

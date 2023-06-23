@@ -8,7 +8,7 @@ const placesLibrary = ['places'];
 export function GoogleProvider({ children }) {
   const [map, setMap] = useState(null);
   const [search, setSearch] = useState('');
-  const [directions, setDirections] = useState(null);
+  const [directions, setDirections] = useState(false);
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [duration, setDuration] = useState(null);

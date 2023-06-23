@@ -27,7 +27,7 @@ export default function Resources() {
             </Link>
             <h3 className="col-start-2 col-span-2">The Emergency Food Assistance Program</h3>
             <p className="col-start-4 col-span-2">
-                Provides USDA commodities to families in need of short-term hunger reflief through emergency food providers linke food banks.
+              Provides USDA commodities to families in need of short-term hunger reflief through emergency food providers linke food banks.
             </p>
           </li>
           <li className="row-start-3 row-span-1 col-start-1 col-span-5 grid grid-cols-5 gap-2">
@@ -36,7 +36,7 @@ export default function Resources() {
             </Link>
             <h3 className="col-start-2 col-span-2">The Commoditiy Supplemental Food Program</h3>
             <p className="col-start-4 col-span-2">
-                Provides food assistance for low-income seniors with a monthly package of healthy USDA commodities.
+              Provides food assistance for low-income seniors with a monthly package of healthy USDA commodities.
             </p>
           </li>
           <li className="row-start-4 row-span-1 col-start-1 col-span-5 grid grid-cols-5 gap-2">
@@ -45,7 +45,7 @@ export default function Resources() {
             </Link>
             <h3 className="col-start-2 col-span-2">The Child and Adult Care Food Program</h3>
             <p className="col-start-4 col-span-2">
-                Provides nutritious meals and snacks to children and adults in designated child and adult care centers.
+              Provides nutritious meals and snacks to children and adults in designated child and adult care centers.
             </p>
           </li>
           <li className="row-start-5 row-span-1 col-start-1 col-span-5 grid grid-cols-5 gap-2">
@@ -55,7 +55,7 @@ export default function Resources() {
             </Link>
             <h3 className="col-start-2 col-span-2">The National School Lunch Program</h3>
             <p className="col-start-4 col-span-2">
-                Provides nutritionally balanced lunch to qualified children each school day. 
+              Provides nutritionally balanced lunch to qualified children each school day. 
             </p>
           </li>
           <li className="row-start-6 row-span-1 col-start-1 col-span-5 grid grid-cols-5 gap-2">
@@ -65,7 +65,7 @@ export default function Resources() {
             </Link>
             <h3 className="col-start-2 col-span-2"> The School Breakfast Program</h3>
             <p className="col-start-4 col-span-2">
-                Provides nutritionally balanced breakfast to qualified children each school day.
+              Provides nutritionally balanced breakfast to qualified children each school day.
             </p>
           </li>
           <li className="row-start-7 row-span-1 col-start-1 col-span-5 grid grid-cols-5 gap-2">
@@ -74,7 +74,7 @@ export default function Resources() {
             </Link>
             <h3 className="col-start-2 col-span-2">The Summer Food Service Program</h3>
             <p className="col-start-4 col-span-2">
-                Provides free meals and snacks to low-income children during the summer months.
+              Provides free meals and snacks to low-income children during the summer months.
             </p>
           </li>
           <li className="row-start-8 row-span-1 col-start-1 col-span-5 grid grid-cols-5 gap-2">
@@ -83,7 +83,7 @@ export default function Resources() {
             </Link>
             <h3 className="col-start-2 col-span-2">Women Infants and Children</h3>
             <p className="col-start-4 col-span-2">
-                Provides nutritious foods and nutrition education for low-income, at risk women, infants.
+              Provides nutritious foods and nutrition education for low-income, at risk women, infants.
             </p>
           </li>
         </ul>
