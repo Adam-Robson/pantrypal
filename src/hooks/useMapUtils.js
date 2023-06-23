@@ -1,6 +1,10 @@
 import { useGoogleContext } from '../context/GoogleContext';
 
 export default function useMapUtils() {
+  const WALKING_VIEW = 17;
+  const DRIVING_VIEW = 13;
+  const BIRDS_EYE_VIEW = 11;
+
   const {
     map,
     setActiveMarkerId,
@@ -11,12 +15,12 @@ export default function useMapUtils() {
   } = useGoogleContext();
 
   function markerClick(org, id) {
-    setFocus(org.position);
+    setFocus(org.position, WALKING_VIEW);
     setActiveMarkerId(id);
   }
 
-  function setFocus(position) {
-    map.setZoom(17);
+  function setFocus(position, zoomLevel) {
+    map.setZoom(zoomLevel);
     recenterMap(position);
   }
 
@@ -25,8 +29,7 @@ export default function useMapUtils() {
   }
 
   function handleRoute(destination) {
-    // eslint-disable-next-line no-undef
-    const directionsService = new google.maps.DirectionsService();
+    const directionsService = new window.google.maps.DirectionsService();
     directionsService.route({
       origin,
       destination,
@@ -42,5 +45,5 @@ export default function useMapUtils() {
     });
   }
 
-  return { markerClick, setFocus, recenterMap, handleRoute };
+  return { markerClick, setFocus, recenterMap, handleRoute, WALKING_VIEW, DRIVING_VIEW, BIRDS_EYE_VIEW };
 }

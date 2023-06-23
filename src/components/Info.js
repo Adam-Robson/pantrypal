@@ -10,15 +10,16 @@ export default function Info() {
   const {
     setIsDetailsPage,
     activeMarkerId,
-    organizations,
+    setActiveMarkerId,
+    organizations
   } = useGoogleContext();
 
   const organization = organizations[activeMarkerId];
 
   return (
     <section className="container info w-full mx-auto max-w-xs md:max-w-md rounded-xl absolute left-0 right-0 bottom-10">
-      <button className="icon absolute top-2 right-4">
-        <FiX size={ 16 } />
+      <button className="icon absolute top-2 right-4" onClick={ () => setActiveMarkerId(null) }>
+        <FiX size={ 18 } />
       </button>
       <article className="container p-6">
         <p className="min-h-fit w-full text-lg sm:text-xl md:text-2xl lg:text-3xl text-left h-12 md:h-16 mb-4 subpixel-antialiased">
@@ -38,18 +39,18 @@ export default function Info() {
 
         <div className="container max-w-fit mx-auto grid grid-cols-3 gap-2">
           <button
-            className="float-btn rounded-lg py-2 px-4 flex justify-center items-center text-sm lg:text-lg"
+            className="float-btn rounded-lg py-2 px-4 mt-6 flex justify-center items-center text-sm lg:text-lg"
             onClick={() => handleRoute(organization.address)}
           >
             Directions
           </button>
-          <button className="float-btn rounded-lg py-2 px-4 flex justify-center items-center text-sm lg:text-lg">
+          <button className="float-btn rounded-lg py-2 px-4 mt-6 flex justify-center items-center text-sm lg:text-lg">
             <a href={'tel:' + organization.phone_num}>
               Call
             </a>
           </button>
           <button 
-            className="float-btn rounded-lg py-2 px-4 flex justify-center items-center text-sm lg:text-lg"
+            className="float-btn rounded-lg py-2 px-4 mt-6 flex justify-center items-center text-sm lg:text-lg"
             onClick={ () => setIsDetailsPage(true) }
           >
             Details

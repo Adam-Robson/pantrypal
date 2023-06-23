@@ -3,7 +3,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import useMapUtils from '../hooks/useMapUtils';
 
 export default function CardArrows() {
-  const { setFocus } = useMapUtils();
+  const { WALKING_VIEW, setFocus } = useMapUtils();
   const { activeMarkerId, setActiveMarkerId, organizations } = useGoogleContext();
 
   function handleNextClick() {
@@ -15,7 +15,7 @@ export default function CardArrows() {
     }
 
     setActiveMarkerId(nextMarkerId);
-    setFocus(organizations[nextMarkerId].position);
+    setFocus(organizations[nextMarkerId].position, WALKING_VIEW);
   }
 
   function handlePreviousClick() {
@@ -27,7 +27,9 @@ export default function CardArrows() {
     }
 
     setActiveMarkerId(nextMarkerId);
-    setFocus(organizations[nextMarkerId].position);
+
+    const activeOrganization = organizations[nextMarkerId];
+    setFocus(activeOrganization.position, WALKING_VIEW);
   }
 
   return (
@@ -38,6 +40,7 @@ export default function CardArrows() {
             <div className="absolute left-2" onClick={handlePreviousClick}>
               <FiChevronLeft />
             </div>
+          
             <div className="absolute right-2" onClick={handleNextClick}>
               <FiChevronRight />
             </div>
