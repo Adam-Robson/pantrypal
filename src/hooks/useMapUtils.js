@@ -1,9 +1,9 @@
 import { useGoogleContext } from '../context/GoogleContext';
 
 export default function useMapUtils() {
-  const WALKING_VIEW = 17;
-  const DRIVING_VIEW = 13;
-  const BIRDS_EYE_VIEW = 11;
+  const WALKING_VIEW = 14; // most zoomed in
+  const DRIVING_VIEW = 12; // default view
+  const BIRDS_EYE_VIEW = 10; // most zoomed out
 
   const {
     map,

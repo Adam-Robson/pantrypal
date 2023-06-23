@@ -6,8 +6,9 @@ import { FiX } from 'react-icons/fi';
 import './stylesheets/floatcard.css';
 
 export default function Info() {
-  const { handleRoute } = useMapUtils();
+  const { handleRoute, setFocus, DRIVING_VIEW } = useMapUtils();
   const {
+    myLatLng,
     setIsDetailsPage,
     activeMarkerId,
     setActiveMarkerId,
@@ -16,16 +17,22 @@ export default function Info() {
 
   const organization = organizations[activeMarkerId];
 
+  function handleCloseFloatCard() {
+    setActiveMarkerId(null);
+    setFocus(myLatLng, DRIVING_VIEW);
+  }
+
+
   return (
-    <section className="container info w-full mx-auto max-w-xs md:max-w-md rounded-xl absolute left-0 right-0 bottom-10">
-      <button className="icon absolute top-2 right-4" onClick={ () => setActiveMarkerId(null) }>
-        <FiX size={ 18 } />
+    <section className="container info w-full mx-auto max-w-xs md:max-w-md rounded-xl absolute left-0 right-0 bottom-4">
+      <button className="icon absolute top-2 right-4" onClick={ handleCloseFloatCard }>
+        <FiX size={ 16 } />
       </button>
-      <article className="container p-6">
-        <p className="min-h-fit w-full text-lg sm:text-xl md:text-2xl lg:text-3xl text-left h-12 md:h-16 mb-4 subpixel-antialiased">
+      <article className="container p-4">
+        <p className="min-h-min w-full text-lg sm:text-xl md:text-2xl lg:text-3xl text-left md:h-16 mb-2 subpixel-antialiased">
           { organization.name }
         </p>
-        <div className="container min-h-fit mt-4">
+        <div className="container min-h-fit mt-2">
           <p className="text-left text-sm sm:text-lg md:text-xl subpixel-antialiased">
             {organization.address}
           </p>
