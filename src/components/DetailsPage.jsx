@@ -25,11 +25,11 @@ export default function Details() {
       <section className="max-w-3xl min-h-full mx-auto flex flex-col justify-between items-center">
         <article className="container">
           <OrgDetailsBanner organization={organization} />
-          <button onClick={() => setIsDetailsPage(false)} className="absolute top-4 right-10 sm:right-20 md:right-40 lg:right-60 xl:right-80">
+          <button onClick={() => setIsDetailsPage(false)} className="absolute top-4 right-6">
             <FiX size={24} />
           </button>
         </article>
-        <article className="container flex flex-col flex-1">
+        <article className="container grow">
           <div className="container detail-wrap max-w-xl w-full flex justify-start">
             {
               organization.image_url !== null ? <img className="detail-img rounded-2xl relative bottom-6 ml-4" src={organization.image_url} alt="image of organization" /> : <img className="detail-img rounded-2xl relative bottom-6" src={stacked} alt="image of pantry pal logo" />
@@ -44,7 +44,7 @@ export default function Details() {
               <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">
                 {organization.city + ' ' + organization.state + ' ' + organization.zip_code}
               </p>
-              <p className="detail text-sm md:text-lg font-normal subpixel-antialiased">{organization.phone_num}</p>
+              <p className="detail text-sm font-normal subpixel-antialiased">{organization.phone_num}</p>
               {organization.website_url ? <button className="detail-btn" to={organization.website_url}>Website</button> : null}
 
               <div className="flex justify-around w-full mt-6">
@@ -54,9 +54,9 @@ export default function Details() {
             </div>
           </div>
 
-          <div className="container flex-1">
+          <div className="container">
             <div className="text-left w-full">
-              <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4 my-4">
+              <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4">
               Description
               </h2>
               <p className="detail text-sm md:text-lg subpixel-antialiased mx-4">{organization.desc}</p>
@@ -66,7 +66,7 @@ export default function Details() {
           <div className="max-w-xl w-full text-left">
             {
               (organization.facebook_url || organization.twitter_url || organization.instagram_url) ?
-                <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4 my-4">
+                <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4">
                 Social Links
                 </h2> : null
             }

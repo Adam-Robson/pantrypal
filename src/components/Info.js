@@ -22,7 +22,6 @@ export default function Info() {
     setFocus(myLatLng, DRIVING_VIEW);
   }
 
-
   return (
     <section className="container info w-full mx-auto max-w-xs md:max-w-md rounded-xl absolute left-0 right-0 bottom-4">
       <button className="icon absolute top-2 right-4" onClick={ handleCloseFloatCard }>
