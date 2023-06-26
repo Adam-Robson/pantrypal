@@ -8,30 +8,25 @@
   - [Overview](#overview)
   - [Tech Stack](#tech-stack)
   - [Features](#features)
+  - [Setup](#setup)
   - [Contact](#contact)
   - [Acknowledgements](#acknowledgements)
   - [MIT License](#mit-license)
 
 ## Description
 
-**This is an extremely important component of the README.**
-
    This project was built as part of the Co.Lab 19 Cohort in 2023. The main goal of our group - which included George Ceja, Robert Adkins, Joel Yap and Adam Robson - when we started out, was to create an application that would make an impact in some way, on communities that were underserved. After some group brainstorming, we decided to focus on first-generation college students.  In the end, we created an application that can serve any person who is in need of food assistance.
 
 ## Overview
 
-<!-- TODO: Add a screenshot of the live project.
-    1. Link to a 'live demo.'
-    2. Describe your overall experience in a couple of sentences.
-    3. List a few specific technical things that you learned or improved on.
-    4. Share any other tips or guidance for others attempting this or something similar.
- -->
+  ![alt text](./src/assets/screenshot.png)
 
 ## Tech Stack
+
 <p><ins>Frameworks:</ins> React, Flask</p>
 <p><ins>Languages:</ins> JavaScript, Python</p>
 <p><ins>Database:</ins> MongoDB</p>
-<p><ins>FOther:</ins> Tailwind, Google Maps,  Geolocation API, GeoCoding API</p>
+<p><ins>Other:</ins> Tailwind, Google Maps,  Geolocation API, GeoCoding API</p>
 
 <ins>Deployments hosted on:</ins>
 [Fly](https://fly.io/),
@@ -39,6 +34,7 @@
 [MongoAtlas](https://www.mongodb.com/atlas/database)
 
 ## Features
+
 <details>
   <summary>Find pantries near you</summary>
   <p>When visiting the page the application will locate you and find pantries in your area.</p>
@@ -70,30 +66,37 @@
 </details>
 
 ## Setup
+
 To run this project locally, first, clone the repository:
 
 In the root folder add an `.env`
+
 ```
 #.env
 REACT_APP_GOOGLE_MAPS_API_KEY=<your_google_api_key>
 REACT_APP_FLY_API_URL=<your_api_url>
 ```
+
 Now run:
+
 ```
-$ npm install
-$ npm start
+npm install
+npm start
 ```
 
 Now visit:
-http://localhost:3000
+<http://localhost:3000>
 
 ## Contact
 
-<!-- TODO: Include icons and links to your RELEVANT, PROFESSIONAL 'DEV-ORIENTED' social media. LinkedIn and dev.to are minimum. -->
+Adam Robson
+[![linkedin](./src/assets/linked.png 'linked in icon')](https://www.linkedin.com/in/adamrayrobson) [![github](./src/assets/github.png 'github icon')](https://github.com/Adam-Robson )
+George Ceja
+[![linkedin](./src/assets/linked.png 'linked in icon')](https://www.linkedin.com/in/george-ceja) [![github](./src/assets/github.png 'github icon')](https://github.com/GeorgeCloud )
 
 ## Acknowledgements
 
-<!-- TODO: List any blog posts, tutorials or plugins that you may have used to complete the project. Only list those that had a significant impact. Obviously, we all 'Google' stuff while working on our things, but maybe something in particular stood out as a 'major contributor' to your skill set for this project. -->
+The data used in this project was sourced [here](https://www.foodpantries.org).
 
 ## MIT License
 
