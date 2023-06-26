@@ -14,7 +14,7 @@ export default function Map() {
     directions,
     myLatLng,
     isDetailsPage,
-    isLoaded,
+    isLoaded
   } = useGoogleContext();
 
   const onLoad = useCallback(
@@ -30,39 +30,41 @@ export default function Map() {
 
   const onUnmount = useCallback(() => {
     setMap(null);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setMap]);
 
   return (
     <>
       {
-        isLoaded && <GoogleMap
-          mapContainerClassName="map"
-          mapContainerStyle={{ height: '75%', width: '100%' }}
-          zoom={12}
-          options={{
-            styles: mapStyles,
-            streetViewControl: false,
-            mapTypeControl: false,
-            fullscreenControl: false,
-            panControl: true,
-            zoomControl: false
+        isLoaded &&
+          <GoogleMap
+            mapContainerClassName="map"
+            mapContainerStyle={{ height: '75%', width: '100%' }}
+            zoom={12}
+            options={{
+              styles: mapStyles,
+              streetViewControl: false,
+              mapTypeControl: false,
+              fullscreenControl: false,
+              panControl: true,
+              zoomControl: false
 
-          }}
-          center={myLatLng}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-          className="min-w-full"
-        >
-          {
-            organizations.length > 0 && !isDetailsPage &&
+            }}
+            center={myLatLng}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
+            className="min-w-full"
+          >
+            {
+              organizations.length > 0 && !isDetailsPage &&
             <Markers organizations={organizations} myLatLng={myLatLng} />
-          }
+            }
 
-          {/* Show active card for selected organization */}
-          {activeMarkerId !== null && organizations.length > 0 && <FloatCard />}
+            {/* Show active card for selected organization */}
+            {activeMarkerId !== null && organizations.length > 0 && <FloatCard />}
 
-          {directions && <DirectionsRenderer directions={directions} />}
-        </GoogleMap>
+            {directions && <DirectionsRenderer directions={directions} />}
+          </GoogleMap>
       }
     </>
   );

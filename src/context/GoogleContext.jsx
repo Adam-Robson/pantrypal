@@ -24,6 +24,7 @@ export function GoogleProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [floatCard, setFloatCard] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
