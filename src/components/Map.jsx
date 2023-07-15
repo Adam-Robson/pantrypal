@@ -13,17 +13,20 @@ export default function Map() {
     organizations,
     directions,
     myLatLng,
+    setMyLatLng,
     isDetailsPage,
     isLoaded
   } = useGoogleContext();
 
   const onLoad = useCallback(
     function onLoad(map) {
-      const bounds = new window.google.maps.LatLngBounds();
-      bounds.extend({
+      const center = new window.google.maps.LatLng({
         lat: 37.773972,
         lng: -122.431297
       });
+      const bounds = new window.google.maps.LatLngBounds();
+      bounds.extend(center);
+      setMyLatLng(center);
       setMap(map);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setMap]);
@@ -50,8 +53,8 @@ export default function Map() {
               zoomControl: false
 
             }}
-            center={myLatLng}
             onLoad={onLoad}
+            center={myLatLng}
             onUnmount={onUnmount}
             className="min-w-full"
           >

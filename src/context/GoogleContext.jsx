@@ -13,7 +13,7 @@ export function GoogleProvider({ children }) {
   const [destination, setDestination] = useState('');
   const [duration, setDuration] = useState(null);
   const [distance, setDistance] = useState(null);
-  const [myLatLng, setMyLatLng] = useState({});
+  const [myLatLng, setMyLatLng] = useState({ lat: 0, lng: 0 });
   const [userCityState, setUserCityState] = useState(null);
   const [organizations, setOrganizations] = useState([]);
   const [error, setError] = useState(null);
