@@ -103,15 +103,6 @@ button:focus-visible {
     background-color: var(--cream);
     color: var(--jet);
   }
-
-  /* .info {
-    background-color: var(--cream);
-    color: var(--jet);
-  } */
-/* 
-  .header {
-    background-color: var(--cream);
-  } */
 }
 
 

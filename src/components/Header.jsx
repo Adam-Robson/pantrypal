@@ -55,10 +55,11 @@ export default function Header() {
               <Autocomplete
                 onPlaceSelected={onPlaceSelected}
                 types={['(cities)']}
-                className="search p-2 mx-6"
+                className="search mx-6"
                 placeholder="Enter city"
               >
                 <input
+                  className="p-2 "
                   value={ search }
                   onChange={ (e) => setSearch(e.target.value) }
                 />
