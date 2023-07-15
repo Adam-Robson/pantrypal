@@ -16,7 +16,7 @@ export default function Details() {
     activeMarkerId,
     organizations,
     distance,
-    duration,
+    duration
   } = useGoogleContext();
 
   const organization = organizations[activeMarkerId];
@@ -57,7 +57,7 @@ export default function Details() {
           <div className="container">
             <div className="text-left w-full">
               <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4">
-              Description
+                  Description
               </h2>
               <p className="detail text-sm md:text-lg subpixel-antialiased mx-4">{organization.desc}</p>
             </div>
@@ -67,7 +67,7 @@ export default function Details() {
             {
               (organization.facebook_url || organization.twitter_url || organization.instagram_url) ?
                 <h2 className="detail-title text-lg md:text-xl subpixel-antialiased font-semibold mx-4">
-                Social Links
+                    Social Links
                 </h2> : null
             }
             <div className="w-full flex justify-evenly">
@@ -95,3 +95,4 @@ export default function Details() {
     </>
   );
 }
+  

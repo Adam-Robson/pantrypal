@@ -16,7 +16,6 @@ export function GoogleProvider({ children }) {
   const [myLatLng, setMyLatLng] = useState({ lat: 0, lng: 0 });
   const [userCityState, setUserCityState] = useState(null);
   const [organizations, setOrganizations] = useState([]);
-  const [error, setError] = useState(null);
   const [activeMarkerId, setActiveMarkerId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [tutorial, setTutorial] = useState(false);
@@ -24,7 +23,9 @@ export function GoogleProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [floatCard, setFloatCard] = useState(false);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
   const { isLoaded, loadError } = useLoadScript({
     id: 'google-maps-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -68,6 +69,8 @@ export function GoogleProvider({ children }) {
         setIsMounted,
         floatCard,
         setFloatCard,
+        loading,
+        setLoading,
         error,
         setError,
         isLoaded,

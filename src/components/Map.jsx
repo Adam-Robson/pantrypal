@@ -1,7 +1,6 @@
-
+import React, { useCallback } from 'react';
 import { GoogleMap, DirectionsRenderer } from '@react-google-maps/api';
 import { useGoogleContext } from '../context/GoogleContext';
-import React, { useCallback } from 'react';
 import mapStyles from '../assets/styles/map';
 import FloatCard from './FloatCard';
 import Markers from './Markers';
