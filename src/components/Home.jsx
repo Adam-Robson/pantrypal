@@ -1,34 +1,32 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import Header from './Header';
 import DetailsPage from './DetailsPage';
 import Map from './Map';
-import useFetchUtils from '../hooks/useFetchUtils';
+import Loader from './Loader';
 import useUserLocation from '../hooks/useUserLocation';
 
 export default function Home() {
-  const { isDetailsPage } = useGoogleContext();
-
-  const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
+  const { isDetailsPage, loader, setLoader } = useGoogleContext();
 
   const { populateOrgs } = useUserLocation();
 
   useEffect(() => {
     populateOrgs();
-  }, []);
+    setLoader(loader);
+  }, [loader, populateOrgs, setLoader]);
 
   return (
-    <>
-      {
+    <>{
+      loader ?
+        <Loader /> : 
         isDetailsPage ?
           <DetailsPage /> :
           <>
             <Header />
             <Map />
           </>
-      }
-    </>
+    }</>
   );
 }

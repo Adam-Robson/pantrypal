@@ -2,7 +2,7 @@
 import { GoogleMap, DirectionsRenderer } from '@react-google-maps/api';
 import { useGoogleContext } from '../context/GoogleContext';
 import React, { useCallback } from 'react';
-import mapStyles from '../assets/styles/map';
+import mapStyles from '../styles/map';
 import FloatCard from './FloatCard';
 import Markers from './Markers';
 
@@ -13,17 +13,20 @@ export default function Map() {
     organizations,
     directions,
     myLatLng,
+    setMyLatLng,
     isDetailsPage,
-    isLoaded,
+    isLoaded
   } = useGoogleContext();
 
   const onLoad = useCallback(
     function onLoad(map) {
-      const bounds = new window.google.maps.LatLngBounds();
-      bounds.extend({
+      const center = new window.google.maps.LatLng({
         lat: 37.773972,
         lng: -122.431297
       });
+      const bounds = new window.google.maps.LatLngBounds();
+      bounds.extend(center);
+      setMyLatLng(center);
       setMap(map);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setMap]);

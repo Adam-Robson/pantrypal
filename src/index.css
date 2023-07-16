@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
-
-
 :root {
   --cyan: #588b8bff;
   --apricot: #ffd5c2ff;
@@ -33,10 +23,10 @@
 html,
 body {
   background-color: var(--cream);
+  color: var(--cyan);
   margin: 0 auto;
   min-width: 100vw;
   max-height: 100vh;
-  overflow: hidden;
 }
 
 a {
@@ -104,14 +94,6 @@ button:focus-visible {
     color: var(--jet);
   }
 
-  /* .info {
-    background-color: var(--cream);
-    color: var(--jet);
-  } */
-/* 
-  .header {
-    background-color: var(--cream);
-  } */
 }
 
 

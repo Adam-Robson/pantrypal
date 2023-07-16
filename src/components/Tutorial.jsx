@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGoogleContext } from '../context/GoogleContext';
 import { FiX } from 'react-icons/fi';
-import './stylesheets/tutorial.css';
+import '../styles/tutorial.css';
 
 import page1 from '../assets/images/icons/tut_1.png';
 import page2 from '../assets/images/icons/tut_2.png';

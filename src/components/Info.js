@@ -3,7 +3,7 @@ import { useGoogleContext } from '../context/GoogleContext';
 import useMapUtils from '../hooks/useMapUtils';
 import CardArrows from './CardArrows';
 import { FiX } from 'react-icons/fi';
-import './stylesheets/floatcard.css';
+import '../styles/floatcard.css';
 
 export default function Info() {
   const { handleRoute, setFocus, DRIVING_VIEW } = useMapUtils();

@@ -17,7 +17,7 @@ export default function useUserLocation() {
 
           const res = await geoCodeLocation('location', myLatLng);
           const userLocation = getCityAndState(res);
-          fetchLocalOrgs(userLocation);
+          await fetchLocalOrgs(userLocation);
         });
     }
   }
