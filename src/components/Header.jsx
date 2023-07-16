@@ -13,15 +13,13 @@ export default function Header() {
   const { geoCodeLocation, fetchLocalOrgs, getCityAndState } = useFetchUtils();
   const { recenterMap } = useMapUtils();
 
-  function handleSearch() {
+  async function handleSearch() {
     setActiveMarkerId(null);
     setOrganizations([]);
-    geoCodeLocation('address', search.formatted_address)
-      .then((response) => {
-        recenterMap({ lat: search.geometry.location.lat(), lng: search.geometry.location.lng() });
-        const userLocation = getCityAndState(response);
-        fetchLocalOrgs(userLocation);
-      });
+    const response = await geoCodeLocation('address', search.formatted_address);
+    recenterMap({ lat: search.geometry.location.lat(), lng: search.geometry.location.lng() });
+    const userLocation = getCityAndState(response);
+    await fetchLocalOrgs(userLocation);
   }
 
   function onPlaceSelected(place) {
@@ -30,7 +28,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="container h-1/4 sm:h-1/3 md:h-1/4 lg:h-1/5 header max-w-full flex flex-col justify-center items-center">
+      <header className="container h-1/3 header max-w-full flex flex-col justify-center items-center">
         {
           isOpen ?
             <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -47,20 +45,20 @@ export default function Header() {
           <img
             src={flat}
             alt="pantry pals logo"
-            className="max-w-sm w-72 sm:w-80 md:w-96  m-4 sm:m-6"
+            className="max-w-sm w-72 sm:w-80 md:w-96 m-2"
           />
           <div className="container flex justify-center">{
             isLoaded && <>
               <Autocomplete
                 onPlaceSelected={onPlaceSelected}
                 types={['(cities)']}
-                className="search p-2 mx-6"
-                placeholder="Enter city"
               >
                 <input
-                  className="p-2"
+                  className="search mx-6 p-2"
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}  
+                  onChange={(e) => setSearch(e.target.value)} 
+                  autoComplete='on'
+                  placeholder="Enter city"
                 />
               </Autocomplete>
               <button

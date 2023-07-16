@@ -14,8 +14,9 @@ export default function Home() {
 
   useEffect(() => {
     populateOrgs();
-    setLoader(loader);
-  }, [loader, populateOrgs, setLoader]);
+    setLoader(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>{

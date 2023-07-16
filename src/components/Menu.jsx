@@ -11,7 +11,7 @@ export default function Menu() {
 
   return (
     <>
-      <section className="w-screen p-2">
+      <section className="container w-screen p-2">
         {
           isOpen ?
             <>
