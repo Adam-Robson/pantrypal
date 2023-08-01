@@ -7,7 +7,7 @@ import facebook from '../assets/images/icons/fb_icon.svg';
 import twitter from '../assets/images/icons/twitter_icon.svg';
 import instagram from '../assets/images/icons/ig_icon.svg';
 import stacked from '../assets/logo/stacked_logo.svg';
-import './stylesheets/detailspage.css';
+import '../styles/detailspage.css';
 
 export default function Details() {
 
@@ -16,7 +16,7 @@ export default function Details() {
     activeMarkerId,
     organizations,
     distance,
-    duration,
+    duration
   } = useGoogleContext();
 
   const organization = organizations[activeMarkerId];

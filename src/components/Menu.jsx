@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 import Portal from './Portal';
-import './stylesheets/menu.css';
+import '../styles/menu.css';
 
 import { useGoogleContext } from '../context/GoogleContext';
 
@@ -11,7 +11,7 @@ export default function Menu() {
 
   return (
     <>
-      <section className="w-screen p-2">
+      <section className="container w-screen p-2">
         {
           isOpen ?
             <>

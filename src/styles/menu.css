@@ -23,7 +23,7 @@
     opacity: 0;
   }
   100% {
-    top: 15px; 
+    top: .15em; 
     opacity: 1;
   }
 }

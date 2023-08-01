@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useGoogleContext } from '../context/GoogleContext';
 import { GoogleMap } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
-import mapStyles from '../assets/styles/map';
+import mapStyles from '../styles/map';
 
 import pin from '../assets/images/icons/org-pin.svg';
 
