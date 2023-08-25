@@ -1,4 +1,4 @@
-import reactRecommended from 'eslint-plugin-react/configs/recommended';
+import reactAll from 'eslint-plugin-react/configs/all';
 
 
 export default {
@@ -10,7 +10,7 @@ export default {
     },
     'extends': [
         'eslint:all',
-        reactRecommended,
+        reactAll,
         'plugin:react-hooks/recommended'
     ],
     'parserOptions': {
