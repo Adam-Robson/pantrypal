@@ -1,3 +1,6 @@
+import reactRecommended from 'eslint-plugin-react/configs/recommended';
+
+
 export default {
     'env': {
         'browser': true,
@@ -7,7 +10,7 @@ export default {
     },
     'extends': [
         'eslint:all',
-        'plugin:react/recommended',
+        reactRecommended,
         'plugin:react-hooks/recommended'
     ],
     'parserOptions': {
