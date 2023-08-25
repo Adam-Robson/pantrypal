@@ -15,7 +15,7 @@
 
 ## Description
 
-   This project was built as part of the Co.Lab 19 Cohort in 2023. The main goal of our group - which included George Ceja, Robert Adkins, Joel Yap and Adam Robson - when we started out, was to create an application that would make an impact in some way, on communities that were underserved. After some group brainstorming, we decided to focus on first-generation college students.  In the end, we created an application that can serve any person who is in need of food assistance.
+  This project was built as part of the Co.Lab 19 Cohort in 2023. The main goal of our group - which included George Ceja, Robert Adkins, Joel Yap and Adam Robson - when we started out, was to create an application that would make an impact in some way, on communities that were underserved. After some group brainstorming, we decided to focus on first-generation college students.  In the end, we created an application that can serve any person who is in need of food assistance.
 
 ## Overview
 
@@ -95,9 +95,22 @@ Now visit:
 ## Contact
 
 Adam Robson
-[![linkedin](./src/assets/images/linked.png 'linked in icon')](https://www.linkedin.com/in/adamrayrobson) [![github](./src/assets/images/github.png 'github icon')](https://github.com/Adam-Robson )
-George Ceja
-[![linkedin](./src/assets/images/linked.png 'linked in icon')](https://www.linkedin.com/in/george-ceja) [![github](./src/assets/images/github.png 'github icon')](https://github.com/GeorgeCloud )
+
+```html
+<a href="https://www.linkedin.com/in/adamrayrobson">
+  <img src="./src/assets/images/icons/linkedin-48.svg" alt="linkedin icon" width="100">
+</a>
+<a href="https://github.com/Adam-Robson">
+  <img src="./src/assets/images/icons/github-48.svg" alt="github icon" width="100">
+</a>
+<a href="https://www.linkedin.com/in/george-ceja">
+  <img src="./src/assets/images/icons/linkedin-48.svg" alt="linkedin icon" width="100">
+
+</a>
+<a href="https://github.com/GeorgeCloud">
+  <img src="./src/assets/images/icons/github-48.svg" alt="github icon" width="100">
+</a>
+```
 
 ## Acknowledgements
 
