@@ -1,6 +1,3 @@
-import reactAll from 'eslint-plugin-react/configs/all';
-
-
 export default {
     'env': {
         'browser': true,
@@ -10,7 +7,7 @@ export default {
     },
     'extends': [
         'eslint:all',
-        reactAll,
+        'plugin:react/recommended',
         'plugin:react-hooks/recommended'
     ],
     'parserOptions': {
@@ -41,40 +38,36 @@ export default {
             'error',
             'always'
         ],
-        'no-console': ['warn', {'allow': ['info', 'error']}],
-        'eqeqeq': 2,
-        'no-trailing-spaces': 1,
+        'array-bracket-spacing': 'error',
+        'arrow-parens': 2,
         'arrow-spacing': ['error', {'before': true, 'after': true}],
-        'react-hooks/exhaustive-deps': 1,
-        'react-hooks/rules-of-hooks': 2,
-        'react/jsx-uses-react': 0,
-        'react/jsx-uses-vars': 0,
+        'comma-spacing':'error',
+        'eqeqeq': 2,
+        'keyword-spacing': ['error', { 'before': 'error', 'after': 'error' }],
         'max-lines': { 'skipBlankLines': true, 'skipComments': true, 'max': 150 },
+        'no-console': ['warn', {'allow': ['info', 'error']}],
+        "no-multiple-empty-lines": "error",
+        'no-redeclare': [ 'error', { 'builtInGlobals': true }],
+        'no-trailing-spaces': 1,
         'no-undefined': 1,
+        'no-unused-vars': 'warn',
+        'object-curly-spacing': ['error', 'always'],
         'semi-spacing': 2,
         'space-before-blocks': 2,
-        'no-redeclare': [ 'error', { 'builtInGlobals': true }],
         'semi': ['error', 'always'],
         'space-in-parens': 'error',
         'space-infix-ops': 'error',
-        'object-curly-spacing': ['error', 'always'],
-        'comma-spacing':'error',
         'space-before-function-paren': ['error', { 'asyncArrow': true, 'anonymous': false, 'named': false }],
-        'keyword-spacing': ['error', { 'before': 'error', 'after': 'error' }],
-        'array-bracket-spacing': 'error',
         'react/prop-types': 0,
-        'no-unused-vars': 'warn',
         'react/react-in-jsx-scope': 0,
-
-
-
-
-        "no-multiple-empty-lines": "error",
-        "no-trailing-spaces": "error",
-  },
-  'settings': {
-    'react': {
-      'version': 'detect'
-    }
-  }
+        'react/jsx-uses-react': 0,
+        'react/jsx-uses-vars': 0,
+        'react-hooks/exhaustive-deps': 1,
+        'react-hooks/rules-of-hooks': 2,
+      },
+      'settings': {
+        'react': {
+          'version': 'detect'
+        }
+      }
 };
