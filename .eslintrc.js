@@ -39,15 +39,15 @@ export default {
             'always'
         ],
         'no-console': ['warn', {'allow': ['info', 'error']}],
-        'eqeqeq': ['error', 'always'],
-        'no-trailing-spaces': 'error',
+        'eqeqeq': 2,
+        'no-trailing-spaces': 2,
         'arrow-spacing': ['error', {'before': true, 'after': true}],
         'react-hooks/exhaustive-deps': 1,
         'react-hooks/rules-of-hooks': 2,
         'react/jsx-uses-react': 'off',
         'react/jsx-uses-vars': 'off',
 
-        'no-undef': 1,
+        'no-undefined': 1,
         'semi-spacing': 2,
         'space-before-blocks': 2,
         'no-redeclare': [ 'error', { 'builtInGlobals': true }],
