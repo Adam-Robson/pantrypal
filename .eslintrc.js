@@ -6,7 +6,7 @@ export default {
         "node": true
     },
     'extends': [
-        'eslint:recommended',
+        'eslint:all',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended'
     ],
@@ -68,5 +68,10 @@ export default {
 
         "no-multiple-empty-lines": "error",
         "no-trailing-spaces": "error",
+  },
+  'settings': {
+    'react': {
+      'version': 'detect'
+    }
   }
 };
