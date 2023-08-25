@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 import Portal from './Portal';
@@ -9,29 +9,20 @@ import { useGoogleContext } from '../context/GoogleContext';
 
 export default function Menu() {
   const { isOpen, setIsOpen } = useGoogleContext();
+  const [textVisible, setTextVisible] = useState(false);
+
+  function toggleMenu() {
+    setIsOpen(!isOpen);
+    setTextVisible(!textVisible);
+  }
 
   return (
     <>
       <section className="container w-screen p-2">
-        {
-          isOpen ?
-            <>
-              <button
-                className="absolute top-4 right-4"
-                onClick={ () => setIsOpen(false) }
-              >
-                <FiMenu size={ 24 } className={ ({ rotated }) => rotated ? 'rotated' : '' } />
-              </button>
-              <MenuList />
-            </>
-            :
-            <button
-              className="absolute top-0 right-2"
-              onClick={ () => setIsOpen(true) }
-            >
-              <FiMenu size={ 24 } />
-            </button>
-        }
+        <button className="absolute top-4 right-4" onClick={toggleMenu}>
+          <FiMenu size={24} className={ textVisible ? 'rotated' : '' } />
+        </button>
+        <MenuList textVisible={textVisible}/>
       </section>
       <div className="portal h-full w-full">
         <Portal />
