@@ -58,9 +58,9 @@ export default {
 
         "no-whitespace-before-property": "error",
         "semi-spacing": "error",
-        "space-before-blocks": "error",
 
 
+        "space-before-blocks": 2,
         'no-redeclare': [ 'error', { 'builtInGlobals': true }],
         'semi': ['error', 'always'],
         'space-in-parens': 'error',
