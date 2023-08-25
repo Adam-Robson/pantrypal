@@ -17,20 +17,19 @@ export default function Menu() {
           isOpen ?
             <>
               <button
-                className="icon absolute top-4 right-4"
+                className="absolute top-4 right-4"
                 onClick={ () => setIsOpen(false) }
               >
-                <FiMenu size={ 24 } className={ ({ rotated }) => rotated ? 'rotated' : ''
-                } />
+                <FiMenu size={ 24 } className={ ({ rotated }) => rotated ? 'rotated' : '' } />
               </button>
               <MenuList />
             </>
             :
             <button
-              className="menu-link cursor-pointer"
+              className="absolute top-0 right-2"
               onClick={ () => setIsOpen(true) }
             >
-              <FiMenu className="menu-link absolute top-0 right-2" size={ 24 } />
+              <FiMenu size={ 24 } />
             </button>
         }
       </section>
