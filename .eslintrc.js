@@ -47,20 +47,9 @@ export default {
         'react/jsx-uses-react': 'off',
         'react/jsx-uses-vars': 'off',
 
-        'no-undef': 'warn',
-        'no-case-declarations': 'off',
-        'no-empty': 'off',
-        "block-spacing": "error",
-        "brace-style": "error",
-        "computed-property-spacing": "error",
-        "func-call-spacing": "error",
-        "key-spacing": "error",
-
-        "no-whitespace-before-property": "error",
-        "semi-spacing": "error",
-
-
-        "space-before-blocks": 2,
+        'no-undef': 1,
+        'semi-spacing': 2,
+        'space-before-blocks': 2,
         'no-redeclare': [ 'error', { 'builtInGlobals': true }],
         'semi': ['error', 'always'],
         'space-in-parens': 'error',
