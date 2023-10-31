@@ -85,13 +85,25 @@ Now visit:
 ## Contact
 
 Adam Robson
-[![linkedin](./src/assets/images/linked.png 'linked in icon')](https://www.linkedin.com/in/adamrayrobson) [![github](./src/assets/images/github.png 'github icon')](https://github.com/Adam-Robson )
+<a href="https://www.linkedin.com/in/adamrayrobson" target="_blank">
+  <img src="./src/assets/images/linked.png" style=`width: '8.5rem'` alt="linked in icon" />
+</a>
+<a href="https://github.com/Adam-Robson" target="_blank">
+  <img src="./src/assets/images/github.png" style=`width: '8.5rem'` alt="github icon" />
+</a>
+
 George Ceja
-[![linkedin](./src/assets/images/linked.png 'linked in icon')](https://www.linkedin.com/in/george-ceja) [![github](./src/assets/images/github.png 'github icon')](https://github.com/GeorgeCloud )
+<a href="https://www.linkedin.com/in/george-ceja" target="_blank">
+  <img src="./src/assets/images/linked.png" style=`width: '8.5rem'` alt="linked in icon" />
+</a>
+<a href="https://github.com/GeorgeCloud" target="_blank">
+  <img src="./src/assets/images/github.png" style=`width: '8.5rem'` alt="github icon" />
+</a>
 
 # Acknowledgements 
 
 The data used in this project was sourced [here](https://www.foodpantries.org).
+
 ## MIT License
 
   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
