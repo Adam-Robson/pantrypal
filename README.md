@@ -85,17 +85,21 @@ Now visit:
 ## Contact
 
 Adam Robson
+<br />
 <a href="https://www.linkedin.com/in/adamrayrobson" target="_blank">
   <img src="./src/assets/images/linked.png" alt="linked in icon" />
 </a>
+<br />
 <a href="https://github.com/Adam-Robson" target="_blank">
   <img src="./src/assets/images/github.png" alt="github icon" />
 </a>
 
 George Ceja
+<br />
 <a href="https://www.linkedin.com/in/george-ceja" target="_blank">
   <img src="./src/assets/images/linked.png" alt="linked in icon" />
 </a>
+<br />
 <a href="https://github.com/GeorgeCloud" target="_blank">
   <img src="./src/assets/images/github.png" alt="github icon" />
 </a>
