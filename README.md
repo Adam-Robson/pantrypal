@@ -86,18 +86,18 @@ Now visit:
 
 Adam Robson
 <a href="https://www.linkedin.com/in/adamrayrobson" target="_blank">
-  <img src="./src/assets/images/linked.png" style=`width: '8.5rem'` alt="linked in icon" />
+  <img src="./src/assets/images/linked.png" alt="linked in icon" />
 </a>
 <a href="https://github.com/Adam-Robson" target="_blank">
-  <img src="./src/assets/images/github.png" style=`width: '8.5rem'` alt="github icon" />
+  <img src="./src/assets/images/github.png" alt="github icon" />
 </a>
 
 George Ceja
 <a href="https://www.linkedin.com/in/george-ceja" target="_blank">
-  <img src="./src/assets/images/linked.png" style=`width: '8.5rem'` alt="linked in icon" />
+  <img src="./src/assets/images/linked.png" alt="linked in icon" />
 </a>
 <a href="https://github.com/GeorgeCloud" target="_blank">
-  <img src="./src/assets/images/github.png" style=`width: '8.5rem'` alt="github icon" />
+  <img src="./src/assets/images/github.png" alt="github icon" />
 </a>
 
 # Acknowledgements 
