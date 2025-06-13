@@ -26,4 +26,5 @@ def fetch_orgs_by_city():
     return dumps(list(organizations))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    is_debug = getenv('FLASK_ENV', 'production') == 'development'
+    app.run(debug=is_debug, port=5000)
